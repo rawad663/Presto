@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import logo from './resources/logo.svg';
+import { Route } from 'react-router-dom';
+
+import LoginContainer from './containers/LoginContainer';
 import './App.css';
 
 class App extends Component {
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      // return a Route component that loads up respective Components based on URL path
+      return (
+         <div>
+             <Route exact path="/" component={LoginContainer} />
+         </div>
+      );
   }
 }
 
