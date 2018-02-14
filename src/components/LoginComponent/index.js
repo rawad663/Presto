@@ -29,7 +29,7 @@ const LoginComponent = props => {
         <div>
             <div style={styles.title}>
                 <h1 className="mainTitle">Welcome to <span style={{ color: purple_main }}>Presto</span></h1>
-                <h3 className="mainTitle">Sometimes, getting the date isn't the hardest part...</h3>
+                <h3 className="mainTitle">Sometimes, getting the date isn&#39;t the hardest part...</h3>
             </div>
             <Well style={styles.well}  bsSize="large">
                 <FormGroup validationState={props.validationState()}>
