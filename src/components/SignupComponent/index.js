@@ -58,16 +58,31 @@ const SignupComponent = props => {
                         </Col>
                     </Row>
 
-                    <ControlLabel> Email</ControlLabel>
-                    <FormControl
-                        type="email"
-                        value={props.email}
-                        placeholder="example@domain.com"
-                        onChange={props.handleEmailChange}
-                    />
                     <Row style={styles.row}>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel style={{ marginTop: 16}}>New Password</ControlLabel>
+                            <ControlLabel> Email</ControlLabel>
+                            <FormControl
+                                type="email"
+                                value={props.email}
+                                placeholder="example@domain.com"
+                                onChange={props.handleEmailChange}
+                            />
+                        </Col>
+                        <Col sm={{ size: 6, offset: 1 }}>
+                            <ControlLabel> Postal Code</ControlLabel>
+                            <FormControl
+                                type="text"
+                                value={props.postalCode}
+                                placeholder="H3A1C9"
+                                onChange={props.handlePostalCodeChange}
+                            />
+                        </Col>
+                    </Row>
+
+
+                    <Row style={styles.row}>
+                        <Col sm={{ size: 6, offset: 1 }}>
+                            <ControlLabel> New Password</ControlLabel>
                             <FormControl
                                 type="password"
                                 value={props.password}
@@ -76,7 +91,7 @@ const SignupComponent = props => {
                             />
                         </Col>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel style={{ marginTop: 16}}>Confirm Password</ControlLabel>
+                            <ControlLabel> Confirm Password</ControlLabel>
                             <FormControl
                                 type="password"
                                 value={props.password2}

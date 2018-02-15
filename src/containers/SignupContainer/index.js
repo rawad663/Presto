@@ -45,7 +45,8 @@ export default class SignupContainer extends Component{
     };
     handleSubmit = () => {
         console.log('SUBMIT PRESSED', this.state.firstName, this.state.lastName, this.state.email, this.state.passwogitrd, this.state.password2);
-      //TODO: CREATE NEW ACCOUNT
+        this.props.history.push('/customer')
+        //TODO: CREATE NEW ACCOUNT
     };
     handleCancel = () => {
         this.props.history.push('/');
