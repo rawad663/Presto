@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import SignupComponent from '../../components/SignupComponent';
-import PropTypes from "prop-types";
 
 export default class SignupContainer extends Component{
 
@@ -44,7 +43,13 @@ export default class SignupContainer extends Component{
     handlePhoneNumberChange = e => {
         this.setState({phoneNumber: e.target.value})
     };
-
+    handleSubmit = () => {
+        console.log('SUBMIT PRESSED', this.state.firstName, this.state.lastName, this.state.email, this.state.passwogitrd, this.state.password2);
+      //TODO: CREATE NEW ACCOUNT
+    };
+    handleCancel = () => {
+        this.props.history.push('/');
+    };
     //TODO
     getValidationState = () => {
         return null;
@@ -72,6 +77,8 @@ export default class SignupContainer extends Component{
                 handleAddressChange= {this.handleAddressChange}
                 handlePostalCodeChange= {this.handlePostalCodeChange}
                 handlePhoneNumberChange= {this.handlePhoneNumberChange}
+                handleSubmit = {this.handleSubmit}
+                handleCancel = {this.handleCancel}
                 validationState={this.getValidationState}
 
               />;

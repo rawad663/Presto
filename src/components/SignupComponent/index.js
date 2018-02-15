@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Well, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Well, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
-import {Container, Row, Col} from 'reactstrap'
+import {Button, Row, Col} from 'reactstrap'
+// import { purple_main } from '../../resources/colors';
 
 
 const SignupComponent = props => {
@@ -20,6 +21,10 @@ const SignupComponent = props => {
         },
         row: {
             marginBottom: 10
+        },
+        signUp: {
+            backgroundColor: purple_main,
+            color:'white'
         }
 
     };
@@ -73,13 +78,28 @@ const SignupComponent = props => {
                         <Col sm={{ size: 6, offset: 1 }}>
                             <ControlLabel style={{ marginTop: 16}}>Confirm Password</ControlLabel>
                             <FormControl
-                                type="password2"
+                                type="password"
                                 value={props.password2}
                                 placeholder="********"
-                                onChange={props.handlePasswordChange}
+                                onChange={props.handlePassword2Change}
                             />
                         </Col>
                     </Row>
+                    <div style={{ display: 'flex' }}>
+                        <Button
+                            onClick={props.handleSubmit}
+                            style={{ ...styles.button, ...styles.signUp, width: 150 }}
+                            type="submit"
+                        >
+                            Sign Up
+                        </Button>
+                        <Button
+                            onClick={props.handleCancel}
+                            style={{ ...styles.button, marginLeft: 8 }}
+                        >
+                            Cancel
+                        </Button>
+                    </div>
 
 
 
@@ -108,6 +128,8 @@ SignupComponent.propsTypes = {
     handleAddressChange: PropTypes.func,
     handlePostalCodeChange: PropTypes.func,
     handlePhoneNumberChange: PropTypes.func,
+    handleSubmit: PropTypes.func,
+    handleCancel: PropTypes.func,
     validationState:PropTypes.func
 };
 
