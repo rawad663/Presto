@@ -18,10 +18,8 @@ const SignupComponent = props => {
         centerDiv: {
             // alignItems
         },
-        container:{
-            display:'flex'
-
-            // justifyContent: 'space-evenly'
+        row: {
+            marginBottom: 10
         }
 
     };
@@ -34,13 +32,13 @@ const SignupComponent = props => {
 
                 <FormGroup validationState={props.validationState()}>
 
-                    <Row>
+                    <Row style={styles.row}>
                         <Col sm={{ size: 6, offset: 1 }}>
                             <ControlLabel> First Name</ControlLabel>
                             <FormControl
                                 type="firstName"
                                 value={props.firstName}
-                                placeholder="First Name  Ex: John"
+                                placeholder="Example: LeBron"
                                 onChange={props.handleFirstNameChange}
                             />
                         </Col>
@@ -49,46 +47,41 @@ const SignupComponent = props => {
                             <FormControl
                                 type="lastName"
                                 value={props.lastName}
-                                placeholder="Last Name  Ex: Stewart"
+                                placeholder="Example: Bryant"
                                 onChange={props.handleLastNameChange}
                             />
                         </Col>
-
                     </Row>
-
-
-                    {/*<div style={styles.container}>*/}
-                        {/**/}
-                        {/**/}
-                    {/*</div>*/}
-
-
-                    {/*<div className={"row"}>*/}
-                        {/*<div className={"col-md-6"}>*/}
-                            {/**/}
-                        {/*</div>*/}
-                        {/*<div className={"col-md-3"}>*/}
-                            {/**/}
-                        {/*</div>*/}
-
-
-                    {/*</div>*/}
 
                     <ControlLabel> Email</ControlLabel>
                     <FormControl
                         type="email"
                         value={props.email}
-                        placeholder="Email (example@example.com)"
+                        placeholder="example@domain.com"
                         onChange={props.handleEmailChange}
                     />
+                    <Row style={styles.row}>
+                        <Col sm={{ size: 6, offset: 1 }}>
+                            <ControlLabel style={{ marginTop: 16}}>New Password</ControlLabel>
+                            <FormControl
+                                type="password"
+                                value={props.password}
+                                placeholder="********"
+                                onChange={props.handlePasswordChange}
+                            />
+                        </Col>
+                        <Col sm={{ size: 6, offset: 1 }}>
+                            <ControlLabel style={{ marginTop: 16}}>Confirm Password</ControlLabel>
+                            <FormControl
+                                type="password2"
+                                value={props.password2}
+                                placeholder="********"
+                                onChange={props.handlePasswordChange}
+                            />
+                        </Col>
+                    </Row>
 
-                    <ControlLabel style={{ marginTop: 16}}>Password</ControlLabel>
-                    <FormControl
-                        type="password"
-                        value={props.password}
-                        placeholder="Password"
-                        onChange={props.handlePasswordChange}
-                    />
+
 
                 </FormGroup>
             </Well>
@@ -104,6 +97,7 @@ SignupComponent.propsTypes = {
     lastName: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
+    password2: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
     phoneNumber: phoneNumberPropType.isRequired,

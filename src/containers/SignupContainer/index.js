@@ -12,6 +12,7 @@ export default class SignupContainer extends Component{
             lastName:'',
             email:'',
             password:'',
+            password2:'',
             address:'',
             postalCode:'',
             phoneNumber:''
@@ -30,6 +31,9 @@ export default class SignupContainer extends Component{
     };
     handlePasswordChange = e => {
         this.setState({password: e.target.value})
+    };
+    handlePassword2Change = e => {
+        this.setState({password2: e.target.value})
     };
     handleAddressChange = e => {
         this.setState({address: e.target.value})
@@ -56,6 +60,7 @@ export default class SignupContainer extends Component{
                 lastName = {this.state.lastName}
                 email = {this.state.email}
                 password = {this.state.password}
+                password2 = {this.state.password2}
                 address = {this.state.email}
                 postalCode = {this.state.postalCode}
                 phoneNumber = {this.state.phoneNumber}
@@ -63,6 +68,7 @@ export default class SignupContainer extends Component{
                 handleLastNameChange= {this.handleLastNameChange}
                 handleEmailChange= {this.handleEmailChange}
                 handlePasswordChange= {this.handlePasswordChange}
+                handlePassword2Change= {this.handlePassword2Change}
                 handleAddressChange= {this.handleAddressChange}
                 handlePostalCodeChange= {this.handlePostalCodeChange}
                 handlePhoneNumberChange= {this.handlePhoneNumberChange}
