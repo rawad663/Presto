@@ -2,23 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Well, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
+import {purple_main} from "../../resources/colors";
 
 const SignupComponent = props => {
 
     const styles = {
         title:{
-            color:'blue'
+            marginTop: 115
         },
         well: {
             margin: '4% 20%'
         },
+        centerDiv: {
+            // alignItems
+        },
+        container:{
+            display:'flex',
+            justifyContent:'space-between'
+        }
 
     };
     return (
         <div>
             <div style={styles.title}>
-                <Well style={styles.well}  bsSize="large">
-                    <FormGroup validationState={props.validationState()}>
+                <h1 className="mainTitle">Sign-up to <span style={{ color: purple_main }}>Presto</span></h1>
+            </div>
+            <Well style={styles.well}  bsSize="large">
+
+                <FormGroup validationState={props.validationState()}>
+                    <div style={styles.container}>
                         <ControlLabel> First Name</ControlLabel>
                         <FormControl
                             type="firstName"
@@ -33,25 +45,39 @@ const SignupComponent = props => {
                             placeholder="Last Name  Ex: Stewart"
                             onChange={props.handleLastNameChange}
                         />
-                        <ControlLabel> Email</ControlLabel>
-                        <FormControl
-                            type="email"
-                            value={props.email}
-                            placeholder="Email (example@example.com)"
-                            onChange={props.handleEmailChange}
-                        />
+                    </div>
 
-                        <ControlLabel style={{ marginTop: 16}}>Password</ControlLabel>
-                        <FormControl
-                            type="password"
-                            value={props.password}
-                            placeholder="Password"
-                            onChange={props.handlePasswordChange}
-                        />
 
-                    </FormGroup>
-                </Well>
-            </div>
+                    {/*<div className={"row"}>*/}
+                        {/*<div className={"col-md-6"}>*/}
+                            {/**/}
+                        {/*</div>*/}
+                        {/*<div className={"col-md-3"}>*/}
+                            {/**/}
+                        {/*</div>*/}
+
+
+                    {/*</div>*/}
+
+                    <ControlLabel> Email</ControlLabel>
+                    <FormControl
+                        type="email"
+                        value={props.email}
+                        placeholder="Email (example@example.com)"
+                        onChange={props.handleEmailChange}
+                    />
+
+                    <ControlLabel style={{ marginTop: 16}}>Password</ControlLabel>
+                    <FormControl
+                        type="password"
+                        value={props.password}
+                        placeholder="Password"
+                        onChange={props.handlePasswordChange}
+                    />
+
+                </FormGroup>
+            </Well>
+
 
         </div>
 
