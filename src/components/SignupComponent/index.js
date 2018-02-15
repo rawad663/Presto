@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Well, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
+import {Container, Row, Col} from 'reactstrap'
+
 
 const SignupComponent = props => {
 
@@ -17,8 +19,9 @@ const SignupComponent = props => {
             // alignItems
         },
         container:{
-            display:'flex',
-            justifyContent:'space-between'
+            display:'flex'
+
+            // justifyContent: 'space-evenly'
         }
 
     };
@@ -30,22 +33,34 @@ const SignupComponent = props => {
             <Well style={styles.well}  bsSize="large">
 
                 <FormGroup validationState={props.validationState()}>
-                    <div style={styles.container}>
-                        <ControlLabel> First Name</ControlLabel>
-                        <FormControl
-                            type="firstName"
-                            value={props.firstName}
-                            placeholder="First Name  Ex: John"
-                            onChange={props.handleFirstNameChange}
-                        />
-                        <ControlLabel> Last Name</ControlLabel>
-                        <FormControl
-                            type="lastName"
-                            value={props.lastName}
-                            placeholder="Last Name  Ex: Stewart"
-                            onChange={props.handleLastNameChange}
-                        />
-                    </div>
+
+                    <Row>
+                        <Col sm={{ size: 6, offset: 1 }}>
+                            <ControlLabel> First Name</ControlLabel>
+                            <FormControl
+                                type="firstName"
+                                value={props.firstName}
+                                placeholder="First Name  Ex: John"
+                                onChange={props.handleFirstNameChange}
+                            />
+                        </Col>
+                        <Col sm={{ size: 6, offset: 1 }}>
+                            <ControlLabel> Last Name</ControlLabel>
+                            <FormControl
+                                type="lastName"
+                                value={props.lastName}
+                                placeholder="Last Name  Ex: Stewart"
+                                onChange={props.handleLastNameChange}
+                            />
+                        </Col>
+
+                    </Row>
+
+
+                    {/*<div style={styles.container}>*/}
+                        {/**/}
+                        {/**/}
+                    {/*</div>*/}
 
 
                     {/*<div className={"row"}>*/}
