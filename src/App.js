@@ -14,10 +14,10 @@ class App extends Component {
       // return a Route component that loads up respective Components based on URL path
       return (
          <div>
+             <Route exact path="/" component={LoginContainer} />
              <Route path="/customer" component={CustomerHomeContainer} />
-             <Route path="/login" component={LoginContainer} />
              <Route path="/reservations" component={ReservationsContainer} />
-             <Route path="/restaurantprofile" component={RestaurantProfileContainer} />
+             <Route path="/restaurant/profile" component={RestaurantProfileContainer} />
              <Route path="/settings" component={SettingsContainer} />
          </div>
       );
