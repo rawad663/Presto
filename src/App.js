@@ -16,11 +16,11 @@ class App extends Component {
       return (
          <div>
              <Route path="/signup/" component={SignupContainer} />
-             <Route exact path="/" component={CustomerHomeContainer} />
+             {/*<Route exact path="/" component={CustomerHomeContainer} />*/}
              <Route exact path="/" component={LoginContainer} />
-             <Route exact path="/" component={ReservationsContainer} />
-             <Route exact path="/" component={RestaurantProfileContainer} />
-             <Route exact path="/" component={SettingsContainer} />
+             {/*<Route exact path="/" component={ReservationsContainer} />*/}
+             {/*<Route exact path="/" component={RestaurantProfileContainer} />*/}
+             {/*<Route exact path="/" component={SettingsContainer} />*/}
          </div>
       );
   }
