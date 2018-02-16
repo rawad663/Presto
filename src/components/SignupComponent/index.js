@@ -4,6 +4,7 @@ import { Well, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
 import {Button, Row, Col} from 'reactstrap'
+import { RadioGroup, RadioButton } from 'react-radio-buttons';
 // import { purple_main } from '../../resources/colors';
 
 
@@ -69,6 +70,20 @@ const SignupComponent = props => {
                             />
                         </Col>
                         <Col sm={{ size: 6, offset: 1 }}>
+                            {/*<Label check>*/}
+
+
+
+                            {/*<RadioGroup onChange={props.handleUserTypeChanged} horizontal>*/}
+                                {/*<RadioButton value={"Restaurant"}>*/}
+                                    {/*Restaurant*/}
+                                {/*</RadioButton>*/}
+                                {/*<RadioButton value={"Customer"}>*/}
+                                    {/*Customer*/}
+                                {/*</RadioButton>*/}
+                            {/*</RadioGroup>*/}
+
+
                             <ControlLabel> Postal Code</ControlLabel>
                             <FormControl
                                 type="text"
@@ -135,6 +150,7 @@ SignupComponent.propsTypes = {
     password2: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
+    userType: PropTypes.string.isRequired,
     phoneNumber: phoneNumberPropType.isRequired,
     handleFirstNameChange: PropTypes.func,
     handleLastNameChange: PropTypes.func,
@@ -145,6 +161,7 @@ SignupComponent.propsTypes = {
     handlePhoneNumberChange: PropTypes.func,
     handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
+    // handleUserTypeChanged: PropTypes.func,
     validationState:PropTypes.func
 };
 
