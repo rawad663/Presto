@@ -16,9 +16,7 @@ export default class SignupContainer extends Component{
             postalCode:'',
             phoneNumber:'',
             // userType:''
-        }
-
-
+        };
     }
     handleFirstNameChange = e => {
         this.setState({firstName: e.target.value})
@@ -56,14 +54,8 @@ export default class SignupContainer extends Component{
     //     this.setState({userType: e.target.value})
     // };
 
-    getValidationState = () => {
-        //TODO
-        return null;
-    };
-
 
     render(){
-        console.log(this.props)
         return(
           <div>
               <SignupComponent
@@ -87,8 +79,6 @@ export default class SignupContainer extends Component{
                 handleSubmit = {this.handleSubmit}
                 handleCancel = {this.handleCancel}
                 // handleUserTypeChanged = {this.handleUserTypeChanged}
-                validationState={this.getValidationState}
-
               />;
           </div>
         );

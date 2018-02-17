@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Well, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
+import { Well } from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
-import {Button, Row, Col} from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 // import { purple_main } from '../../resources/colors';
 
@@ -17,9 +17,6 @@ const SignupComponent = props => {
         well: {
             margin: '4% 20%'
         },
-        centerDiv: {
-            // alignItems
-        },
         row: {
             marginBottom: 10
         },
@@ -27,31 +24,31 @@ const SignupComponent = props => {
             backgroundColor: purple_main,
             color:'white'
         }
-
     };
     return (
         <div>
             <div style={styles.title}>
                 <h1 className="mainTitle">Sign-up to <span style={{ color: purple_main }}>Presto</span></h1>
             </div>
+
             <Well style={styles.well}  bsSize="large">
-
-                <FormGroup validationState={props.validationState()}>
-
+                <FormGroup>
                     <Row style={styles.row}>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel> First Name</ControlLabel>
-                            <FormControl
-                                type="firstName"
+                            <Label for="firstName"> First Name</Label>
+                            <Input
+                                type="text"
+                                name="firstName"
                                 value={props.firstName}
-                                placeholder="Example: LeBron"
+                                placeholder="Ex: LeBron"
                                 onChange={props.handleFirstNameChange}
                             />
                         </Col>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel> Last Name</ControlLabel>
-                            <FormControl
-                                type="lastName"
+                            <Label for="lastName"> Last Name</Label>
+                            <Input
+                                type="text"
+                                name="lastName"
                                 value={props.lastName}
                                 placeholder="Example: Bryant"
                                 onChange={props.handleLastNameChange}
@@ -61,32 +58,20 @@ const SignupComponent = props => {
 
                     <Row style={styles.row}>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel> Email</ControlLabel>
-                            <FormControl
+                            <Label for="email"> Email</Label>
+                            <Input
                                 type="email"
+                                name="email"
                                 value={props.email}
                                 placeholder="example@domain.com"
                                 onChange={props.handleEmailChange}
                             />
                         </Col>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            {/*<Label check>*/}
-
-
-
-                            {/*<RadioGroup onChange={props.handleUserTypeChanged} horizontal>*/}
-                                {/*<RadioButton value={"Restaurant"}>*/}
-                                    {/*Restaurant*/}
-                                {/*</RadioButton>*/}
-                                {/*<RadioButton value={"Customer"}>*/}
-                                    {/*Customer*/}
-                                {/*</RadioButton>*/}
-                            {/*</RadioGroup>*/}
-
-
-                            <ControlLabel> Postal Code</ControlLabel>
-                            <FormControl
+                            <Label for="postalCode"> Postal Code</Label>
+                            <Input
                                 type="text"
+                                name="postalCode"
                                 value={props.postalCode}
                                 placeholder="H3A1C9"
                                 onChange={props.handlePostalCodeChange}
@@ -97,18 +82,20 @@ const SignupComponent = props => {
 
                     <Row style={styles.row}>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel> New Password</ControlLabel>
-                            <FormControl
+                            <Label for="password">Password</Label>
+                            <Input
                                 type="password"
+                                name="password"
                                 value={props.password}
                                 placeholder="********"
                                 onChange={props.handlePasswordChange}
                             />
                         </Col>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel> Confirm Password</ControlLabel>
-                            <FormControl
+                            <Label for="confirmPassword">Confirm Password</Label>
+                            <Input
                                 type="password"
+                                name="confirmPassword"
                                 value={props.password2}
                                 placeholder="********"
                                 onChange={props.handlePassword2Change}
