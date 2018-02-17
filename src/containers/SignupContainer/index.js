@@ -15,7 +15,7 @@ export default class SignupContainer extends Component{
             address:'',
             postalCode:'',
             phoneNumber:'',
-            // userType:''
+            userType:''
         }
 
 
@@ -45,17 +45,16 @@ export default class SignupContainer extends Component{
         this.setState({phoneNumber: e.target.value})
     };
     handleSubmit = () => {
-        console.log('SUBMIT PRESSED', this.state.firstName, this.state.lastName, this.state.email, this.state.passwogitrd, this.state.password2);
-        this.props.history.push('/customer')
+        console.log('SUBMIT PRESSED', this.state.firstName, this.state.lastName, this.state.email, this.state.password, this.state.password2, this.state.userType);
+        // this.props.history.push('/customer')
         //TODO: CREATE NEW ACCOUNT
     };
     handleCancel = () => {
         this.props.history.push('/');
     };
-    // handleUserTypeChanged = e => {
-    //     this.setState({userType: e.target.value})
-    // };
-
+    handleUserTypeChanged = e => {
+        this.setState({userType: e.target.value})
+    };
     getValidationState = () => {
         //TODO
         return null;
@@ -86,7 +85,7 @@ export default class SignupContainer extends Component{
                 handlePhoneNumberChange= {this.handlePhoneNumberChange}
                 handleSubmit = {this.handleSubmit}
                 handleCancel = {this.handleCancel}
-                // handleUserTypeChanged = {this.handleUserTypeChanged}
+                handleUserTypeChanged = {this.handleUserTypeChanged}
                 validationState={this.getValidationState}
 
               />;

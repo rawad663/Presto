@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Well, FormControl, ControlLabel} from 'react-bootstrap';
+import { Well, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
-import {Button, Row, Col, Input, FormGroup, Label} from 'reactstrap'
-import { RadioGroup, RadioButton } from 'react-radio-buttons';
-// import { purple_main } from '../../resources/colors';
-
+import {Button, Row, Col, Input, Label} from 'reactstrap'
 
 const SignupComponent = props => {
 
@@ -70,31 +67,18 @@ const SignupComponent = props => {
                             />
                         </Col>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            {/*<FormGroup tag="fieldset">*/}
-                            {/*<ControlLabel> User Type </ControlLabel>*/}
-                                {/*<FormGroup check>*/}
-                                    {/*<Label check>*/}
-                                        {/*<Input type="radio" name="radio1" />{' '}*/}
-                                        {/*Customer*/}
-                                    {/*</Label>*/}
-                                    {/*<Label check>*/}
-                                        {/*<Input type="radio" name="radio1" />{' '}*/}
-                                        {/*Resto*/}
-                                    {/*</Label>*/}
-                                {/*</FormGroup>*/}
-
-                            <FormGroup tag="fieldset" column>
+                            <FormGroup tag="fieldset" column={"true"}>
                                 <ControlLabel> User Type </ControlLabel>
                                 <Row style={styles.row}>
                                     <Col sm={{ size: 4, offset: 1 }}>
                                         <Label check>
-                                            <Input type="radio" name="radio2" />{' '}
+                                            <input type="radio" name="radio2" value="customer" checked = {props.userType==='customer'} onChange={props.handleUserTypeChanged}/>{' '}
                                             Customer
                                         </Label>
                                     </Col>
                                     <Col sm={{ size: 4, offset: 1 }}>
                                         <Label check>
-                                            <Input type="radio" name="radio2" />{' '}
+                                            <input type="radio" name="radio2" value="restaurant" checked = {props.userType==='restaurant'} onChange={props.handleUserTypeChanged}/>{' '}
                                             Restaurant
                                         </Label>
                                     </Col>
@@ -170,7 +154,7 @@ SignupComponent.propsTypes = {
     handlePhoneNumberChange: PropTypes.func,
     handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
-    // handleUserTypeChanged: PropTypes.func,
+    handleUserTypeChanged: PropTypes.func,
     validationState:PropTypes.func
 };
 
