@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Well, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
+import { Well } from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
-import {Button, Row, Col, Input, Label} from 'reactstrap'
+
+
+import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 
 const SignupComponent = props => {
 
@@ -14,9 +16,6 @@ const SignupComponent = props => {
         well: {
             margin: '4% 20%'
         },
-        centerDiv: {
-            // alignItems
-        },
         row: {
             marginBottom: 10
         },
@@ -24,33 +23,35 @@ const SignupComponent = props => {
             backgroundColor: purple_main,
             color:'white'
         }
-
     };
+
+
     return (
         <div>
             <div style={styles.title}>
                 <h1 className="mainTitle">Sign-up to <span style={{ color: purple_main }}>Presto</span></h1>
             </div>
+
             <Well style={styles.well}  bsSize="large">
-
-                <FormGroup validationState={props.validationState()}>
-
+                <FormGroup>
                     <Row style={styles.row}>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel> First Name</ControlLabel>
-                            <FormControl
-                                type="firstName"
+                            <Label for="firstName"> First Name</Label>
+                            <Input
+                                type="text"
+                                name="firstName"
                                 value={props.firstName}
-                                placeholder="Example: LeBron"
+                                placeholder="Ex: LeBron"
                                 onChange={props.handleFirstNameChange}
                             />
                         </Col>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel> Last Name</ControlLabel>
-                            <FormControl
-                                type="lastName"
+                            <Label for="lastName"> Last Name</Label>
+                            <Input
+                                type="text"
+                                name="lastName"
                                 value={props.lastName}
-                                placeholder="Example: Bryant"
+                                placeholder="Ex: Bryant"
                                 onChange={props.handleLastNameChange}
                             />
                         </Col>
@@ -58,56 +59,80 @@ const SignupComponent = props => {
 
                     <Row style={styles.row}>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel> Email</ControlLabel>
-                            <FormControl
+                            <Label for="email"> Email</Label>
+                            <Input
                                 type="email"
+                                name="email"
                                 value={props.email}
                                 placeholder="example@domain.com"
                                 onChange={props.handleEmailChange}
                             />
                         </Col>
                         <Col sm={{ size: 6, offset: 1 }}>
+
                             <FormGroup tag="fieldset" column={"true"}>
-                                <ControlLabel> User Type </ControlLabel>
-                                <Row style={styles.row}>
+                                <Label for="userType"> User Type </Label>
+                                <Row >
                                     <Col sm={{ size: 4, offset: 1 }}>
                                         <Label check>
-                                            <input type="radio" name="radio2" value="customer" checked = {props.userType==='customer'} onChange={props.handleUserTypeChanged}/>{' '}
+                                            <input type="radio" name="userType" value="customer"
+                                                   checked = {props.userType==='customer'}
+                                                   onChange={props.handleUserTypeChange}/>{' '}
                                             Customer
                                         </Label>
                                     </Col>
                                     <Col sm={{ size: 4, offset: 1 }}>
                                         <Label check>
-                                            <input type="radio" name="radio2" value="restaurant" checked = {props.userType==='restaurant'} onChange={props.handleUserTypeChanged}/>{' '}
+                                            <input type="radio" name="userType" value="restaurant"
+                                                   checked = {props.userType==='restaurant'}
+                                                   onChange={props.handleUserTypeChange}/>{' '}
                                             Restaurant
                                         </Label>
                                     </Col>
                                 </Row>
                             </FormGroup>
+
                         </Col>
                     </Row>
 
+                    {props.userType === 'restaurant'
+                    &&
+                    <div style={styles.row}>
+                        <Label for="confirmPassword">Restaurant Name</Label>
+                        <Input
+                            type="text"
+                            name="restaurantName"
+                            value={props.restaurantName}
+                            placeholder="Ex: Bob's Burger"
+                            onChange={props.handleRestaurantNameChange}
+                        />
+                    </div>}
 
                     <Row style={styles.row}>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel> New Password</ControlLabel>
-                            <FormControl
+                            <Label for="password">Password</Label>
+                            <Input
                                 type="password"
+                                name="password"
                                 value={props.password}
                                 placeholder="********"
                                 onChange={props.handlePasswordChange}
                             />
                         </Col>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            <ControlLabel> Confirm Password</ControlLabel>
-                            <FormControl
+                            <Label for="confirmPassword">Confirm Password</Label>
+                            <Input
                                 type="password"
+                                name="confirmPassword"
                                 value={props.password2}
                                 placeholder="********"
                                 onChange={props.handlePassword2Change}
                             />
                         </Col>
                     </Row>
+
+
+
                     <div style={{ display: 'flex' }}>
                         <Button
                             onClick={props.handleSubmit}
@@ -124,12 +149,8 @@ const SignupComponent = props => {
                         </Button>
                     </div>
 
-
-
                 </FormGroup>
             </Well>
-
-
         </div>
 
     );
@@ -154,8 +175,10 @@ SignupComponent.propsTypes = {
     handlePhoneNumberChange: PropTypes.func,
     handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
-    handleUserTypeChanged: PropTypes.func,
+    handleUserTypeChange: PropTypes.func,
+    handleRestaurantNameChange: PropTypes.func,
     validationState:PropTypes.func
+
 };
 
 export default SignupComponent;
