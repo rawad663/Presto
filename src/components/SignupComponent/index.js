@@ -5,8 +5,6 @@ import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
 import { Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
-// import { purple_main } from '../../resources/colors';
-
 
 const SignupComponent = props => {
 
@@ -25,6 +23,8 @@ const SignupComponent = props => {
             color:'white'
         }
     };
+
+
     return (
         <div>
             <div style={styles.title}>
@@ -102,6 +102,46 @@ const SignupComponent = props => {
                             />
                         </Col>
                     </Row>
+
+                    <FormGroup style={{ marginTop: 20 }} check>
+                        <legend>User Type</legend>
+                        <Label check>
+                            <Input
+                                onChange={props.handleUserTypeChange}
+                                checked={props.userType === 'customer'}
+                                type="radio"
+                                name="userType"
+                                value="customer"
+                            />
+                            Customer
+                        </Label>
+                    </FormGroup>
+                    <FormGroup check style={{ marginBottom: 20 }}>
+                        <Label check>
+                            <Input
+                                onChange={props.handleUserTypeChange}
+                                checked={props.userType === 'restaurant'}
+                                type="radio"
+                                name="userType"
+                                value="restaurant"
+                            />
+                            Restaurant
+                        </Label>
+                    </FormGroup>
+
+                    {props.userType === 'restaurant'
+                        &&
+                        <div style={{ margin: '15px 0'}}>
+                            <Label for="confirmPassword">Restaurant Name</Label>
+                            <Input
+                                type="text"
+                                name="restaurantName"
+                                value={props.restaurantName}
+                                placeholder="Ex: Bob's Burger"
+                                onChange={props.handleRestaurantNameChange}
+                                />
+                        </div>}
+
                     <div style={{ display: 'flex' }}>
                         <Button
                             onClick={props.handleSubmit}
@@ -118,12 +158,8 @@ const SignupComponent = props => {
                         </Button>
                     </div>
 
-
-
                 </FormGroup>
             </Well>
-
-
         </div>
 
     );
@@ -148,7 +184,7 @@ SignupComponent.propsTypes = {
     handlePhoneNumberChange: PropTypes.func,
     handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
-    // handleUserTypeChanged: PropTypes.func,
+    handleUserTypeChange: PropTypes.func,
     validationState:PropTypes.func
 };
 
