@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Well } from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
-import { Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap';
+import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 
 const SignupComponent = props => {
