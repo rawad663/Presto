@@ -50,7 +50,7 @@ const SignupComponent = props => {
                                 type="text"
                                 name="lastName"
                                 value={props.lastName}
-                                placeholder="Example: Bryant"
+                                placeholder="Ex: Bryant"
                                 onChange={props.handleLastNameChange}
                             />
                         </Col>
