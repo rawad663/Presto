@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Well, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
+import { Well, FormControl, ControlLabel} from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
-import {Button, Row, Col} from 'reactstrap'
+import {Button, Row, Col, Input, FormGroup, Label} from 'reactstrap'
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 // import { purple_main } from '../../resources/colors';
 
@@ -70,27 +70,36 @@ const SignupComponent = props => {
                             />
                         </Col>
                         <Col sm={{ size: 6, offset: 1 }}>
-                            {/*<Label check>*/}
+                            {/*<FormGroup tag="fieldset">*/}
+                            {/*<ControlLabel> User Type </ControlLabel>*/}
+                                {/*<FormGroup check>*/}
+                                    {/*<Label check>*/}
+                                        {/*<Input type="radio" name="radio1" />{' '}*/}
+                                        {/*Customer*/}
+                                    {/*</Label>*/}
+                                    {/*<Label check>*/}
+                                        {/*<Input type="radio" name="radio1" />{' '}*/}
+                                        {/*Resto*/}
+                                    {/*</Label>*/}
+                                {/*</FormGroup>*/}
 
-
-
-                            {/*<RadioGroup onChange={props.handleUserTypeChanged} horizontal>*/}
-                                {/*<RadioButton value={"Restaurant"}>*/}
-                                    {/*Restaurant*/}
-                                {/*</RadioButton>*/}
-                                {/*<RadioButton value={"Customer"}>*/}
-                                    {/*Customer*/}
-                                {/*</RadioButton>*/}
-                            {/*</RadioGroup>*/}
-
-
-                            <ControlLabel> Postal Code</ControlLabel>
-                            <FormControl
-                                type="text"
-                                value={props.postalCode}
-                                placeholder="H3A1C9"
-                                onChange={props.handlePostalCodeChange}
-                            />
+                            <FormGroup tag="fieldset" column>
+                                <ControlLabel> User Type </ControlLabel>
+                                <Row style={styles.row}>
+                                    <Col sm={{ size: 4, offset: 1 }}>
+                                        <Label check>
+                                            <Input type="radio" name="radio2" />{' '}
+                                            Customer
+                                        </Label>
+                                    </Col>
+                                    <Col sm={{ size: 4, offset: 1 }}>
+                                        <Label check>
+                                            <Input type="radio" name="radio2" />{' '}
+                                            Restaurant
+                                        </Label>
+                                    </Col>
+                                </Row>
+                            </FormGroup>
                         </Col>
                     </Row>
 

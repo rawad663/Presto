@@ -72,7 +72,7 @@ export default class SignupContainer extends Component{
                 email = {this.state.email}
                 password = {this.state.password}
                 password2 = {this.state.password2}
-                address = {this.state.email}
+                address = {this.state.address}
                 postalCode = {this.state.postalCode}
                 phoneNumber = {this.state.phoneNumber}
                 userType = {this.state.userType}
