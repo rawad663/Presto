@@ -185,7 +185,6 @@ SignupComponent.propsTypes = {
     handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
     handleUserTypeChange: PropTypes.func,
-    validationState:PropTypes.func
 };
 
 export default SignupComponent;
