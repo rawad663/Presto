@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Well } from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
-
-
 import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 
 const SignupComponent = props => {
