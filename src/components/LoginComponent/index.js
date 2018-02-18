@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Well, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Well } from 'react-bootstrap';
 import { purple_main } from '../../resources/colors';
+import { Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap';
 
 // This component will not be using state, will get fed from LoginContainer.
 // We can write it as a stateless function (no class)
@@ -31,21 +32,24 @@ const LoginComponent = props => {
                 <h1 className="mainTitle">Welcome to <span style={{ color: purple_main }}>Presto</span></h1>
                 <h3 className="mainTitle">Sometimes, getting the date isn&#39;t the hardest part...</h3>
             </div>
+
             <Well style={styles.well}  bsSize="large">
-                <FormGroup validationState={props.validationState()}>
-                    <ControlLabel> Email</ControlLabel>
-                    <FormControl
+                <FormGroup>
+                    <Label for="email">Email</Label>
+                    <Input
                         type="email"
+                        name="email"
                         value={props.email}
                         placeholder="Email (example@example.com)"
                         onChange={props.handleEmailChange}
                     />
 
-                    <ControlLabel style={{ marginTop: 16}}>Password</ControlLabel>
-                    <FormControl
+                    <Label for="password" style={{ marginTop: 16}}>Password</Label>
+                    <Input
                         type="password"
+                        name="password"
                         value={props.password}
-                        placeholder="Password"
+                        placeholder="*******"
                         onChange={props.handlePasswordChange}
                     />
 

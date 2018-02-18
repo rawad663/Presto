@@ -7,6 +7,7 @@ import ReservationsContainer from './containers/ReservationsContainer';
 import RestaurantProfileContainer from './containers/RestaurantProfileContainer';
 import SettingsContainer from './containers/SettingsContainer';
 import './App.css';
+import SignupContainer from "./containers/SignupContainer";
 
 class App extends Component {
 
@@ -15,6 +16,7 @@ class App extends Component {
       return (
          <div>
              <Route exact path="/" component={LoginContainer} />
+             <Route path="/signup" component={SignupContainer} />
              <Route path="/customer" component={CustomerHomeContainer} />
              <Route path="/reservations" component={ReservationsContainer} />
              <Route path="/restaurant/profile" component={RestaurantProfileContainer} />

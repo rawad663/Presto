@@ -30,18 +30,7 @@ export default class LoginContainer extends Component {
         this.props.history.push('/signup');
     };
 
-
-    //TODO: fix in seperate ticket
-    getValidationState = () => {
-        if(this.state.email.length === 0 && this.state.password === 0) {
-            return 'error';
-        }
-
-        return null;
-    };
-
     render() {
-        console.log(this.props);
         return (
             <div>
                 <LoginComponent
