@@ -32,6 +32,14 @@ const CustomerHomeComponent = props => {
                 >
                     Restaurant Reservations
                 </Button>
+
+                <Button
+                    onClick={props.handleSettingsClicked}
+                    style={{ ...styles.button, width: 170 }}
+                    type="submit"
+                >
+                    Settings
+                </Button>
             </Well>
         </div>
 
@@ -42,7 +50,8 @@ const CustomerHomeComponent = props => {
 
 CustomerHomeComponent.propsTypes = {
     handleCustRsvClicked: PropTypes.func,
-    handleRestoRsvClicked: PropTypes.func
+    handleRestoRsvClicked: PropTypes.func,
+    handleSettingsClicked: PropTypes.func
 
 
 };

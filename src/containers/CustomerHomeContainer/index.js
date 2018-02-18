@@ -23,12 +23,17 @@ export default class CustomerHomeContainer extends Component{
         this.props.history.push('/reservations')
     }
 
+    handleSettingsClicked = () => {
+        this.props.history.push('/settings')
+    }
+
     render(){
         return(
             <div>
                 <CustomerHomeComponent
                     handleCustRsvClicked = {this.handleCustRsvClicked}
                     handleRestoRsvClicked = {this.handleRestoRsvClicked}
+                    handleSettingsClicked = {this.handleSettingsClicked}
                 />;
             </div>
         );
