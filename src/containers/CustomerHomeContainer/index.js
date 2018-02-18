@@ -11,11 +11,15 @@ export default class CustomerHomeContainer extends Component{
         };
 
     }
+    handleCustRsvClicked = () => {
+        this.props.history.push('/reservations')
+    }
 
     render(){
         return(
             <div>
                 <CustomerHomeComponent
+                    handleCustRsvClicked = {this.handleCustRsvClicked}
 
                 />;
             </div>
