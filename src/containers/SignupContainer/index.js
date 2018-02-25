@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import SignupComponent from '../../components/SignupComponent';
+import {routes, aPost} from "../../api/api.js";
+import axios from 'axios';
 
 export default class SignupContainer extends Component{
 
@@ -18,8 +20,8 @@ export default class SignupContainer extends Component{
             userType: '',
             restaurantName: ''
         };
-
     }
+
     handleFirstNameChange = e => {
         this.setState({firstName: e.target.value})
     };
@@ -52,12 +54,22 @@ export default class SignupContainer extends Component{
     };
 
     handleSubmit = () => {
+        const { email, firstName, lastName, password } = this.state;
+        const postData = {
+            username: email,
+            firstName,
+            lastName,
+            email,
+            password
+        };
 
-        console.log('SUBMIT PRESSED', this.state.firstName, this.state.lastName, this.state.email,
-            this.state.password, this.state.password2, this.state.userType, this.state.restaurantName);
-        this.props.history.push('/customer')
-
-        //TODO: CREATE NEW ACCOUNT
+        aPost(routes.register, postData).then(response => {
+            // store token in localStorage to be accessed from different parts of the application
+            localStorage.token = response.data.token;
+            // this.props.history.push('/customer')
+        }).catch(err => {
+            console.log(err);
+        });
     };
     handleCancel = () => {
         this.props.history.push('/');
@@ -70,19 +82,21 @@ export default class SignupContainer extends Component{
     };
 
     render(){
+        const { firstName, lastName, email, password, password2, address, postalCode, phoneNumber, userType, restaurantName } = this.state;
+
         return(
           <div>
               <SignupComponent
-                firstName = {this.state.firstName}
-                lastName = {this.state.lastName}
-                email = {this.state.email}
-                password = {this.state.password}
-                password2 = {this.state.password2}
-                address = {this.state.address}
-                postalCode = {this.state.postalCode}
-                phoneNumber = {this.state.phoneNumber}
-                userType = {this.state.userType}
-                restaurantName = {this.state.restaurantName}
+                firstName = {firstName}
+                lastName = {lastName}
+                email = {email}
+                password = {password}
+                password2 = {password2}
+                address = {address}
+                postalCode = {postalCode}
+                phoneNumber = {phoneNumber}
+                userType = {userType}
+                restaurantName = {restaurantName}
                 handleFirstNameChange= {this.handleFirstNameChange}
                 handleLastNameChange= {this.handleLastNameChange}
                 handleEmailChange= {this.handleEmailChange}
@@ -96,10 +110,8 @@ export default class SignupContainer extends Component{
                 handleUserTypeChange = {this.handleUserTypeChange}
                 validationState={this.getValidationState}
                 handleRestaurantNameChange = {this.handleRestaurantNameChange}
-
               />;
           </div>
         );
     }
-
 }
