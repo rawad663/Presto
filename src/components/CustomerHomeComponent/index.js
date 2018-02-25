@@ -1,4 +1,5 @@
 import React from 'react';
+import RestaurantCard from '../custom_components/RestaurantCard';
 import {purple_main} from "../../resources/colors";
 
 const CustomerHomeComponent = props => {
@@ -8,9 +9,10 @@ const CustomerHomeComponent = props => {
             color: purple_main
         }
     };
+
     return (
-        <div style={styles.title}>
-            Customer Home Component
+        <div>
+            <RestaurantCard restaurantName="Bob's Burger" phoneNumber="514-577 5424" postalCode="H3J0A9" />
         </div>
     );
 };

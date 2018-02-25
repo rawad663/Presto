@@ -15,9 +15,7 @@ export default class CustomerHomeContainer extends Component{
     render(){
         return(
             <div>
-                <CustomerHomeComponent
-
-                />;
+                <CustomerHomeComponent />
             </div>
         );
     }
