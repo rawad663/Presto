@@ -30,9 +30,15 @@ export default class LoginContainer extends Component {
         };
 
         aPost(routes.login, postData).then(response => {
-            console.log(response);
-        });
+            const { status, data } = response;
 
+            if (status === 200) {
+                localStorage.token = data.token;
+                this.props.history.push('/customer')
+            }
+        }).catch(err => {
+            console.log(err);
+        });
     };
 
     handleSignup = () => {
