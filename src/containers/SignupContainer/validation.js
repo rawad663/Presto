@@ -33,7 +33,5 @@ export const validate = fields => {
         errors.password2 = true;
     }
 
-
-
     return errors;
 };

@@ -63,8 +63,9 @@ export default class SignupContainer extends Component{
         };
 
         aPost(routes.register, postData).then(response => {
+            console.log(response);
             // store token in localStorage to be accessed from different parts of the application
-            localStorage.token = response.data.token;
+            // localStorage.token = response.data.token;
             // this.props.history.push('/customer')
         }).catch(err => {
             console.log(err);

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const baseUrl = 'http://127.0.0.1:8000';
+const baseUrl = 'https://presto-core.herokuapp.com';
 
 export const routes = {
-    register: '/register',
-    login: '/login'
+    register: '/register/',
+    login: '/login/'
 };
 
 export const aGet = route => axios.get(baseUrl + route);
