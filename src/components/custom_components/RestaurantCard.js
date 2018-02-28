@@ -10,8 +10,8 @@ const RestaurantCard = props => {
         },
         img: {
             borderRadius: 3,
-            minWidth: 150,
-            maxWidth: 400
+            width: '100%',
+            height: 'auto'
         },
         infoBlock: {
             paddingTop: 7,
@@ -20,7 +20,7 @@ const RestaurantCard = props => {
     };
 
     return (
-        <div className="card">
+        <div style={props.style} className="card">
             <img style={styles.img} src={buffet} />
             <h3 style={{ ...styles.text, color: purple_main, fontWeight: 60 }}>{props.restaurantName}</h3>
             <div style={styles.infoBlock}>
@@ -37,7 +37,8 @@ RestaurantCard.propTypes = {
     address: PropTypes.string,
     postalCode: PropTypes.string,
     phoneNumber: PropTypes.string,
-    email: PropTypes.string
+    email: PropTypes.string,
+    style: PropTypes.object
 };
 
 RestaurantCard.defaultProps = {
@@ -45,7 +46,8 @@ RestaurantCard.defaultProps = {
     address: '377 Address Street',
     phoneNumber: '514-452 2345',
     postalCode: 'H3K4L1',
-    email: 'example@example.com'
+    email: 'example@example.com',
+    style: {}
 };
 
 export default RestaurantCard;

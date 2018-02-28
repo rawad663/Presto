@@ -1,41 +1,36 @@
 import React from 'react';
-import RestaurantCard from '../custom_components/RestaurantCard';
-import {purple_main} from "../../resources/colors";
 import PropTypes from 'prop-types';
-import {Button} from 'reactstrap';
-import {Well} from 'react-bootstrap';
+import { Glyphicon } from 'react-bootstrap';
+import { Button } from 'reactstrap';
+
+import NavBar from '../custom_components/NavBar';
+import RestaurantCard from '../custom_components/RestaurantCard';
+
+
 
 const CustomerHomeComponent = props => {
 
-    const styles = {
-        title: {
-            color: purple_main
-        }
-    };
-
     return (
         <div>
-            <Well>
-                <div style={styles.title}>
-                    Customer Home Component
-                </div>
-                <Button
-                    onClick={props.handleCustRsvClicked}
-                    style={{ ...styles.button, width: 170 }}
-                    type="submit"
-                >
-                    Customer Reservations
+            <NavBar fullName="Rawad Karam"/>
+            <h2 style={{ margin: '40px auto' }} className="mainTitle"> Nearby Restaurants </h2>
+
+            <div id="card-wrapper">
+                <Button className="circle-button" id="dislike">
+                    <Glyphicon style={{ color: 'white' }} glyph="thumbs-down" />
                 </Button>
 
-                <Button
-                    onClick={props.handleSettingsClicked}
-                    style={{ ...styles.button, width: 170 }}
-                    type="submit"
-                >
-                    Settings
+                <RestaurantCard
+                    style={{ alignSelf: 'center' }}
+                    restaurantName="Bob's Burger"
+                    phoneNumber="514-577 5424"
+                    postalCode="H3J0A9"
+                />
+
+                <Button className="circle-button" id="like">
+                    <Glyphicon style={{ color: 'white' }} glyph="thumbs-up" />
                 </Button>
-            </Well>
-            <RestaurantCard restaurantName="Bob's Burger" phoneNumber="514-577 5424" postalCode="H3J0A9" />
+            </div>
         </div>
 
 
@@ -46,7 +41,6 @@ const CustomerHomeComponent = props => {
 CustomerHomeComponent.propsTypes = {
     handleCustRsvClicked: PropTypes.func,
     handleSettingsClicked: PropTypes.func
-
 
 };
 
