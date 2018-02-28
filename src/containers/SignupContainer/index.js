@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SignupComponent from '../../components/SignupComponent';
+import {routes, aPost} from "../../api/api.js";
 
 export default class SignupContainer extends Component{
 
@@ -7,8 +8,8 @@ export default class SignupContainer extends Component{
         super(props);
 
         this.state = {
-            firstName:'',
-            lastName:'',
+            first_name:'',
+            last_name:'',
             email:'',
             password:'',
             password2:'',
@@ -18,13 +19,13 @@ export default class SignupContainer extends Component{
             userType: '',
             restaurantName: ''
         };
-
     }
+
     handleFirstNameChange = e => {
-        this.setState({firstName: e.target.value})
+        this.setState({first_name: e.target.value})
     };
     handleLastNameChange = e => {
-        this.setState({lastName: e.target.value})
+        this.setState({last_name: e.target.value})
     };
     handleEmailChange = e => {
         this.setState({email:e.target.value})
@@ -52,12 +53,31 @@ export default class SignupContainer extends Component{
     };
 
     handleSubmit = () => {
+        const { email, first_name, last_name, password, userType } = this.state;
+        const postData = {
+            username: email,
+            first_name,
+            last_name,
+            email,
+            password
+        };
 
-        console.log('SUBMIT PRESSED', this.state.firstName, this.state.lastName, this.state.email,
-            this.state.password, this.state.password2, this.state.userType, this.state.restaurantName);
-        this.props.history.push('/customer')
+        aPost(routes.register, postData).then(response => {
+            const { status, data } = response;
 
-        //TODO: CREATE NEW ACCOUNT
+            if (status === 201) {
+                // store token in localStorage to be accessed from different parts of the application
+                localStorage.token = data.token;
+
+                if (userType === 'customer') {
+                    this.props.history.push('/customer');
+                } else if (userType === 'restaurant') {
+                    this.props.history.push('/restaurant');
+                }
+            }
+        }).catch(err => {
+            console.log(err);
+        });
     };
     handleCancel = () => {
         this.props.history.push('/');
@@ -70,19 +90,32 @@ export default class SignupContainer extends Component{
     };
 
     render(){
+        const {
+            first_name,
+            last_name,
+            email,
+            password,
+            password2,
+            address,
+            postalCode,
+            phoneNumber,
+            userType,
+            restaurantName
+        } = this.state;
+
         return(
           <div>
               <SignupComponent
-                firstName = {this.state.firstName}
-                lastName = {this.state.lastName}
-                email = {this.state.email}
-                password = {this.state.password}
-                password2 = {this.state.password2}
-                address = {this.state.address}
-                postalCode = {this.state.postalCode}
-                phoneNumber = {this.state.phoneNumber}
-                userType = {this.state.userType}
-                restaurantName = {this.state.restaurantName}
+                first_name = {first_name}
+                last_name = {last_name}
+                email = {email}
+                password = {password}
+                password2 = {password2}
+                address = {address}
+                postalCode = {postalCode}
+                phoneNumber = {phoneNumber}
+                userType = {userType}
+                restaurantName = {restaurantName}
                 handleFirstNameChange= {this.handleFirstNameChange}
                 handleLastNameChange= {this.handleLastNameChange}
                 handleEmailChange= {this.handleEmailChange}
@@ -96,10 +129,8 @@ export default class SignupContainer extends Component{
                 handleUserTypeChange = {this.handleUserTypeChange}
                 validationState={this.getValidationState}
                 handleRestaurantNameChange = {this.handleRestaurantNameChange}
-
               />;
           </div>
         );
     }
-
 }

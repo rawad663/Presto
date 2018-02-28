@@ -15,6 +15,7 @@
     "react-scripts": "1.1.0",
     "reactstrap": "^5.0.0-beta"
   },
+  "proxy": "https://presto-core.herokuapp.com/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

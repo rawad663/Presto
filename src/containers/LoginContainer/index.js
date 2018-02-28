@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LoginComponent from '../../components/LoginComponent';
+import {aPost, routes} from "../../api/api";
 
 export default class LoginContainer extends Component {
 
@@ -23,7 +24,27 @@ export default class LoginContainer extends Component {
     };
 
     handleLogin = () => {
-        // TODO: make API call to server to login route using axios
+        const postData = {
+            username: this.state.email,
+            password: this.state.password
+        };
+
+        aPost(routes.login, postData).then(response => {
+            const { status, data } = response;
+
+            //TEMPORARY LOGIN
+            if (status === 400) {
+                localStorage.token = data.token;
+                this.props.history.push('/customer')
+            }
+
+            if (status === 200) {
+                localStorage.token = data.token;
+                this.props.history.push('/customer')
+            }
+        }).catch(err => {
+            console.log(err);
+        });
     };
 
     handleSignup = () => {

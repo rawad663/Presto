@@ -1,4 +1,5 @@
 import React from 'react';
+import RestaurantCard from '../custom_components/RestaurantCard';
 import {purple_main} from "../../resources/colors";
 import PropTypes from 'prop-types';
 import {Button} from 'reactstrap';
@@ -11,6 +12,7 @@ const CustomerHomeComponent = props => {
             color: purple_main
         }
     };
+
     return (
         <div>
             <Well>
@@ -26,14 +28,6 @@ const CustomerHomeComponent = props => {
                 </Button>
 
                 <Button
-                    onClick={props.handleRestoRsvClicked}
-                    style={{ ...styles.button, width: 170 }}
-                    type="submit"
-                >
-                    Restaurant Reservations
-                </Button>
-
-                <Button
                     onClick={props.handleSettingsClicked}
                     style={{ ...styles.button, width: 170 }}
                     type="submit"
@@ -41,6 +35,7 @@ const CustomerHomeComponent = props => {
                     Settings
                 </Button>
             </Well>
+            <RestaurantCard restaurantName="Bob's Burger" phoneNumber="514-577 5424" postalCode="H3J0A9" />
         </div>
 
 
@@ -50,7 +45,6 @@ const CustomerHomeComponent = props => {
 
 CustomerHomeComponent.propsTypes = {
     handleCustRsvClicked: PropTypes.func,
-    handleRestoRsvClicked: PropTypes.func,
     handleSettingsClicked: PropTypes.func
 
 

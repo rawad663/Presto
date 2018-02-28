@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Well } from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
-import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
+import { Button, FormGroup, Label, Input, Row, Col, FormFeedback } from 'reactstrap';
 
 const SignupComponent = props => {
 
@@ -27,7 +27,8 @@ const SignupComponent = props => {
     return (
         <div>
             <div style={styles.title}>
-                <h1 className="mainTitle">Sign-up to <span style={{ color: purple_main }}>Presto</span></h1>
+                <h1 className="mainTitle">Sign Up to <span style={{ color: purple_main }}>Presto</span></h1>
+                <h3 className="mainTitle">Attention foodies: try not to stay up all night on this!</h3>
             </div>
 
             <Well style={styles.well}  bsSize="large">
@@ -38,17 +39,18 @@ const SignupComponent = props => {
                             <Input
                                 type="text"
                                 name="firstName"
-                                value={props.firstName}
+                                value={props.first_name}
                                 placeholder="Ex: LeBron"
                                 onChange={props.handleFirstNameChange}
                             />
+                            <FormFeedback>First name must be more than 3 letters</FormFeedback>
                         </Col>
                         <Col sm={{ size: 6, offset: 1 }}>
                             <Label for="lastName"> Last Name</Label>
                             <Input
                                 type="text"
                                 name="lastName"
-                                value={props.lastName}
+                                value={props.last_name}
                                 placeholder="Ex: Bryant"
                                 onChange={props.handleLastNameChange}
                             />
@@ -73,7 +75,7 @@ const SignupComponent = props => {
                                 <Row >
                                     <Col sm={{ size: 4, offset: 1 }}>
                                         <Label check>
-                                            <input type="radio" name="userType" value="customer"
+                                            <Input type="radio" name="userType" value="customer"
                                                    checked = {props.userType==='customer'}
                                                    onChange={props.handleUserTypeChange}/>{' '}
                                             Customer
@@ -81,7 +83,7 @@ const SignupComponent = props => {
                                     </Col>
                                     <Col sm={{ size: 4, offset: 1 }}>
                                         <Label check>
-                                            <input type="radio" name="userType" value="restaurant"
+                                            <Input type="radio" name="userType" value="restaurant"
                                                    checked = {props.userType==='restaurant'}
                                                    onChange={props.handleUserTypeChange}/>{' '}
                                             Restaurant
@@ -129,19 +131,17 @@ const SignupComponent = props => {
                         </Col>
                     </Row>
 
-
-
                     <div style={{ display: 'flex' }}>
                         <Button
                             onClick={props.handleSubmit}
-                            style={{ ...styles.button, ...styles.signUp, width: 150 }}
+                            style={{ ...styles.signUp, width: 150 }}
                             type="submit"
                         >
                             Sign Up
                         </Button>
                         <Button
                             onClick={props.handleCancel}
-                            style={{ ...styles.button, marginLeft: 8 }}
+                            style={{ marginLeft: 8 }}
                         >
                             Cancel
                         </Button>
@@ -150,13 +150,12 @@ const SignupComponent = props => {
                 </FormGroup>
             </Well>
         </div>
-
     );
 };
 
 SignupComponent.propsTypes = {
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
+    first_name: PropTypes.string.isRequired,
+    last_name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     password2: PropTypes.string.isRequired,
@@ -176,7 +175,6 @@ SignupComponent.propsTypes = {
     handleUserTypeChange: PropTypes.func,
     handleRestaurantNameChange: PropTypes.func,
     validationState:PropTypes.func
-
 };
 
 export default SignupComponent;
