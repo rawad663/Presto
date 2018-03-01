@@ -4,6 +4,7 @@ import buffet from '../../resources/images/bar-buffet.jpg';
 import turkishFood from '../../resources/images/turkish-food.jpg'
 import { purple_main } from '../../resources/colors';
 import { Card, CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle} from 'reactstrap';
+import Ratings from 'react-ratings-declarative';
 
 const RestaurantCard = props => {
     const styles = {
@@ -35,6 +36,16 @@ const RestaurantCard = props => {
                     <CardSubtitle>
                         Susurluk, Balikesir
                     </CardSubtitle>
+                    <Ratings rating={4.5}>
+                        <Ratings.Widget/>
+                        <Ratings.Widget/>
+                        <Ratings.Widget/>
+                        <Ratings.Widget/>
+                        <Ratings.Widget/>
+
+
+                    </Ratings>
+
                     <CardText>
                         Types of food
                     </CardText>
