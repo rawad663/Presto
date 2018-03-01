@@ -39,7 +39,7 @@ const SignupComponent = props => {
                             <Input
                                 type="text"
                                 name="firstName"
-                                value={props.first_name}
+                                value={props.firstName}
                                 placeholder="Ex: LeBron"
                                 onChange={props.handleFirstNameChange}
                             />
@@ -50,7 +50,7 @@ const SignupComponent = props => {
                             <Input
                                 type="text"
                                 name="lastName"
-                                value={props.last_name}
+                                value={props.lastName}
                                 placeholder="Ex: Bryant"
                                 onChange={props.handleLastNameChange}
                             />
