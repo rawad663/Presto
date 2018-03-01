@@ -22,10 +22,10 @@ export default class SignupContainer extends Component{
     }
 
     handleFirstNameChange = e => {
-        this.setState({first_name: e.target.value})
+        this.setState({firstName: e.target.value})
     };
     handleLastNameChange = e => {
-        this.setState({last_name: e.target.value})
+        this.setState({lastName: e.target.value})
     };
     handleEmailChange = e => {
         this.setState({email:e.target.value})
