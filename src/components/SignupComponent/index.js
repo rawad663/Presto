@@ -154,8 +154,8 @@ const SignupComponent = props => {
 };
 
 SignupComponent.propsTypes = {
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
+    first_name: PropTypes.string.isRequired,
+    last_name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     password2: PropTypes.string.isRequired,

@@ -56,8 +56,8 @@ export default class SignupContainer extends Component{
         const { email, firstName, lastName, password, userType } = this.state;
         const postData = {
             username: email,
-            firstName,
-            lastName,
+            first_name: firstName,
+            last_name: lastName,
             email,
             password
         };
@@ -65,7 +65,7 @@ export default class SignupContainer extends Component{
         aPost(routes.register, postData).then(response => {
             const { status, data } = response;
 
-            if (status === 200) {
+            if (status === 201) {
                 // store token in localStorage to be accessed from different parts of the application
                 localStorage.token = data.token;
 
@@ -106,8 +106,8 @@ export default class SignupContainer extends Component{
         return(
           <div>
               <SignupComponent
-                firstName = {firstName}
-                lastName = {lastName}
+                first_name = {firstName}
+                last_name = {lastName}
                 email = {email}
                 password = {password}
                 password2 = {password2}

@@ -6,6 +6,8 @@ import { Button } from 'reactstrap';
 import NavBar from '../custom_components/NavBar';
 import RestaurantCard from '../custom_components/RestaurantCard';
 
+
+
 const CustomerHomeComponent = props => {
 
     return (
@@ -29,12 +31,16 @@ const CustomerHomeComponent = props => {
                     <Glyphicon style={{ color: 'white' }} glyph="thumbs-up" />
                 </Button>
             </div>
-
         </div>
+
+
+
     );
 };
 
 CustomerHomeComponent.propsTypes = {
+    handleCustRsvClicked: PropTypes.func,
+    handleSettingsClicked: PropTypes.func
 
 };
 
