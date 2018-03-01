@@ -19,6 +19,7 @@ export default class ReservationsContainer extends Component{
                 <CustomerReservationsComponent
                 />;
                 <RestaurantReservationsComponent
+
                 />
 
             </div>
