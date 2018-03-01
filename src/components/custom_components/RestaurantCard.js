@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import buffet from '../../resources/images/bar-buffet.jpg';
+import turkishFood from '../../resources/images/turkish-food.jpg'
 import { purple_main } from '../../resources/colors';
+import { Card, CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle} from 'reactstrap';
 
 const RestaurantCard = props => {
     const styles = {
+        container:{
+
+        },
         text: {
             marginLeft: 5,
         },
@@ -20,15 +25,36 @@ const RestaurantCard = props => {
     };
 
     return (
-        <div style={props.style} className="card">
-            <img style={styles.img} src={buffet} />
-            <h3 style={{ ...styles.text, color: purple_main, fontWeight: 60 }}>{props.restaurantName}</h3>
-            <div style={styles.infoBlock}>
-                <p className="card-info" style={styles.text}>{props.address}, {props.postalCode}</p>
-                <p className="card-info" style={styles.text}>{props.phoneNumber}</p>
-                <p className="card-info" style={styles.text}>{props.email}</p>
-            </div>
+        <div style={props.style}>
+            <Card>
+                <CardImg width = "100%" src={turkishFood} />
+                <CardBody>
+                    <CardTitle>
+                        KRAL Doner
+                    </CardTitle>
+                    <CardSubtitle>
+                        Susurluk, Balikesir
+                    </CardSubtitle>
+                    <CardText>
+                        Types of food
+                    </CardText>
+
+                </CardBody>
+
+            </Card>
         </div>
+
+
+
+        // <div style={styles.container} class = "container-fluid" className="card">
+        //     <img style={styles.img} src={buffet} />
+        //     <h3 style={{ ...styles.text, color: purple_main, fontWeight: 60 }}>{props.restaurantName}</h3>
+        //     <div style={styles.infoBlock}>
+        //         <p className="card-info" style={styles.text}>{props.address}, {props.postalCode}</p>
+        //         <p className="card-info" style={styles.text}>{props.phoneNumber}</p>
+        //         <p className="card-info" style={styles.text}>{props.email}</p>
+        //     </div>
+        // </div>
     )
 };
 
