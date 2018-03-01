@@ -8,8 +8,8 @@ export default class SignupContainer extends Component{
         super(props);
 
         this.state = {
-            first_name:'',
-            last_name:'',
+            firstName:'',
+            lastName:'',
             email:'',
             password:'',
             password2:'',
@@ -53,11 +53,11 @@ export default class SignupContainer extends Component{
     };
 
     handleSubmit = () => {
-        const { email, first_name, last_name, password, userType } = this.state;
+        const { email, firstName, lastName, password, userType } = this.state;
         const postData = {
             username: email,
-            first_name,
-            last_name,
+            first_name: firstName,
+            last_name: lastName,
             email,
             password
         };
@@ -91,8 +91,8 @@ export default class SignupContainer extends Component{
 
     render(){
         const {
-            first_name,
-            last_name,
+            firstName,
+            lastName,
             email,
             password,
             password2,
@@ -106,8 +106,8 @@ export default class SignupContainer extends Component{
         return(
           <div>
               <SignupComponent
-                first_name = {first_name}
-                last_name = {last_name}
+                first_name = {firstName}
+                last_name = {lastName}
                 email = {email}
                 password = {password}
                 password2 = {password2}
