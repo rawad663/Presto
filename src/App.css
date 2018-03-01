@@ -83,3 +83,16 @@ html, body, #root, #root>div {
 .card-info {
   margin-top: -8px;
 }
+
+.card-title {
+    font-size: 35px;
+    font-family: "Courier New";
+    font-weight: bold;
+    color: #ffaa00;
+}
+.card-subtitle {
+    font-family: "Courier New";
+    margin-left: 20px;
+    font-size: 20px;
+
+}

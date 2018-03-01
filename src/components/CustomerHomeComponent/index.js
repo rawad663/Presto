@@ -22,9 +22,10 @@ const CustomerHomeComponent = props => {
 
                 <RestaurantCard
                     style={{ alignSelf: 'center' }}
-                    restaurantName="Bob's Burger"
-                    phoneNumber="514-577 5424"
-                    postalCode="H3J0A9"
+                    restaurantName="Kral Doner"
+                    phoneNumber="+90-266-862-2615"
+                    postalCode="10600"
+                    restaurantRating={4.6}
                 />
 
                 <Button className="circle-button" id="like">

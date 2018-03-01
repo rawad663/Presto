@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import buffet from '../../resources/images/bar-buffet.jpg';
 import turkishFood from '../../resources/images/turkish-food.jpg'
-import { purple_main } from '../../resources/colors';
-import { Card, CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle} from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 import Ratings from 'react-ratings-declarative';
 
 const RestaurantCard = props => {
@@ -30,13 +28,13 @@ const RestaurantCard = props => {
             <Card>
                 <CardImg width = "100%" src={turkishFood} />
                 <CardBody>
-                    <CardTitle>
-                        KRAL Doner
+                    <CardTitle className="card-title" style={styles.text}>
+                        {props.restaurantName}
                     </CardTitle>
-                    <CardSubtitle>
-                        Susurluk, Balikesir
+                    <CardSubtitle className="card-subtitle">
+                        {props.address}
                     </CardSubtitle>
-                    <Ratings rating={4.5}>
+                    <Ratings rating={props.restaurantRating}>
                         <Ratings.Widget/>
                         <Ratings.Widget/>
                         <Ratings.Widget/>
@@ -47,7 +45,7 @@ const RestaurantCard = props => {
                     </Ratings>
 
                     <CardText>
-                        Types of food
+                        {props.postalCode}
                     </CardText>
 
                 </CardBody>
@@ -71,6 +69,7 @@ const RestaurantCard = props => {
 
 RestaurantCard.propTypes = {
     restaurantName: PropTypes.string,
+    restaurantRating: PropTypes.string,
     address: PropTypes.string,
     postalCode: PropTypes.string,
     phoneNumber: PropTypes.string,
@@ -79,10 +78,11 @@ RestaurantCard.propTypes = {
 };
 
 RestaurantCard.defaultProps = {
-    restaurantName: 'Restaurant Name',
-    address: '377 Address Street',
-    phoneNumber: '514-452 2345',
-    postalCode: 'H3K4L1',
+    restaurantName: 'Kral Doner',
+    restaurantRating: 3.5,
+    address: 'Susurluk, Balikesir',
+    phoneNumber: '+90-266-862-2615',
+    postalCode: '10600',
     email: 'example@example.com',
     style: {}
 };
