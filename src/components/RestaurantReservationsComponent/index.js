@@ -2,6 +2,8 @@ import React from 'react';
 import {purple_main} from "../../resources/colors";
 import { Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap';
 import PropTypes from "prop-types";
+import NavBar from '../custom_components/NavBar';
+
 
 const RestaurantReservationsComponent = props => {
 
@@ -10,20 +12,31 @@ const RestaurantReservationsComponent = props => {
             color: purple_main
         },
         buttonAccept:{
-            color: 'green'
+            backgroundColor:'green',
+            color: 'white',
+            width: 100
         },
         buttonDecline:{
-            color:'red'
+            backgroundColor:'red',
+            color:'white',
+            width: 100
         }
 
     };
     return (
-        <div style={styles.title}>
+        <div>
+            <div>
+                <NavBar fullName="Rawad Karam"/>
+                <h2 style={{ margin: '40px auto' }} className="mainTitle"> Pending Reservations </h2>
+
+            </div>
+
             <div style={{ display: 'inline' }}>
+
+
                 <Button
                     onClick={props.handleAccept}
-                    style={{ ...styles.buttonAccept, ...styles.login, width: 150 }}
-                    type="submit"
+                    style={{ ...styles.buttonAccept, }}
                 >
                     Accept
                 </Button>
@@ -36,6 +49,10 @@ const RestaurantReservationsComponent = props => {
                 </Button>
             </div>
         </div>
+
+
+
+
     );
 };
 

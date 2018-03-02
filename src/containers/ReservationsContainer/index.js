@@ -14,16 +14,37 @@ export default class ReservationsContainer extends Component{
     }
 
     render(){
-        return(
-            <div>
-                <CustomerReservationsComponent
-                />;
-                <RestaurantReservationsComponent
+        const isCustomer = false;
 
-                />
+        if(isCustomer){
+            return(
+                <div>
+                    <CustomerReservationsComponent
 
-            </div>
-        );
+                    />
+
+
+
+
+
+                </div>
+                );
+            }
+
+        else{
+                return(
+                    <div>
+                        <RestaurantReservationsComponent
+
+
+                        />
+                    </div>
+                );
+
+        }
+
+
+
     }
 
 }

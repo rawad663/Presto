@@ -22,6 +22,10 @@ export default class CustomerHomeContainer extends Component{
         this.props.history.push('/settings')
     }
 
+    // handleARstAcceptClicked =() => {
+    //     this.props.
+    // }
+
     render(){
         return(
             <div>
