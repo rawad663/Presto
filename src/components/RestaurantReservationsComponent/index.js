@@ -3,6 +3,7 @@ import {purple_main} from "../../resources/colors";
 import { Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap';
 import PropTypes from "prop-types";
 import NavBar from '../custom_components/NavBar';
+import {routes, aGet} from "../../api/api";
 
 
 const RestaurantReservationsComponent = props => {
@@ -23,7 +24,41 @@ const RestaurantReservationsComponent = props => {
         }
 
     };
-    return (
+
+
+    function createNode(element) {
+        return document.createElement(element);
+    }
+
+    function append(parent, el) {
+        return parent.appendChild(el);
+    }
+
+    const ul = document.getElementById('reservation');
+
+
+    fetch(aGet(routes.RSTReservation))
+        .then((resp) => resp.json())
+        .then(function(data) {
+            let reservation = data.results;
+            return reservation.map(function(reservation) {
+                let li = createNode('li'),
+                    img = createNode('img'),
+                    span = createNode('span');
+                img.src = reservation.picture.medium;
+                span.innerHTML = `${reservation.name.last}`;
+                append(li, span);
+                append(ul, li);
+            })
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+
+
+
+        return(
+
         <div>
             <div>
                 <NavBar fullName="Rawad Karam"/>
@@ -53,7 +88,9 @@ const RestaurantReservationsComponent = props => {
 
 
 
-    );
+    )
+
+
 };
 
 RestaurantReservationsComponent.propsTypes = {

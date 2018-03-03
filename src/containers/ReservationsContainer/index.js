@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CustomerReservationsComponent from '../../components/CustomerReservationsComponent';
 import RestaurantReservationsComponent from "../../components/RestaurantReservationsComponent";
+import {RSTReservation, aPost} from "../../api/api";
 
 export default class ReservationsContainer extends Component{
 
@@ -13,8 +14,48 @@ export default class ReservationsContainer extends Component{
 
     }
 
+
+
+    handleAccept = () => {
+        const reply = true ;
+        this.postReply(reply);
+
+
+    };
+
+    handleDecline = () => {
+        const reply = false ;
+        this.postReply(reply);
+
+    };
+
+    postReply = (reply) => {
+
+        aPost(RSTReservation, reply)
+            .then(response => {
+
+
+
+                if (reply === true) {
+                    // store token in localStorage to be accessed from different parts of the application
+                    localStorage.token = data.token;
+
+                    if (userType === 'customer') {
+                        this.props.history.push('/customer');
+                    } else if (userType === 'restaurant') {
+                        this.props.history.push('/restaurant');
+                    }
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            });
+    };
+
     render(){
         const isCustomer = false;
+
+
 
         if(isCustomer){
             return(
@@ -32,14 +73,14 @@ export default class ReservationsContainer extends Component{
             }
 
         else{
-                return(
-                    <div>
-                        <RestaurantReservationsComponent
+            return(
+                <div>
+                    <RestaurantReservationsComponent
 
 
-                        />
-                    </div>
-                );
+                    />
+                </div>
+            );
 
         }
 
