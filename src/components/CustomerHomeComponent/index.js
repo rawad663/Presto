@@ -11,7 +11,12 @@ const CustomerHomeComponent = props => {
 
     return (
         <div>
-            <NavBar fullName="Rawad Karam"/>
+            <NavBar
+                button1="Liked Restaurants"
+                button2="Reservations"
+                button2Click={props.handleCustRsvClicked}
+                fullName="Rawad Karam"
+            />
             <h2 style={{ margin: '40px auto' }} className="mainTitle"> Nearby Restaurants </h2>
 
             <div id="card-wrapper">
@@ -30,8 +35,6 @@ const CustomerHomeComponent = props => {
                     <Glyphicon style={{ color: 'white' }} glyph="thumbs-up" />
                 </Button>
             </div>
-
-            <ReservationCard />
         </div>
     );
 };

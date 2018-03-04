@@ -9,13 +9,12 @@ export default class ReservationsContainer extends Component{
         this.state = {
 
         };
-
     }
 
     render(){
         return(
             <div>
-                <CustomerReservationsComponent />
+                <CustomerReservationsComponent history={this.props.history} />
             </div>
         );
     }

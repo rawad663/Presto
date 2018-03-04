@@ -15,7 +15,7 @@ export default class CustomerHomeContainer extends Component{
 
     handleCustRsvClicked = () => {
         // TODO: ONE OF THESE ADDRESSES NEED TO BE CHANGED? (handleCustRsvClicked & handleRestoRsvClicked)
-        this.props.history.push('/reservations')
+        this.props.history.push('/customer-reservations')
     };
 
     handleSettingsClicked = () => {
