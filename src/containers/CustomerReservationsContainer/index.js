@@ -12,9 +12,10 @@ export default class ReservationsContainer extends Component{
     }
 
     render(){
+        console.log(this.props);
         return(
             <div>
-                <CustomerReservationsComponent history={this.props.history} />
+                <CustomerReservationsComponent route={this.props.location.pathname} history={this.props.history} />
             </div>
         );
     }
