@@ -26,6 +26,8 @@ export default class CustomerHomeContainer extends Component{
         return(
             <div>
                 <CustomerHomeComponent
+                    history={this.props.history}
+                    route={this.props.location.pathname}
                     handleCustRsvClicked = {this.handleCustRsvClicked}
                     handleSettingsClicked = {this.handleSettingsClicked}
                 />
