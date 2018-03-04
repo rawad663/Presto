@@ -1,5 +1,5 @@
 import React from 'react';
-import {purple_main} from "../../resources/colors";
+import {blue,purple_main} from "../../resources/colors";
 import { Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap';
 import PropTypes from "prop-types";
 import NavBar from '../custom_components/NavBar';
@@ -13,14 +13,20 @@ const RestaurantReservationsComponent = props => {
             color: purple_main
         },
         buttonAccept:{
-            backgroundColor:'green',
+            backgroundColor:purple_main,
             color: 'white',
             width: 100
         },
         buttonDecline:{
-            backgroundColor:'red',
+            backgroundColor:'#4d79ff',
             color:'white',
             width: 100
+
+        },
+        buttonNotChosen:{
+            backgroundColor:'gray',
+            width: 100,
+            color: '#404040'
         }
 
     };
@@ -40,12 +46,10 @@ const RestaurantReservationsComponent = props => {
     fetch(aGet(routes.RSTReservation))
         .then((resp) => resp.json())
         .then(function(data) {
-            let reservation = data.results;
+            var reservation = data.results;
             return reservation.map(function(reservation) {
                 let li = createNode('li'),
-                    img = createNode('img'),
                     span = createNode('span');
-                img.src = reservation.picture.medium;
                 span.innerHTML = `${reservation.name.last}`;
                 append(li, span);
                 append(ul, li);
@@ -56,46 +60,66 @@ const RestaurantReservationsComponent = props => {
         });
 
 
+    const reservation = [1, 2, 3, 4, 5,6,7];
+
+    const listItems = reservation.map((reservations) =>
+
+        <span>{reservations}
+            <span>{}</span>
+            <Button
+                onClick={props.handleAccept}
+                style={{ ...styles.buttonAccept, }}
+                id = 'acceptButton'
+            >
+                Accept
+            </Button>
+
+            <Button
+                onClick={props.handleDecline}
+                style={{ ...styles.buttonDecline, marginLeft: 8 }}
+                id = 'declineButton'
+            >
+                Decline
+            </Button>
+            <br/>
+            <br/>
+            </span>
+
+
+    );
 
         return(
 
-        <div>
             <div>
-                <NavBar fullName="Rawad Karam"/>
-                <h2 style={{ margin: '40px auto' }} className="mainTitle"> Pending Reservations </h2>
+                <div>
+                    <NavBar fullName="Rawad Karam"/>
+                    <h2 style={{ margin: '40px auto' }} className="mainTitle"> Pending Reservations </h2>
 
+                </div>
+
+                <div >
+
+                    <ul>{listItems}</ul>
+
+                </div>
             </div>
 
-            <div style={{ display: 'inline' }}>
-
-
-                <Button
-                    onClick={props.handleAccept}
-                    style={{ ...styles.buttonAccept, }}
-                >
-                    Accept
-                </Button>
-
-                <Button
-                    onClick={props.handleDecline}
-                    style={{ ...styles.buttonDecline, marginLeft: 8 }}
-                >
-                    Decline
-                </Button>
-            </div>
-        </div>
 
 
 
 
-    )
+
+
+
+
+    );
 
 
 };
 
 RestaurantReservationsComponent.propsTypes = {
     handleAccept: PropTypes.func,
-    handleDecline: PropTypes.func,
+    handleDecline: PropTypes.func
 
 };
 
