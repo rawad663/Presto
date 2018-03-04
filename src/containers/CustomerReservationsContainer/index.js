@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import CustomerReservationsComponent from '../../components/CustomerReservationsComponent';
-import RestaurantReservationsComponent from "../../components/RestaurantReservationsComponent";
 
 export default class ReservationsContainer extends Component{
 
@@ -17,7 +16,6 @@ export default class ReservationsContainer extends Component{
         return(
             <div>
                 <CustomerReservationsComponent />
-                <RestaurantReservationsComponent />
             </div>
         );
     }

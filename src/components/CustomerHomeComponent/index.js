@@ -5,8 +5,7 @@ import { Button } from 'reactstrap';
 
 import NavBar from '../custom_components/NavBar';
 import RestaurantCard from '../custom_components/RestaurantCard';
-
-
+import ReservationCard from '../custom_components/ReservationCard';
 
 const CustomerHomeComponent = props => {
 
@@ -31,10 +30,9 @@ const CustomerHomeComponent = props => {
                     <Glyphicon style={{ color: 'white' }} glyph="thumbs-up" />
                 </Button>
             </div>
+
+            <ReservationCard />
         </div>
-
-
-
     );
 };
 

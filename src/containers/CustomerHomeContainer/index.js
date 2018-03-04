@@ -16,11 +16,11 @@ export default class CustomerHomeContainer extends Component{
     handleCustRsvClicked = () => {
         // TODO: ONE OF THESE ADDRESSES NEED TO BE CHANGED? (handleCustRsvClicked & handleRestoRsvClicked)
         this.props.history.push('/reservations')
-    }
+    };
 
     handleSettingsClicked = () => {
         this.props.history.push('/settings')
-    }
+    };
 
     render(){
         return(
@@ -28,8 +28,7 @@ export default class CustomerHomeContainer extends Component{
                 <CustomerHomeComponent
                     handleCustRsvClicked = {this.handleCustRsvClicked}
                     handleSettingsClicked = {this.handleSettingsClicked}
-                />;
-
+                />
             </div>
         );
     }

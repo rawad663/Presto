@@ -9,7 +9,7 @@ const NavBar = props => {
             backgroundColor: purple_dark
         },
         space: {
-            marginBottom: 65
+            marginBottom: 40
         },
         title: {
             alignSelf: 'center',
@@ -37,6 +37,7 @@ const NavBar = props => {
                 </div>
             </div>
             <p style={styles.space}>nothing here</p>
+            {props.children}
         </div>
     );
 };

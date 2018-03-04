@@ -3,11 +3,13 @@ import { Route } from 'react-router-dom';
 
 import CustomerHomeContainer from './containers/CustomerHomeContainer';
 import LoginContainer from './containers/LoginContainer';
-import ReservationsContainer from './containers/ReservationsContainer';
+import CustomerReservationsContainer from './containers/CustomerReservationsContainer';
 import RestaurantProfileContainer from './containers/RestaurantProfileContainer';
 import SettingsContainer from './containers/SettingsContainer';
-import './App.css';
 import SignupContainer from "./containers/SignupContainer";
+
+import './css/App.css';
+import './css/Animations.css';
 
 class App extends Component {
 
@@ -18,7 +20,7 @@ class App extends Component {
              <Route exact path="/" component={LoginContainer} />
              <Route path="/signup" component={SignupContainer} />
              <Route path="/customer" component={CustomerHomeContainer} />
-             <Route path="/reservations" component={ReservationsContainer} />
+             <Route path="/customer-reservations" component={CustomerReservationsContainer} />
              <Route path="/restaurant/profile" component={RestaurantProfileContainer} />
              <Route path="/settings" component={SettingsContainer} />
          </div>

@@ -1,16 +1,17 @@
 import React from 'react';
+import NavBar from '../custom_components/NavBar';
+import SideNav from '../custom_components/SideNav';
 import {purple_main} from "../../resources/colors";
 
 const CustomerReservationsComponent = props => {
 
-    const styles = {
-        title: {
-            color: purple_main
-        }
-    };
     return (
-        <div style={styles.title}>
-            Customer Reservations Component
+        <div >
+            <NavBar fullName="Rawad Karam">
+
+            </NavBar>
+            <SideNav />
+            <h3>Hello</h3>
         </div>
     );
 };
