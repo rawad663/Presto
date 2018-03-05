@@ -32,6 +32,7 @@ const CustomerReservationsComponent = props => {
         { name: 'Home', route: '/customer' },
         { name: 'Liked Restaurants', route: '/liked-restaurants' },
         { name: 'Reservations', route: '/customer-reservations' },
+        { name: 'Profile', route: '/customer-profile' }
     ];
 
     return (

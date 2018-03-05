@@ -7,14 +7,10 @@ html, body, #root, #root>div {
   bottom: 55px;
   width: 100%;
   height: 60px;
+  z-index: 1;
   position: absolute;
   display: flex;
   justify-content: space-between;
-}
-
-#card-wrapper {
-  margin: 0 auto;
-  max-width: 700px;
 }
 
 .circle-button{
@@ -47,8 +43,30 @@ html, body, #root, #root>div {
   background-color: #388E3C;
 }
 
-@media (max-width: 775px) {
-  .circle-button {
+@media (max-width: 900px) {
+  #right-belt-item {
+    display: none;
+  }
+
+  .card {
+    min-width: 200px;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  #card-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+  }
+}
+
+@media (max-width: 700px) {
+  #right-belt-item {
+    display: none;
+  }
+
+  #left-belt-item {
     display: none;
   }
 
@@ -90,13 +108,14 @@ html, body, #root, #root>div {
   height: 100%;
   width: 200px;
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   left: 0;
-  padding-bottom: 15%;
+  top: 0;
+  bottom: 0;
   background-color: #4A148C;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 130px;
 }
 
 .sidenav a {
