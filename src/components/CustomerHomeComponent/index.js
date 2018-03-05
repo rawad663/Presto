@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon, Well } from 'react-bootstrap';
+import { Glyphicon } from 'react-bootstrap';
 import { Button } from 'reactstrap';
 
 import SideNav from '../custom_components/SideNav';
@@ -31,7 +31,7 @@ const CustomerHomeComponent = props => {
                         style={{ margin: 'auto' }}
                         restaurantName="Bob's Burger"
                         phoneNumber="514-577 5424"
-                        postalCode="H3J0A9"
+                        postalCode="H3J 0A9"
                     />
                     <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
                     <Button className="circle-button" id="dislike">

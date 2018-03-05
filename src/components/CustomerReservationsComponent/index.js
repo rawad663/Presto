@@ -17,7 +17,7 @@ const CustomerReservationsComponent = props => {
         },
         well: {
             minWidth: 300,
-            maxHeight: 600,
+            maxHeight: 500,
             display: 'flex',
             flexWrap: 'wrap',
             margin: 50,

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Glyphicon } from 'react-bootstrap';
 import Bar from '../../resources/images/bar-buffet.jpg';
 import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
@@ -48,8 +49,12 @@ const ReservationCard = props => {
 
                 <p style={{...styles.description, color: purple_main}}>{props.date}</p>
                 <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
-                    <Button style={styles.button} color="primary">Edit Reservation</Button>
-                    <Button style={styles.button} color="danger">Cancel</Button>
+                    <Button title="Edit Reservation" style={styles.button} color="primary">
+                        <Glyphicon glyph="pencil" />
+                    </Button>
+                    <Button title="Cancel Reservation" style={styles.button} color="danger">
+                        <Glyphicon glyph="remove" />
+                    </Button>
                 </div>
             </div>
         </div>
@@ -69,7 +74,7 @@ ReservationCard.propTypes = {
 ReservationCard.defaultProps = {
     title: 'Bob\'s Burgers',
     address: '5412 Des Seigneurs, Apt. 554',
-    postalCode: 'H4K0L1',
+    postalCode: 'H4K 0L1',
     city: 'Montreal',
     province: 'Quebec',
     date: 'Sunday, March 25, 1997. 4:20pm',
