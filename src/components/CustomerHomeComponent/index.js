@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon } from 'react-bootstrap';
+import { Glyphicon, Well } from 'react-bootstrap';
 import { Button } from 'reactstrap';
 
 import SideNav from '../custom_components/SideNav';
@@ -24,24 +24,23 @@ const CustomerHomeComponent = props => {
                 fullName="Rawad Karam"
             />
             <SideNav items={items} history={props.history} route={props.route} />
-
-            <div style={{ marginLeft: 200 }}>
-                <h2 style={{ margin: '80px auto' }} className="mainTitle"> Nearby Restaurants </h2>
+            <div style={{ marginLeft: 200, maxWidth: '100%' }}>
+                <h1 style={{ margin: '80px 30px', fontWeight: 'lighter' }}> Nearby Restaurants </h1>
                 <div id="card-wrapper">
-                    <Button className="circle-button" id="dislike">
-                        <Glyphicon style={{ color: 'white' }} glyph="thumbs-down" />
-                    </Button>
-
                     <RestaurantCard
-                        style={{ alignSelf: 'center' }}
+                        style={{ margin: 'auto' }}
                         restaurantName="Bob's Burger"
                         phoneNumber="514-577 5424"
                         postalCode="H3J0A9"
                     />
-
+                    <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
+                    <Button className="circle-button" id="dislike">
+                        <Glyphicon style={{ color: 'white' }} glyph="thumbs-down" />
+                    </Button>
                     <Button className="circle-button" id="like">
                         <Glyphicon style={{ color: 'white' }} glyph="thumbs-up" />
                     </Button>
+                    </div>
                 </div>
             </div>
         </div>
