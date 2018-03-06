@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import NavBar from '../custom_components/NavBar';
 import SideNav from '../custom_components/SideNav';
 import ReservationCard from '../custom_components/ReservationCard';
-import { Well } from 'react-bootstrap';
+import { Well, Glyphicon } from 'react-bootstrap';
+import { Button } from 'reactstrap';
 
 import {purple_main} from "../../resources/colors";
 
@@ -13,11 +14,12 @@ const CustomerReservationsComponent = props => {
         reservations: {
             fontWeight: 'lighter',
             color: purple_main,
-            margin: '80px 90px 0 90px'
+            margin: '80px 30px 0 90px'
         },
         well: {
             minWidth: 300,
-            maxHeight: 500,
+            maxWidth: '80%',
+            height: 500,
             display: 'flex',
             flexWrap: 'wrap',
             margin: 50,
@@ -45,7 +47,12 @@ const CustomerReservationsComponent = props => {
             />
             <SideNav items={items} history={props.history} route={props.route} />
             <div style={{ marginLeft: 200 }}>
-                <h1 style={styles.reservations}>Reservations</h1>
+                <div style={{ display: 'flex' }}>
+                    <h1 style={styles.reservations}>Reservations</h1>
+                    <Button id="new-reservation" className="button-click">
+                        <Glyphicon glyph="plus"/>
+                    </Button>
+                </div>
                 <Well style={styles.well}>
                     <ReservationCard
                         style={styles.reservationCard}
