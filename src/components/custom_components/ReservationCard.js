@@ -49,10 +49,10 @@ const ReservationCard = props => {
 
                 <p style={{...styles.description, color: purple_main}}>{props.date}</p>
                 <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
-                    <Button title="Edit Reservation" style={styles.button} color="primary">
+                    <Button className="button-click" title="Edit Reservation" style={styles.button} color="primary">
                         <Glyphicon glyph="pencil" />
                     </Button>
-                    <Button title="Cancel Reservation" style={styles.button} color="danger">
+                    <Button className="button-click" title="Cancel Reservation" style={styles.button} color="danger">
                         <Glyphicon glyph="remove" />
                     </Button>
                 </div>

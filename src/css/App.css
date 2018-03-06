@@ -13,12 +13,27 @@ html, body, #root, #root>div {
   justify-content: space-between;
 }
 
+.button-click {
+  outline: none !important;
+}
+
 .circle-button{
   margin: 15px auto;
   min-width: 63px;
   min-height: 63px;
   border-radius: 50%;
   outline: none !important;
+}
+
+#new-reservation {
+  background-color: #9C27B0;
+  height: 35px;
+  color: white;
+  margin-top: auto;
+}
+
+#new-reservation:active {
+  background-color: #8E24AA;
 }
 
 #dislike {
