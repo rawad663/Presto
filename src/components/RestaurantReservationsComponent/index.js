@@ -6,6 +6,10 @@ import NavBar from '../custom_components/NavBar';
 import {routes, aGet} from "../../api/api";
 
 
+
+
+
+
 const RestaurantReservationsComponent = props => {
 
     const styles = {
@@ -27,7 +31,15 @@ const RestaurantReservationsComponent = props => {
             backgroundColor:'gray',
             width: 100,
             color: '#404040'
+        },
+        list:{
+            marginLeft:200
+
+        },
+        head:{
+            marginLeft:220
         }
+
 
     };
 
@@ -59,13 +71,19 @@ const RestaurantReservationsComponent = props => {
             console.log(error);
         });
 
+     var  res1 =  {name:'Kevin', NumberOfPpl: 3, time:Date("October 13, 2014 11:13:00")};
+    var  res2 =  {name:'Rawad', NumberOfPpl: 4, time:Date("October 13, 2014 11:13:00")};
 
-    const reservation = [1, 2, 3, 4, 5,6,7];
 
-    const listItems = reservation.map((reservations) =>
 
-        <span>{reservations}
-            <span>{}</span>
+
+    const reservationlist = [res1,res2];
+
+    const listItems = reservationlist.map((reservations) =>
+
+        <span style={styles.list} >{reservations.name}
+            <span style={styles.list}>{reservations.NumberOfPpl}</span>
+             <span style={styles.list}>{reservations.time}</span>
             <Button
                 onClick={props.handleAccept}
                 style={{ ...styles.buttonAccept, }}
@@ -96,6 +114,10 @@ const RestaurantReservationsComponent = props => {
                     <h2 style={{ margin: '40px auto' }} className="mainTitle"> Pending Reservations </h2>
 
                 </div>
+
+                <h4> <span style={styles.head}> Name </span>
+                    <span style={styles.head}>Number of people </span>
+                    <span style={styles.head}>Date</span></h4>
 
                 <div >
 
