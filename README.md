@@ -19,14 +19,28 @@ API Post Form Data
 --
 
 ``` javascript
-// Sign Up
-const postData = {
-    username: String
-    firstName: String,
-    lastName: String,
-    email: String,
-    userType: String ("customer" || "restaurant")
-    password: String
+// postData for /register/resto/
+ 
+{
+    "name": "Shakers",
+    "description": "good ass food",
+    "user": {
+        "username": "bou",
+        "email": "teez@gmail.com",
+        "first_name": "Rony",
+        "last_name": "Azrak",
+        "password": "pass1234"
+    }
+}
+  
+// postData for /register/customer/
+ 
+{
+    "username": "bou",
+    "email": "teez@gmail.com",
+    "first_name": "Rony",
+    "last_name": "Azrak",
+    "password": "pass1234"
 }
 
 ```
