@@ -3,7 +3,8 @@ import axios from 'axios';
 const baseUrl = 'https://presto-core.herokuapp.com';
 
 export const routes = {
-    register: '/register/',
+    registerRestaurant: '/register/resto/',
+    registerCustomer: '/register/customer/',
     login: '/login/'
 };
 

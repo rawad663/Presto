@@ -9,7 +9,7 @@ const NavBar = props => {
             backgroundColor: purple_dark
         },
         space: {
-            marginBottom: 65
+            marginBottom: 40
         },
         title: {
             alignSelf: 'center',
@@ -32,20 +32,27 @@ const NavBar = props => {
             <div id="nav-bar" style={styles.navBar}>
                 <h4 style={styles.title}>Presto - {props.fullName}</h4>
                 <div>
-                    <Button style={styles.button}>Liked Restaurants</Button>
-                    <Button style={styles.button}>Reservations</Button>
+                    <Button onClick={props.button1Click} style={styles.button}>{props.button1}</Button>
+                    <Button onClick={props.button2Click} style={styles.button}>{props.button2}</Button>
                 </div>
             </div>
             <p style={styles.space}>nothing here</p>
+            {props.children}
         </div>
     );
 };
 
 NavBar.propTypes = {
-    fullName: PropTypes.string
+    fullName: PropTypes.string,
+    button1: PropTypes.string,
+    button2: PropTypes.string,
+    button1Click: PropTypes.func,
+    button2Click: PropTypes.func
 };
 
 NavBar.defaultProps = {
+    button1: 'Button 1',
+    button2: 'Button 2',
     fullName: 'Lebron James'
 };
 
