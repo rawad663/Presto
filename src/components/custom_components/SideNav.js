@@ -5,6 +5,7 @@ import { purple_main } from "../../resources/colors";
 const SideNav = props => {
     const renderItems = items => items.map(item => (
             <a
+                key={item.name}
                 onClick={() => { props.history.push(item.route) }}
                 style={{ backgroundColor: props.route === item.route && purple_main, cursor: 'pointer' }}
             >
