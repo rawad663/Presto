@@ -4,7 +4,8 @@ const baseUrl = 'https://presto-core.herokuapp.com';
 
 export const routes = {
     register: '/register/',
-    login: '/login/'
+    login: '/login/',
+    RSTReservation: '/reservation/'
 };
 
 export const aGet = route => axios.get(baseUrl + route);
