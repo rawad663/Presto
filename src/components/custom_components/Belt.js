@@ -11,6 +11,7 @@ const Belt = props => {
                 id="left-belt-item"
                 style={{ margin: 'auto 10px', maxWidth: '26%', opacity: 0.2 }}
                 restaurantName="Bob's Burger"
+                address="Montreal, Canada"
                 phoneNumber="514-577 5424"
                 postalCode="M3M 3M3"
             />
@@ -20,8 +21,9 @@ const Belt = props => {
                     id="middle-belt-item"
                     style={{ margin: 'auto 10px' }}
                     restaurantName="Samir's Falafels"
-                    phoneNumber="514-579 2356"
-                    postalCode="G5J M2N 0A9"
+                    address="Susurluk, Balikesir"
+                    phoneNumber="+90-266-862-2615"
+                    postalCode="10600"
                 />
                 <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
                     <Button className="circle-button" id="dislike">
@@ -37,6 +39,7 @@ const Belt = props => {
                 id="right-belt-item"
                 style={{ margin: 'auto 10px', maxWidth: '26%', opacity: 0.2 }}
                 restaurantName="Helena's Chicken"
+                address="Montreal, Canada"
                 phoneNumber="514-122 0298"
                 postalCode="M1L 0K3"
             />
