@@ -26,7 +26,9 @@ const CustomerHomeComponent = props => {
                 button2Click={props.handleCustRsvClicked}
                 fullName="Rawad Karam"
             />
+
             <SideNav items={items} history={props.history} route={props.route} />
+
             <div style={{ marginLeft: 200, maxWidth: '100%' }}>
                 <h1 style={{ color: purple_main, margin: '80px 90px 80px 90px', fontWeight: 'lighter' }}> Nearby Restaurants </h1>
                 <Belt />

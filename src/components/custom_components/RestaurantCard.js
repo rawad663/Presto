@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import turkishFood from '../../resources/images/turkish-food.jpg'
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Row, Col} from 'reactstrap';
 import Ratings from 'react-ratings-declarative';
 
 const RestaurantCard = props => {
@@ -24,17 +24,32 @@ const RestaurantCard = props => {
     };
 
     return (
-        <div style={props.style}>
+        <div style={props.style} className="card-info">
             <Card>
                 <CardImg width = "100%" src={turkishFood} />
                 <CardBody>
                     <CardTitle className="card-title" style={styles.text}>
                         {props.restaurantName}
                     </CardTitle>
-                    <CardSubtitle className="card-subtitle">
-                        {props.address}
-                    </CardSubtitle>
-                    <Ratings rating={props.restaurantRating}>
+                    <Row style={styles.row}>
+                        <Col sm={{ size: 6, offset: 1 }}>
+                            <CardSubtitle className="card-subtitle">
+                                {props.address}
+                            </CardSubtitle>
+
+                        </Col>
+                        <Col sm={{ size: 6, offset: 1 }}>
+                            <CardSubtitle className="card-subtitle">
+                                {props.postalCode}
+                            </CardSubtitle>
+                        </Col>
+                    </Row>
+
+                    <div>
+
+
+                    </div>
+                    <Ratings rating={props.restaurantRating} widgetDimensions="40px">
                         <Ratings.Widget/>
                         <Ratings.Widget/>
                         <Ratings.Widget/>
@@ -44,9 +59,7 @@ const RestaurantCard = props => {
 
                     </Ratings>
 
-                    <CardText>
-                        {props.postalCode}
-                    </CardText>
+
 
                 </CardBody>
 
