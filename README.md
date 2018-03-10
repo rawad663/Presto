@@ -63,7 +63,7 @@ Example Post request for Register:
  
 Example of a new LikedRestaurant
 ``` javascript
-// Customer Liked Restaurants
+// postData for /likedrestaurants/
 const postData = {
     "restaurant_id": "12",
     "customer_username": "example@example.com"
@@ -72,7 +72,7 @@ const postData = {
  
 Example of a new Customer Reservation
 ``` javascript
-// Customer Reservation
+// postData for /reservation
 const postData = {
    "customer_username": "example@example.com",
    "reservation_date": "some date value",
