@@ -53,21 +53,35 @@ export default class SignupContainer extends Component{
     };
 
     handleSubmit = () => {
-        const { email, firstName, lastName, password, userType } = this.state;
-        const postData = {
+        const { email, firstName, lastName, password, userType, restaurantName } = this.state;
+        let postData = {
             username: email,
+            email,
             first_name: firstName,
             last_name: lastName,
-            email,
             password
         };
 
-        aPost(routes.register, postData).then(response => {
+        if(userType === 'restaurant') {
+            postData = {
+                user: {
+                    username: email,
+                    email,
+                    first_name: firstName,
+                    last_name: lastName,
+                    password
+                },
+                name: restaurantName,
+                description: 'Restaurant Description'
+            };
+        }
+
+        aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
             const { status, data } = response;
 
             if (status === 201) {
-                // store token in localStorage to be accessed from different parts of the application
-                localStorage.token = data.token;
+                // store user to localStorage for easy access
+                localStorage.loggedInUser = data;
 
                 if (userType === 'customer') {
                     this.props.history.push('/customer');
@@ -79,6 +93,7 @@ export default class SignupContainer extends Component{
             console.log(err);
         });
     };
+
     handleCancel = () => {
         this.props.history.push('/');
     };

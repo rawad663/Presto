@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import CustomerReservationsComponent from '../../components/CustomerReservationsComponent';
-import RestaurantReservationsComponent from "../../components/RestaurantReservationsComponent";
 
 export default class ReservationsContainer extends Component{
 
@@ -10,14 +9,13 @@ export default class ReservationsContainer extends Component{
         this.state = {
 
         };
-
     }
 
     render(){
+        console.log(this.props);
         return(
             <div>
-                <CustomerReservationsComponent />
-                <RestaurantReservationsComponent />
+                <CustomerReservationsComponent route={this.props.location.pathname} history={this.props.history} />
             </div>
         );
     }

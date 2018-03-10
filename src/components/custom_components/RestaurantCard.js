@@ -68,6 +68,7 @@ const RestaurantCard = props => {
 };
 
 RestaurantCard.propTypes = {
+    id: PropTypes.string,
     restaurantName: PropTypes.string,
     restaurantRating: PropTypes.string,
     address: PropTypes.string,

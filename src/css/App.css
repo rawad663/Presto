@@ -7,22 +7,33 @@ html, body, #root, #root>div {
   bottom: 55px;
   width: 100%;
   height: 60px;
+  z-index: 1;
   position: absolute;
   display: flex;
   justify-content: space-between;
 }
 
-#card-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
+.button-click {
+  outline: none !important;
 }
 
 .circle-button{
+  margin: 15px auto;
   min-width: 63px;
   min-height: 63px;
   border-radius: 50%;
   outline: none !important;
+}
+
+#new-reservation {
+  background-color: #9C27B0;
+  height: 35px;
+  color: white;
+  margin-top: auto;
+}
+
+#new-reservation:active {
+  background-color: #8E24AA;
 }
 
 #dislike {
@@ -47,8 +58,30 @@ html, body, #root, #root>div {
   background-color: #388E3C;
 }
 
-@media (max-width: 670px) {
-  .circle-button {
+@media (max-width: 900px) {
+  #right-belt-item {
+    display: none;
+  }
+
+  .card {
+    min-width: 200px;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  #card-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+  }
+}
+
+@media (max-width: 700px) {
+  #right-belt-item {
+    display: none;
+  }
+
+  #left-belt-item {
     display: none;
   }
 
@@ -71,6 +104,8 @@ html, body, #root, #root>div {
   text-align: center;
 }
 
+
+
 .card {
   margin: 15px;
   min-width: 225px;
@@ -84,3 +119,76 @@ html, body, #root, #root>div {
   margin-top: -8px;
 }
 
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #4A148C;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 130px;
+}
+
+.sidenav a {
+  padding: 8px 16px 8px 16px;
+  max-width: 100%;
+  text-decoration: none;
+  font-size: 20px;
+  color: #FFFFFF;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  background-color: #9C27B0;
+
+}
+
+#signout-sidenav {
+  padding-right: 28px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+}
+
+#signout-sidenav:hover {
+  background-color: #F44336;
+  cursor: pointer;
+}
+
+.reservation-card {
+  -webkit-transition: box-shadow 0.3s; /* Safari */
+  transition: box-shadow 0.3s;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.66);
+}
+
+.reservation-card:hover {
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.66);
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.card-info {
+  margin-top: -8px;
+}
+
+.card-title {
+  font-size: 35px;
+  font-family: "Courier New";
+  font-weight: bold;
+  color: #ffaa00;
+}
+.card-subtitle {
+  font-family: "Courier New";
+  margin-left: 20px;
+  font-size: 20px;
+
+}
