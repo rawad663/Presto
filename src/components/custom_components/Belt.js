@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'reactstrap';
 import { Glyphicon } from 'react-bootstrap'
 import RestaurantCard from '../custom_components/RestaurantCard';
+import turkishFood from '../../resources/images/turkish-food.jpg'
 
 const Belt = props => {
     return (
@@ -15,6 +16,7 @@ const Belt = props => {
                 phoneNumber="514-577 5424"
                 postalCode="M3M 3M3"
                 restaurantRating={4.5}
+                imgUrl={turkishFood}
             />
 
             <div style={{maxWidth:'30%'}}>
@@ -26,6 +28,7 @@ const Belt = props => {
                     phoneNumber="+90-266-862-2615"
                     postalCode="10600"
                     restaurantRating={2.5}
+                    imgUrl={turkishFood}
                 />
                 <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
                     <Button className="circle-button" id="dislike">
@@ -45,6 +48,7 @@ const Belt = props => {
                 phoneNumber="514-122 0298"
                 postalCode="M1L 0K3"
                 restaurantRating={3.7}
+                imgUrl={turkishFood}
             />
         </div>
     );

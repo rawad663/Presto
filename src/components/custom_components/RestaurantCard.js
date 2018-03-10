@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import turkishFood from '../../resources/images/turkish-food.jpg'
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Row, Col} from 'reactstrap';
 import Ratings from 'react-ratings-declarative';
 
@@ -26,11 +25,12 @@ const RestaurantCard = props => {
     return (
         <div style={props.style} className="card-info">
             <Card>
-                <CardImg width = "100%" src={turkishFood} />
+                <CardImg width = "100%" src={props.imgUrl} />
                 <CardBody>
                     <CardTitle className="card-title" style={styles.text}>
                         {props.restaurantName}
                     </CardTitle>
+
                     <Row style={styles.row}>
                         <Col sm={{ size: 6, offset: 1 }}>
                             <CardSubtitle className="card-subtitle">
@@ -45,43 +45,23 @@ const RestaurantCard = props => {
                         </Col>
                     </Row>
 
-                    <div>
-
-
-                    </div>
                     <Ratings rating={props.restaurantRating} widgetDimensions="40px">
                         <Ratings.Widget/>
                         <Ratings.Widget/>
                         <Ratings.Widget/>
                         <Ratings.Widget/>
                         <Ratings.Widget/>
-
-
                     </Ratings>
 
-
-
                 </CardBody>
-
             </Card>
         </div>
-
-
-
-        // <div style={styles.container} class = "container-fluid" className="card">
-        //     <img style={styles.img} src={buffet} />
-        //     <h3 style={{ ...styles.text, color: purple_main, fontWeight: 60 }}>{props.restaurantName}</h3>
-        //     <div style={styles.infoBlock}>
-        //         <p className="card-info" style={styles.text}>{props.address}, {props.postalCode}</p>
-        //         <p className="card-info" style={styles.text}>{props.phoneNumber}</p>
-        //         <p className="card-info" style={styles.text}>{props.email}</p>
-        //     </div>
-        // </div>
     )
 };
 
 RestaurantCard.propTypes = {
     id: PropTypes.string,
+    imgUrl: PropTypes.string,
     restaurantName: PropTypes.string,
     restaurantRating: PropTypes.string,
     address: PropTypes.string,
