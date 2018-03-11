@@ -5,9 +5,6 @@ import SideNav from '../custom_components/SideNav';
 import NavBar from '../custom_components/NavBar';
 import Belt from '../custom_components/Belt';
 import {purple_main} from "../../resources/colors";
-import RestaurantCard from "../custom_components/RestaurantCard";
-import {Button} from "reactstrap";
-import {Glyphicon} from "react-bootstrap";
 
 const CustomerHomeComponent = props => {
 
@@ -24,7 +21,9 @@ const CustomerHomeComponent = props => {
                 button1="Liked Restaurants"
                 button2="Reservations"
                 button2Click={props.handleCustRsvClicked}
-                fullName="Rawad Karam"
+                fullName={props.loggedInUser !== null
+                    ? `${props.loggedInUser.user.first_name} ${props.loggedInUser.user.last_name}`
+                    : 'Fustat Fargin'}
             />
 
             <SideNav items={items} history={props.history} route={props.route} />
@@ -39,8 +38,8 @@ const CustomerHomeComponent = props => {
 };
 
 CustomerHomeComponent.propsTypes = {
+    loggedInUser: PropTypes.object,
     handleCustRsvClicked: PropTypes.func,
-    handleSettingsClicked: PropTypes.func,
     route: PropTypes.string,
     history: PropTypes.object
 

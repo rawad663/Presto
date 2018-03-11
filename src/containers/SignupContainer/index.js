@@ -53,27 +53,23 @@ export default class SignupContainer extends Component{
     };
 
     handleSubmit = () => {
-        const { email, firstName, lastName, password, userType, restaurantName } = this.state;
-        let postData = {
-            username: email,
-            email,
-            first_name: firstName,
-            last_name: lastName,
-            password
+        const { email, firstName, lastName, password, postalCode, phoneNumber, restaurantName, userType } = this.state;
+
+        const postData = {
+            user: {
+                username: email,
+                email,
+                first_name: firstName,
+                last_name: lastName,
+                password
+            }
         };
 
         if(userType === 'restaurant') {
-            postData = {
-                user: {
-                    username: email,
-                    email,
-                    first_name: firstName,
-                    last_name: lastName,
-                    password
-                },
-                name: restaurantName,
-                description: 'Restaurant Description'
-            };
+            postData.resto_name = restaurantName;
+            postData.description = 'Hey, welcome to our restaurant!';
+            postData.postalCode = postalCode;
+            postData.phoneNumber = phoneNumber;
         }
 
         aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
@@ -81,7 +77,7 @@ export default class SignupContainer extends Component{
 
             if (status === 201) {
                 // store user to localStorage for easy access
-                localStorage.loggedInUser = data;
+                localStorage.loggedInUser = JSON.stringify(data);
 
                 if (userType === 'customer') {
                     this.props.history.push('/customer');
