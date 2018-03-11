@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Well } from 'react-bootstrap';
 import { purple_main } from '../../resources/colors';
-import { Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap';
+import { Button, FormGroup, Label, Input } from 'reactstrap';
 
 // This component will not be using state, will get fed from LoginContainer.
 // We can write it as a stateless function (no class)

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Row, Col} from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Row, Col} from 'reactstrap';
 import Ratings from 'react-ratings-declarative';
 
 const RestaurantCard = props => {
@@ -63,7 +63,7 @@ RestaurantCard.propTypes = {
     id: PropTypes.string,
     imgUrl: PropTypes.string,
     restaurantName: PropTypes.string,
-    restaurantRating: PropTypes.string,
+    restaurantRating: PropTypes.number,
     address: PropTypes.string,
     postalCode: PropTypes.string,
     phoneNumber: PropTypes.string,
