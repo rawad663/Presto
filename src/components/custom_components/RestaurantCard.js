@@ -45,7 +45,7 @@ const RestaurantCard = props => {
                         </Col>
                     </Row>
 
-                    <Ratings rating={props.restaurantRating} widgetDimensions="40px">
+                    <Ratings rating={props.restaurantRating} widgetDimensions="32px">
                         <Ratings.Widget/>
                         <Ratings.Widget/>
                         <Ratings.Widget/>
