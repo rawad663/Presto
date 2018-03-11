@@ -66,6 +66,7 @@ const CustomerHomeComponent = props => {
                 <Belt
                     handleLike={props.handleLike}
                     items={selectRestaurantCards(filterRestaurants(props.restaurantList), props.index)}
+                    animation={props.animation}
                 />
             </div>
         </div>

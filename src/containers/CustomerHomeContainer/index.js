@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import CustomerHomeComponent from '../../components/CustomerHomeComponent';
 
-'use strict';
-
 
 
 export default class CustomerHomeContainer extends Component{
@@ -31,7 +29,8 @@ export default class CustomerHomeContainer extends Component{
                     phoneNumber: '5140000000'
                 }
             ],
-            index: 1
+            index: 1,
+            animation: false
         };
 
     }
@@ -88,6 +87,18 @@ export default class CustomerHomeContainer extends Component{
                     name: 'Soggy',
                     address: 'mhgyrttre456tuyhvm',
                     postalCode: 'hhgr56ynb',
+                    phoneNumber: '657657646453'},
+                {
+                    user: {
+                        username: 'gjgjhg@hg.com',
+                        email:'gjgjhg@hg.com',
+                        first_name: 'kjhkjh',
+                        last_name: 'ytrytdfbcx'
+                    },
+                    description: 'lololol',
+                    name: 'Joggy',
+                    address: 'mhgyrttre456tuyhvm',
+                    postalCode: 'hhgr56ynb',
                     phoneNumber: '657657646453'}
             ]
         });
@@ -95,7 +106,7 @@ export default class CustomerHomeContainer extends Component{
 
     handleLike = () => {
         //keep resto card in liked restos
-        this.setState({ index: ++this.state.index })
+        this.setState( { index: ++this.state.index, animation: true}, () => {this.setState({animation: false})} )
     };
 
     handleCustRsvClicked = () => {
@@ -118,6 +129,7 @@ export default class CustomerHomeContainer extends Component{
                     restaurantList = {this.state.items}
                     handleLike = {this.handleLike}
                     index = {this.state.index}
+                    animation = {this.state.animation}
                 />
             </div>
         );

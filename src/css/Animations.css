@@ -1,0 +1,42 @@
+.animateLeft{
+    animation-name: animateLeft;
+    -webkit-animation-name: animateLeft;
+
+    animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+
+    visibility: visible !important;
+}
+
+@keyframes animateLeft {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    50%{
+        transform: translateX(-50%);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0.2;
+    }
+}
+
+ animateLeft {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    50%{
+        transform: translateX(-50%);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0.2;
+    }
+}

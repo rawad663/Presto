@@ -20,7 +20,7 @@ const RestaurantCard = props => {
     };
 
     return (
-        <div id={props.id} style={props.style} className="card">
+        <div id={props.id} style={props.style} className={"card " + props.className}>
             <img style={styles.img} src={buffet} />
             <h3 style={{ ...styles.text, color: purple_main, fontWeight: 60 }}>{props.restaurantName}</h3>
             <div style={styles.infoBlock}>

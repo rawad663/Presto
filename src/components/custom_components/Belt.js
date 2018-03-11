@@ -29,6 +29,7 @@ const Belt = props => {
             <div>
                 <RestaurantCard
                     id="middle-belt-item"
+                    className={props.animation ? 'animateLeft' : null}
                     style={{ margin: 'auto 10px' }}
                     restaurantName={card1.restaurantName}
                     phoneNumber={card1.phoneNumber}
