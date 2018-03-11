@@ -32,12 +32,6 @@ export default class LoginContainer extends Component {
         aPost(routes.login, postData).then(response => {
             const { status, data } = response;
 
-            //TEMPORARY LOGIN
-            if (status === 400) {
-                localStorage.token = data.token;
-                this.props.history.push('/customer')
-            }
-
             if (status === 200) {
                 localStorage.token = data.token;
                 this.props.history.push('/customer')

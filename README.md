@@ -18,6 +18,22 @@ using axios:
 API Post Form Data
 --
 
+Sign Up Form Inputs (Customer & Restaurant):
+
+- First Name
+- Last Name
+- Email
+- Password
+
+Additional Inputs for Restaurant:
+
+- Address
+- Postal Code
+- Restaurant Name
+- Description
+
+Example Post request for Register:
+
 ``` javascript
 // postData for /register/resto/
  
@@ -44,10 +60,23 @@ API Post Form Data
 }
 
 ```
+ 
+Example of a new LikedRestaurant
 ``` javascript
-// Customer Reservations
+// postData for /likedrestaurants/
 const postData = {
-   
+    "restaurant_id": "12",
+    "customer_username": "example@example.com"
+}
+```
+ 
+Example of a new Customer Reservation
+``` javascript
+// postData for /reservation
+const postData = {
+   "customer_username": "example@example.com",
+   "reservation_date": "some date value",
+   "restaurant_id": "5"
 }
 
 ```
