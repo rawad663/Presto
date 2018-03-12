@@ -34,12 +34,6 @@ export default class LoginContainer extends Component {
             console.log(status);
             console.log(data);
 
-            //TEMPORARY LOGIN
-            if (status === 400) {
-                localStorage.token = data.token;
-                this.props.history.push('/customer')
-            }
-
             if (status === 200) {
                 localStorage.token = data.token;
                 localStorage.setItem('id', data.user.id);
