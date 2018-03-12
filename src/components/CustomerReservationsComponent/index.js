@@ -14,12 +14,12 @@ const CustomerReservationsComponent = props => {
         reservations: {
             fontWeight: 'lighter',
             color: purple_main,
-            margin: '80px 30px 0 90px'
+            margin: '40px 30px 0 90px'
         },
         well: {
             minWidth: 300,
             maxWidth: '80%',
-            height: 500,
+            height: 530,
             display: 'flex',
             flexWrap: 'wrap',
             margin: 50,
