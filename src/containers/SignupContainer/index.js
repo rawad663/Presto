@@ -53,21 +53,33 @@ export default class SignupContainer extends Component{
     };
 
     handleSubmit = () => {
-        const { email, firstName, lastName, password, userType } = this.state;
+        const { email, firstName, lastName, password, postalCode, phoneNumber, restaurantName, userType } = this.state;
+
         const postData = {
-            username: email,
-            first_name: firstName,
-            last_name: lastName,
-            email,
-            password
+            user: {
+                username: email,
+                email,
+                first_name: firstName,
+                last_name: lastName,
+                password
+            }
         };
 
-        aPost(routes.register, postData).then(response => {
+        if(userType === 'restaurant') {
+            postData.resto_name = restaurantName;
+            postData.description = 'Hey, welcome to our restaurant!';
+            postData.postalCode = 'h3k0l1';
+            postData.phone_number = '5145776554';
+        }
+
+        console.log(postData);
+
+        aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
             const { status, data } = response;
 
             if (status === 201) {
-                // store token in localStorage to be accessed from different parts of the application
-                localStorage.token = data.token;
+                // store user to localStorage for easy access
+                localStorage.loggedInUser = JSON.stringify(data);
 
                 if (userType === 'customer') {
                     this.props.history.push('/customer');
@@ -79,6 +91,7 @@ export default class SignupContainer extends Component{
             console.log(err);
         });
     };
+
     handleCancel = () => {
         this.props.history.push('/');
     };
@@ -116,6 +129,7 @@ export default class SignupContainer extends Component{
                 phoneNumber = {phoneNumber}
                 userType = {userType}
                 restaurantName = {restaurantName}
+                profileEdit = {false}
                 handleFirstNameChange= {this.handleFirstNameChange}
                 handleLastNameChange= {this.handleLastNameChange}
                 handleEmailChange= {this.handleEmailChange}

@@ -1,47 +1,71 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon } from 'react-bootstrap';
-import { Button } from 'reactstrap';
 
+import SideNav from '../custom_components/SideNav';
 import NavBar from '../custom_components/NavBar';
-import RestaurantCard from '../custom_components/RestaurantCard';
-
-
+import Belt from '../custom_components/Belt';
+import {purple_main} from "../../resources/colors";
 
 const CustomerHomeComponent = props => {
 
+    const items = [
+        { name: 'Home', route: '/customer' },
+        { name: 'Liked Restaurants', route: '/customer/liked' },
+        { name: 'Reservations', route: '/customer/reservations' },
+        { name: 'Profile', route: '/customer/profile' }
+    ];
+
+    const filterRestaurants = list => {
+        return list.map(restaurant => {
+            return {
+                restaurantName: restaurant.name,
+                address: restaurant.address,
+                postalCode: restaurant.postalCode,
+                phoneNumber: restaurant.phoneNumber
+            }
+        });
+    };
+
+    const selectRestaurantCards = (list, index) => {
+        console.log(index);
+        return [ list[index - 1], list[index], list[index + 1] ];
+    };
+
     return (
         <div>
-            <NavBar fullName="Rawad Karam"/>
-            <h2 style={{ margin: '40px auto' }} className="mainTitle"> Nearby Restaurants </h2>
+            <NavBar
+                button1="Liked Restaurants"
+                button2="Reservations"
+                button2Click={props.handleCustRsvClicked}
+                fullName={props.loggedInUser !== null
+                    ? `${props.loggedInUser.user.first_name} ${props.loggedInUser.user.last_name}`
+                    : 'Fustat Fargin'}
+            />
 
-            <div id="card-wrapper">
-                <Button className="circle-button" id="dislike">
-                    <Glyphicon style={{ color: 'white' }} glyph="thumbs-down" />
-                </Button>
+            <SideNav items={items} history={props.history} route={props.route} />
 
-                <RestaurantCard
-                    style={{ alignSelf: 'center' }}
-                    restaurantName="Bob's Burger"
-                    phoneNumber="514-577 5424"
-                    postalCode="H3J0A9"
+            <div style={{ marginLeft: 200, maxWidth: '100%' }}>
+                <h1 style={{ color: purple_main, margin: '80px 90px 80px 90px', fontWeight: 'lighter' }}> Nearby Restaurants </h1>
+                <Belt
+                    handleLike={props.handleLike}
+                    handleDislike={props.handleDislike}
+                    items={selectRestaurantCards(filterRestaurants(props.restaurantList), props.index)}
+                    animation={props.animation}
                 />
-
-                <Button className="circle-button" id="like">
-                    <Glyphicon style={{ color: 'white' }} glyph="thumbs-up" />
-                </Button>
             </div>
+
         </div>
-
-
-
     );
 };
 
 CustomerHomeComponent.propsTypes = {
+    loggedInUser: PropTypes.object,
     handleCustRsvClicked: PropTypes.func,
-    handleSettingsClicked: PropTypes.func
-
+    route: PropTypes.string,
+    history: PropTypes.object,
+    restaurantList: PropTypes.array,
+    handleLike: PropTypes.func,
+    handleDislike: PropTypes.func
 };
 
 export default CustomerHomeComponent;

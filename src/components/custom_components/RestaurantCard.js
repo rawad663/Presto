@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import buffet from '../../resources/images/bar-buffet.jpg';
-import { purple_main } from '../../resources/colors';
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Row, Col} from 'reactstrap';
+import Ratings from 'react-ratings-declarative';
 
 const RestaurantCard = props => {
     const styles = {
+        container:{
+
+        },
         text: {
             marginLeft: 5,
         },
@@ -20,20 +23,47 @@ const RestaurantCard = props => {
     };
 
     return (
-        <div style={props.style} className="card">
-            <img style={styles.img} src={buffet} />
-            <h3 style={{ ...styles.text, color: purple_main, fontWeight: 60 }}>{props.restaurantName}</h3>
-            <div style={styles.infoBlock}>
-                <p className="card-info" style={styles.text}>{props.address}, {props.postalCode}</p>
-                <p className="card-info" style={styles.text}>{props.phoneNumber}</p>
-                <p className="card-info" style={styles.text}>{props.email}</p>
-            </div>
+        <div id={props.id} style={props.style} className={"card-info " + props.className}>
+            <Card>
+                <CardImg width = "100%" src={props.imgUrl} />
+                <CardBody>
+                    <CardTitle className="card-title" style={styles.text}>
+                        {props.restaurantName}
+                    </CardTitle>
+
+                    <Row style={styles.row}>
+                        <Col sm={{ size: 6, offset: 1 }}>
+                            <CardSubtitle className="card-subtitle">
+                                {props.address}
+                            </CardSubtitle>
+
+                        </Col>
+                        <Col sm={{ size: 6, offset: 1 }}>
+                            <CardSubtitle className="card-subtitle">
+                                {props.postalCode}
+                            </CardSubtitle>
+                        </Col>
+                    </Row>
+
+                    <Ratings rating={props.restaurantRating} widgetDimensions="32px">
+                        <Ratings.Widget/>
+                        <Ratings.Widget/>
+                        <Ratings.Widget/>
+                        <Ratings.Widget/>
+                        <Ratings.Widget/>
+                    </Ratings>
+
+                </CardBody>
+            </Card>
         </div>
     )
 };
 
 RestaurantCard.propTypes = {
+    id: PropTypes.string,
+    imgUrl: PropTypes.string,
     restaurantName: PropTypes.string,
+    restaurantRating: PropTypes.number,
     address: PropTypes.string,
     postalCode: PropTypes.string,
     phoneNumber: PropTypes.string,
@@ -42,10 +72,11 @@ RestaurantCard.propTypes = {
 };
 
 RestaurantCard.defaultProps = {
-    restaurantName: 'Restaurant Name',
-    address: '377 Address Street',
-    phoneNumber: '514-452 2345',
-    postalCode: 'H3K4L1',
+    restaurantName: 'Kral Doner',
+    restaurantRating: 3.5,
+    address: 'Susurluk, Balikesir',
+    phoneNumber: '+90-266-862-2615',
+    postalCode: '10600',
     email: 'example@example.com',
     style: {}
 };

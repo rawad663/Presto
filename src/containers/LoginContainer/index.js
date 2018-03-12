@@ -31,15 +31,12 @@ export default class LoginContainer extends Component {
 
         aPost(routes.login, postData).then(response => {
             const { status, data } = response;
-
-            //TEMPORARY LOGIN
-            if (status === 400) {
-                localStorage.token = data.token;
-                this.props.history.push('/customer')
-            }
+            console.log(status);
+            console.log(data);
 
             if (status === 200) {
                 localStorage.token = data.token;
+                localStorage.loggedInUser = JSON.stringify({ user: data.user });
                 this.props.history.push('/customer')
             }
         }).catch(err => {

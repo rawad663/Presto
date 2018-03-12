@@ -26,10 +26,17 @@ const SignupComponent = props => {
 
     return (
         <div>
-            <div style={styles.title}>
-                <h1 className="mainTitle">Sign Up to <span style={{ color: purple_main }}>Presto</span></h1>
-                <h3 className="mainTitle">Attention foodies: try not to stay up all night on this!</h3>
-            </div>
+            {props.profileEdit ? (
+                <div style={styles.title}>
+                    <h1 className="mainTitle">Edit <span style={{ color: purple_main }}>Profile</span></h1>
+                </div>
+            ) : (
+                <div style={styles.title}>
+                    <h1 className="mainTitle">Sign Up to <span style={{ color: purple_main }}>Presto</span></h1>
+                    <h3 className="mainTitle">Attention foodies: try not to stay up all night on this!</h3>
+                </div>
+            )
+            }
 
             <Well style={styles.well}  bsSize="large">
                 <FormGroup>
@@ -130,22 +137,43 @@ const SignupComponent = props => {
                             />
                         </Col>
                     </Row>
-
-                    <div style={{ display: 'flex' }}>
-                        <Button
-                            onClick={props.handleSubmit}
-                            style={{ ...styles.signUp, width: 150 }}
-                            type="submit"
-                        >
-                            Sign Up
-                        </Button>
-                        <Button
-                            onClick={props.handleCancel}
-                            style={{ marginLeft: 8 }}
-                        >
-                            Cancel
-                        </Button>
+                    <div>
+                        {props.profileEdit}
                     </div>
+                    {props.profileEdit ? (
+                        <div style={{ display: 'flex' }}>
+                            <Button
+                                onClick={props.handleSubmit}
+                                style={{ ...styles.signUp, width: 150 }}
+                                type="submit"
+                            >
+                                Submit Changes
+                            </Button>
+                            <Button
+                                onClick={props.handleCancel}
+                                style={{ marginLeft: 8 }}
+                            >
+                                Cancel
+                            </Button>
+                        </div>
+                    ) : (
+                        <div style={{ display: 'flex' }}>
+                            <Button
+                                onClick={props.handleSubmit}
+                                style={{ ...styles.signUp, width: 150 }}
+                                type="submit"
+                            >
+                                Sign Up
+                            </Button>
+                            <Button
+                                onClick={props.handleCancel}
+                                style={{ marginLeft: 8 }}
+                            >
+                                Cancel
+                            </Button>
+                        </div>
+                    )
+                    }
 
                 </FormGroup>
             </Well>
@@ -162,6 +190,7 @@ SignupComponent.propsTypes = {
     address: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
     userType: PropTypes.string.isRequired,
+    profileEdit: PropTypes.bool.isRequired,
     phoneNumber: phoneNumberPropType.isRequired,
     handleFirstNameChange: PropTypes.func,
     handleLastNameChange: PropTypes.func,
