@@ -68,9 +68,11 @@ export default class SignupContainer extends Component{
         if(userType === 'restaurant') {
             postData.resto_name = restaurantName;
             postData.description = 'Hey, welcome to our restaurant!';
-            postData.postalCode = postalCode;
-            postData.phoneNumber = phoneNumber;
+            postData.postalCode = 'h3k0l1';
+            postData.phone_number = '5145776554';
         }
+
+        console.log(postData);
 
         aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
             const { status, data } = response;
