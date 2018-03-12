@@ -10,9 +10,9 @@ const CustomerHomeComponent = props => {
 
     const items = [
         { name: 'Home', route: '/customer' },
-        { name: 'Liked Restaurants', route: '/liked-restaurants' },
-        { name: 'Reservations', route: '/customer-reservations' },
-        { name: 'Profile', route: '/customer-profile' }
+        { name: 'Liked Restaurants', route: '/customer/liked' },
+        { name: 'Reservations', route: '/customer/reservations' },
+        { name: 'Profile', route: '/customer/profile' }
     ];
 
     const filterRestaurants = list => {

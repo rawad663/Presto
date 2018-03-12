@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import CustomerHomeContainer from './containers/CustomerHomeContainer';
 import LoginContainer from './containers/LoginContainer';
 import CustomerReservationsContainer from './containers/CustomerReservationsContainer';
+import LikedRestaurantsContainer from './containers/LikedRestaurantsContainer';
 import RestaurantProfileContainer from './containers/RestaurantProfileContainer';
 import SettingsContainer from './containers/SettingsContainer';
 import SignupContainer from "./containers/SignupContainer";
@@ -19,8 +20,9 @@ class App extends Component {
          <div>
              <Route exact path="/" component={LoginContainer} />
              <Route path="/signup" component={SignupContainer} />
-             <Route path="/customer" component={CustomerHomeContainer} />
-             <Route path="/customer-reservations" component={CustomerReservationsContainer} />
+             <Route exact path="/customer" component={CustomerHomeContainer} />
+             <Route path="/customer/reservations" component={CustomerReservationsContainer} />
+             <Route path="/customer/liked" component={LikedRestaurantsContainer} />
              <Route path="/restaurant/profile" component={RestaurantProfileContainer} />
              <Route path="/settings" component={SettingsContainer} />
          </div>
