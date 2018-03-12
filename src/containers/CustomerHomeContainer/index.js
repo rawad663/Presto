@@ -110,7 +110,6 @@ export default class CustomerHomeContainer extends Component{
     };
 
     handleDislike = () => {
-        //keep resto card in liked restos
         this.setState( { index: ++this.state.index, animation: true} );
     };
 
@@ -128,7 +127,7 @@ export default class CustomerHomeContainer extends Component{
                     handleCustRsvClicked = {this.handleCustRsvClicked}
                     restaurantList = {this.state.items}
                     handleLike = {this.handleLike}
-                    handleDislike = {this.handleDislike()}
+                    handleDislike = {this.handleDislike}
                     index = {this.state.index}
                     animation = {this.state.animation}
                 />

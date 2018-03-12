@@ -15,27 +15,6 @@ const CustomerHomeComponent = props => {
         { name: 'Profile', route: '/customer-profile' }
     ];
 
-    const beltItems = [
-        {
-            restaurantName: 'Resto1',
-            address: 'restoaddress1',
-            postalCode: 'restocode1',
-            phoneNumber: '5140000000'
-        },
-        {
-            restaurantName: 'Resto2',
-            address: 'restoaddress2',
-            postalCode: 'restocode2',
-            phoneNumber: '5140000000'
-        },
-        {
-            restaurantName: 'Resto3',
-            address: 'restoaddress3',
-            postalCode: 'restocode3',
-            phoneNumber: '5140000000'
-        }
-    ];
-
     const filterRestaurants = list => {
         return list.map(restaurant => {
             return {
