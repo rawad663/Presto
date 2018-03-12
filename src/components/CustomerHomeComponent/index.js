@@ -69,6 +69,7 @@ const CustomerHomeComponent = props => {
                 <h1 style={{ color: purple_main, margin: '80px 90px 80px 90px', fontWeight: 'lighter' }}> Nearby Restaurants </h1>
                 <Belt
                     handleLike={props.handleLike}
+                    handleDislike={props.handleDislike}
                     items={selectRestaurantCards(filterRestaurants(props.restaurantList), props.index)}
                     animation={props.animation}
                 />
@@ -84,7 +85,8 @@ CustomerHomeComponent.propsTypes = {
     route: PropTypes.string,
     history: PropTypes.object,
     restaurantList: PropTypes.array,
-    handleLike: PropTypes.func
+    handleLike: PropTypes.func,
+    handleDislike: PropTypes.func
 };
 
 export default CustomerHomeComponent;

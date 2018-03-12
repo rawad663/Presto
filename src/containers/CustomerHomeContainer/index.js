@@ -42,13 +42,26 @@ export default class CustomerHomeContainer extends Component{
                     user: {
                         username: 'gjgjhg@hg.com',
                         email:'gjgjhg@hg.com',
-                        first_name: 'kjhkjh',
+                        first_name: '988 Greene av.',
                         last_name: 'ytrytdfbcx'
                     },
                     description: 'lololol',
-                    name: 'Bobby',
-                    address: 'mhgyrttre456tuyhvm',
-                    postalCode: 'hhgr56ynb',
+                    name: 'French Cuisine',
+                    address: '5600 Waldorf',
+                    postalCode: 'K7L8E3',
+                    phoneNumber: '657657646453'
+                },
+                {
+                    user: {
+                        username: 'gjgjhg@hg.com',
+                        email:'gjgjhg@hg.com',
+                        first_name: '34 Lucerne',
+                        last_name: 'ytrytdfbcx'
+                    },
+                    description: 'lololol',
+                    name: 'Pasta Bar',
+                    address: '1247 Beauregard',
+                    postalCode: 'H3B4J6',
                     phoneNumber: '657657646453'
                 },
                 {
@@ -59,22 +72,9 @@ export default class CustomerHomeContainer extends Component{
                         last_name: 'ytrytdfbcx'
                     },
                     description: 'lololol',
-                    name: 'Tommy',
-                    address: 'mhgyrttre456tuyhvm',
-                    postalCode: 'hhgr56ynb',
-                    phoneNumber: '657657646453'
-                },
-                {
-                    user: {
-                        username: 'gjgjhg@hg.com',
-                        email:'gjgjhg@hg.com',
-                        first_name: 'kjhkjh',
-                        last_name: 'ytrytdfbcx'
-                    },
-                    description: 'lololol',
-                    name: 'Froggy',
-                    address: 'mhgyrttre456tuyhvm',
-                    postalCode: 'hhgr56ynb',
+                    name: 'Gentile',
+                    address: '9299 Park Ave',
+                    postalCode: 'H2N2A2',
                     phoneNumber: '657657646453'},
                 {
                     user: {
@@ -84,9 +84,9 @@ export default class CustomerHomeContainer extends Component{
                         last_name: 'ytrytdfbcx'
                     },
                     description: 'lololol',
-                    name: 'Soggy',
-                    address: 'mhgyrttre456tuyhvm',
-                    postalCode: 'hhgr56ynb',
+                    name: 'Mercury',
+                    address: '555 Gordon st.',
+                    postalCode: 'J7G0P0',
                     phoneNumber: '657657646453'},
                 {
                     user: {
@@ -96,9 +96,9 @@ export default class CustomerHomeContainer extends Component{
                         last_name: 'ytrytdfbcx'
                     },
                     description: 'lololol',
-                    name: 'Joggy',
-                    address: 'mhgyrttre456tuyhvm',
-                    postalCode: 'hhgr56ynb',
+                    name: 'Amir',
+                    address: '432 Bertrand st.',
+                    postalCode: 'J1JE5F6',
                     phoneNumber: '657657646453'}
             ]
         });
@@ -106,7 +106,12 @@ export default class CustomerHomeContainer extends Component{
 
     handleLike = () => {
         //keep resto card in liked restos
-        this.setState( { index: ++this.state.index, animation: true}, () => {this.setState({animation: false})} )
+        this.setState( { index: ++this.state.index, animation: true} );
+    };
+
+    handleDislike = () => {
+        //keep resto card in liked restos
+        this.setState( { index: ++this.state.index, animation: true} );
     };
 
     handleCustRsvClicked = () => {
@@ -123,6 +128,7 @@ export default class CustomerHomeContainer extends Component{
                     handleCustRsvClicked = {this.handleCustRsvClicked}
                     restaurantList = {this.state.items}
                     handleLike = {this.handleLike}
+                    handleDislike = {this.handleDislike()}
                     index = {this.state.index}
                     animation = {this.state.animation}
                 />

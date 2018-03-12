@@ -45,7 +45,7 @@ const Belt = props => {
                     imgUrl={turkishFood}
                 />
                 <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
-                    <Button className="circle-button" id="dislike">
+                    <Button onClick={props.handleDislike} className="circle-button" id="dislike">
                         <Glyphicon style={{ color: 'white' }} glyph="thumbs-down" />
                     </Button>
                     <Button onClick={props.handleLike} className="circle-button" id="like">
@@ -70,7 +70,8 @@ const Belt = props => {
 };
 
 Belt.propTypes = {
-    handleLike: PropTypes.func
+    handleLike: PropTypes.func,
+    handleDislike: PropTypes.func
 };
 
 export default Belt;
