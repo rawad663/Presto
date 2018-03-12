@@ -8,9 +8,11 @@ import LikedRestaurantsContainer from './containers/LikedRestaurantsContainer';
 import RestaurantProfileContainer from './containers/RestaurantProfileContainer';
 import SettingsContainer from './containers/SettingsContainer';
 import SignupContainer from "./containers/SignupContainer";
+import ProfileEditContainer from "./containers/ProfileEditContainer";
 
 import './css/App.css';
 import './css/Animations.css';
+
 
 class App extends Component {
 
@@ -25,6 +27,7 @@ class App extends Component {
              <Route path="/customer/liked" component={LikedRestaurantsContainer} />
              <Route path="/restaurant/profile" component={RestaurantProfileContainer} />
              <Route path="/settings" component={SettingsContainer} />
+             <Route path="/customer-profile" component={ProfileEditContainer} />
          </div>
       );
   }
