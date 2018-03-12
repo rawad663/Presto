@@ -15,6 +15,22 @@ const CustomerHomeComponent = props => {
         { name: 'Profile', route: '/customer-profile' }
     ];
 
+    const filterRestaurants = list => {
+        return list.map(restaurant => {
+            return {
+                restaurantName: restaurant.name,
+                address: restaurant.address,
+                postalCode: restaurant.postalCode,
+                phoneNumber: restaurant.phoneNumber
+            }
+        });
+    };
+
+    const selectRestaurantCards = (list, index) => {
+        console.log(index);
+        return [ list[index - 1], list[index], list[index + 1] ];
+    };
+
     return (
         <div>
             <NavBar
@@ -30,7 +46,12 @@ const CustomerHomeComponent = props => {
 
             <div style={{ marginLeft: 200, maxWidth: '100%' }}>
                 <h1 style={{ color: purple_main, margin: '80px 90px 80px 90px', fontWeight: 'lighter' }}> Nearby Restaurants </h1>
-                <Belt />
+                <Belt
+                    handleLike={props.handleLike}
+                    handleDislike={props.handleDislike}
+                    items={selectRestaurantCards(filterRestaurants(props.restaurantList), props.index)}
+                    animation={props.animation}
+                />
             </div>
 
         </div>
@@ -41,8 +62,10 @@ CustomerHomeComponent.propsTypes = {
     loggedInUser: PropTypes.object,
     handleCustRsvClicked: PropTypes.func,
     route: PropTypes.string,
-    history: PropTypes.object
-
+    history: PropTypes.object,
+    restaurantList: PropTypes.array,
+    handleLike: PropTypes.func,
+    handleDislike: PropTypes.func
 };
 
 export default CustomerHomeComponent;

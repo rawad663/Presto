@@ -1,0 +1,34 @@
+.animateLeft{
+    animation-name: animateLeft;
+    -webkit-animation-name: animateLeft;
+
+    animation-duration: 0.8s;
+    -webkit-animation-duration: 0.8s;
+
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+
+    visibility: visible !important;
+}
+
+@keyframes animateLeft {
+    0% {
+        transform: translateX(100%);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes animateLeft {
+    0% {
+        transform: translateX(100%);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
