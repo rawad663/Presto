@@ -31,6 +31,8 @@ export default class LoginContainer extends Component {
 
         aPost(routes.login, postData).then(response => {
             const { status, data } = response;
+            console.log(status);
+            console.log(data);
 
             //TEMPORARY LOGIN
             if (status === 400) {
@@ -40,6 +42,7 @@ export default class LoginContainer extends Component {
 
             if (status === 200) {
                 localStorage.token = data.token;
+                localStorage.setItem('id', data.user.id);
                 this.props.history.push('/customer')
             }
         }).catch(err => {

@@ -12,6 +12,9 @@ export default class CustomerHomeContainer extends Component{
 
     }
 
+    handleProfileClicked = () => {
+        this.props.history.push('/customer-profile')
+    }
 
     handleCustRsvClicked = () => {
         // TODO: ONE OF THESE ADDRESSES NEED TO BE CHANGED? (handleCustRsvClicked & handleRestoRsvClicked)
@@ -30,6 +33,7 @@ export default class CustomerHomeContainer extends Component{
                     route={this.props.location.pathname}
                     handleCustRsvClicked = {this.handleCustRsvClicked}
                     handleSettingsClicked = {this.handleSettingsClicked}
+                    handleProfileClicked = {this.handleProfileClicked}
                 />
             </div>
         );
