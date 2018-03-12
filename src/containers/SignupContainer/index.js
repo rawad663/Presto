@@ -131,6 +131,7 @@ export default class SignupContainer extends Component{
                 phoneNumber = {phoneNumber}
                 userType = {userType}
                 restaurantName = {restaurantName}
+                profileEdit = {false}
                 handleFirstNameChange= {this.handleFirstNameChange}
                 handleLastNameChange= {this.handleLastNameChange}
                 handleEmailChange= {this.handleEmailChange}

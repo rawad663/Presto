@@ -53,49 +53,54 @@ export default class ProfileEditContainer extends Component{
     };
 
     handleSubmit = () => {
-        const { email, firstName, lastName, password, userType, restaurantName } = this.state;
-        let postData = {
-            username: email,
-            email,
-            first_name: firstName,
-            last_name: lastName,
-            password
-        };
 
-        if(userType === 'restaurant') {
-            postData = {
-                user: {
-                    username: email,
-                    email,
-                    first_name: firstName,
-                    last_name: lastName,
-                    password
-                },
-                name: restaurantName,
-                description: 'Restaurant Description'
-            };
-        }
+        console.log(localStorage.getItem('id')); //returns the id of the customer, need to make call to api with this id
+        this.props.history.push('/customer');
 
-        aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
-            const { status, data } = response;
-
-            if (status === 201) {
-                // store user to localStorage for easy access
-                localStorage.loggedInUser = data;
-
-                if (userType === 'customer') {
-                    this.props.history.push('/customer');
-                } else if (userType === 'restaurant') {
-                    this.props.history.push('/restaurant');
-                }
-            }
-        }).catch(err => {
-            console.log(err);
-        });
+        //TODO: NEED TO UPDATE THE STUFF GIVEN THE USER BY DOING
+        // const { email, firstName, lastName, password, userType, restaurantName } = this.state;
+        // let postData = {
+        //     username: email,
+        //     email,
+        //     first_name: firstName,
+        //     last_name: lastName,
+        //     password
+        // };
+        //
+        // if(userType === 'restaurant') {
+        //     postData = {
+        //         user: {
+        //             username: email,
+        //             email,
+        //             first_name: firstName,
+        //             last_name: lastName,
+        //             password
+        //         },
+        //         name: restaurantName,
+        //         description: 'Restaurant Description'
+        //     };
+        // }
+        //
+        // aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
+        //     const { status, data } = response;
+        //
+        //     if (status === 201) {
+        //         // store user to localStorage for easy access
+        //         localStorage.loggedInUser = data;
+        //
+        //         if (userType === 'customer') {
+        //             this.props.history.push('/customer');
+        //         } else if (userType === 'restaurant') {
+        //             this.props.history.push('/restaurant');
+        //         }
+        //     }
+        // }).catch(err => {
+        //     console.log(err);
+        // });
     };
 
     handleCancel = () => {
-        this.props.history.push('/');
+        this.props.history.push('/customer');
     };
 
 
@@ -131,6 +136,7 @@ export default class ProfileEditContainer extends Component{
                     phoneNumber = {phoneNumber}
                     userType = {userType}
                     restaurantName = {restaurantName}
+                    profileEdit = {true}
                     handleFirstNameChange= {this.handleFirstNameChange}
                     handleLastNameChange= {this.handleLastNameChange}
                     handleEmailChange= {this.handleEmailChange}
