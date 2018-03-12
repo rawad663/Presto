@@ -15,6 +15,8 @@ const Belt = props => {
     // const card1 = props.items[1];
     // const card2 = props.items[2];
 
+    const removeNull = arr => arr.filter(item => item!==null);
+
     const renderOneCard = (card1) => {
         return (
             <div style={{maxWidth:'30%'}}>
