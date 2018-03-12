@@ -117,7 +117,7 @@ export default class CustomerHomeContainer extends Component{
         return(
             <div>
                 <CustomerHomeComponent
-                    loggedInUser={localStorage.loggedInUser !== null && JSON.parse(localStorage.loggedInUser)}
+                    loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}
                     history={this.props.history}
                     route={this.props.location.pathname}
                     handleCustRsvClicked = {this.handleCustRsvClicked}

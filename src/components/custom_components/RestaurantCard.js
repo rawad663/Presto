@@ -23,7 +23,7 @@ const RestaurantCard = props => {
     };
 
     return (
-        <div id={props.id} style={props.style} className="card-info " + props.className>
+        <div id={props.id} style={props.style} className={"card-info " + props.className}>
             <Card>
                 <CardImg width = "100%" src={props.imgUrl} />
                 <CardBody>
