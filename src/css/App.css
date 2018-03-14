@@ -22,6 +22,7 @@ html, body, #root, #root>div {
   min-width: 63px;
   min-height: 63px;
   border-radius: 50%;
+  border: 2px solid #607D8B;
   outline: none !important;
 }
 
@@ -39,23 +40,23 @@ html, body, #root, #root>div {
 #dislike {
   margin-left: 18%;
   margin-right: 30px;
-  background-color: #F44336;
+  background-color: #FF1744;
   align-self: center;
 }
 
 #dislike:active {
-  background-color: #D32F2F;
+  background-color: #D50000;
 }
 
 #like {
   margin-left: 30px;
   margin-right: 18%;
-  background-color: #4CAF50;
+  background-color: #00E676;
   align-self: center;
 }
 
 #like:active {
-  background-color: #388E3C;
+  background-color: #00C853;
 }
 
 @media (max-width: 900px) {

@@ -68,7 +68,7 @@ export default class SignupContainer extends Component{
         if(userType === 'restaurant') {
             postData.resto_name = restaurantName;
             postData.description = 'Hey, welcome to our restaurant!';
-            postData.postalCode = 'h3k0l1';
+            postData.postal_code = 'h3k0l1';
             postData.phone_number = '5145776554';
         }
 
