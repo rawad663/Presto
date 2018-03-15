@@ -54,10 +54,10 @@ Form Input Fields
 
 **Additional Fields for Restaurant:**
 
-- Restaurant Name
-- Description
-- Address
-- Postal Code
+- Restaurant Name: _String_
+- Description: _String_
+- Address: _String_
+- Postal Code: _String_
 - Cover Image (_coming soon..._)
  
   
