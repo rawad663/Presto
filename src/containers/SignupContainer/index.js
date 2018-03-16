@@ -17,7 +17,8 @@ export default class SignupContainer extends Component{
             postalCode:'',
             phoneNumber:'',
             userType: '',
-            restaurantName: ''
+            restaurantName: '',
+            description:''
         };
     }
 
@@ -54,10 +55,9 @@ export default class SignupContainer extends Component{
         this.setState({userType: e.target.value})
     };
 
-
-handleDescriptionChange = e => {
-    this.setState({userType: e.target.value})
-};
+    handleDescriptionChange = e => {
+        this.setState({description: e.target.value})
+    };
 
 
 handleSubmit = () => {
@@ -121,7 +121,8 @@ handleSubmit = () => {
             postalCode,
             phoneNumber,
             userType,
-            restaurantName
+            restaurantName,
+            description
         } = this.state;
 
         return(
@@ -137,6 +138,7 @@ handleSubmit = () => {
                 phoneNumber = {phoneNumber}
                 userType = {userType}
                 restaurantName = {restaurantName}
+                description = {description}
                 profileEdit = {false}
                 handleFirstNameChange= {this.handleFirstNameChange}
                 handleLastNameChange= {this.handleLastNameChange}
@@ -151,6 +153,7 @@ handleSubmit = () => {
                 handleUserTypeChange = {this.handleUserTypeChange}
                 validationState={this.getValidationState}
                 handleRestaurantNameChange = {this.handleRestaurantNameChange}
+                handleDescriptionChange = {this.handleDescriptionChange}
               />;
           </div>
         );
