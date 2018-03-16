@@ -9,7 +9,7 @@ export default class LikedRestaurantsContainer extends Component {
         super(props);
 
         this.state = {
-            restaurants: ['hello', 'world']
+            restaurants: []
         }
     }
 
@@ -28,7 +28,12 @@ export default class LikedRestaurantsContainer extends Component {
     render() {
 
         return(
-            <LikedRestaurantsComponent history={this.props.history} restaurants={this.state.restaurants} />
+            <LikedRestaurantsComponent
+                route={this.props.location.pathname}
+                history={this.props.history}
+                restaurants={this.state.restaurants}
+                loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}
+            />
         );
     }
 }
