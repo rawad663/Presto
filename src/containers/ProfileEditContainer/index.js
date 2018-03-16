@@ -20,6 +20,12 @@ export default class ProfileEditContainer extends Component{
             restaurantName: ''
         };
     }
+    componentDidMount(){
+        const loggedInUser = JSON.parse(localStorage.loggedInUser)
+        this.setState (
+            console.log(loggedInUser.user.first_name)
+        );
+    }
 
     handleFirstNameChange = e => {
         this.setState({firstName: e.target.value})
