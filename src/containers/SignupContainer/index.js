@@ -36,6 +36,7 @@ export default class SignupContainer extends Component{
     handlePassword2Change = e => {
         this.setState({password2: e.target.value})
     };
+
     handleAddressChange = e => {
         this.setState({address: e.target.value})
     };
@@ -45,6 +46,7 @@ export default class SignupContainer extends Component{
     handlePhoneNumberChange = e => {
         this.setState({phoneNumber: e.target.value})
     };
+
     handleRestaurantNameChange = e => {
         this.setState({ restaurantName: e.target.value })
     };
@@ -52,7 +54,13 @@ export default class SignupContainer extends Component{
         this.setState({userType: e.target.value})
     };
 
-    handleSubmit = () => {
+
+handleDescriptionChange = e => {
+    this.setState({userType: e.target.value})
+};
+
+
+handleSubmit = () => {
         const { email, firstName, lastName, password, postalCode, phoneNumber, restaurantName, userType } = this.state;
 
         const postData = {
