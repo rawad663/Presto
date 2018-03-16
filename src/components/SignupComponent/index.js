@@ -15,7 +15,8 @@ const SignupComponent = props => {
             margin: '4% 20%'
         },
         row: {
-            marginBottom: 10
+            marginBottom: 10,
+
         },
         signUp: {
             backgroundColor: purple_main,
@@ -26,17 +27,15 @@ const SignupComponent = props => {
 
     return (
         <div>
-            {props.profileEdit ? (
-                <div style={styles.title}>
-                    <h1 className="mainTitle">Edit <span style={{ color: purple_main }}>Profile</span></h1>
-                </div>
-            ) : (
-                <div style={styles.title}>
-                    <h1 className="mainTitle">Sign Up to <span style={{ color: purple_main }}>Presto</span></h1>
-                    <h3 className="mainTitle">Attention foodies: try not to stay up all night on this!</h3>
-                </div>
-            )
-            }
+            <div style={styles.title}>
+            {props.profileEdit
+                ? <h1 className="mainTitle">Edit <span style={{ color: purple_main }}>Profile</span></h1>
+                : <div>
+                        <h1 className="mainTitle">Sign Up to <span style={{ color: purple_main }}>Presto</span></h1>
+                        <h3 className="mainTitle">Attention foodies: try not to stay up all night on this!</h3>
+                    </div>
+                }
+            </div>
 
             <Well style={styles.well}  bsSize="large">
                 <FormGroup>
@@ -102,17 +101,67 @@ const SignupComponent = props => {
                         </Col>
                     </Row>
 
+
                     {props.userType === 'restaurant'
                     &&
+
+
                     <div style={styles.row}>
-                        <Label for="confirmPassword">Restaurant Name</Label>
-                        <Input
+
+                        <Row style={styles.row}>
+                        <Col sm={{size:6, offset :1}} >
+                            <Label for="restaurantName">Restaurant Name</Label>
+                            <Input
+                                type="text"
+                                name="restaurantName"
+                                value={props.restaurantName}
+                                placeholder="Ex: Bob's Burger"
+                                onChange={props.handleRestaurantNameChange}
+                            />
+                        </Col>
+                        <Col sm={{size:6, offset :1}} >
+                            <Label for="PhoneNumber">Phone Number</Label>
+                            <Input
+                                type="number"
+                                name="phoneNumber"
+                                maxlength="10"
+                                value={props.phoneNumber}
+                                placeholder="Ex: 514-874-2479"
+                                onChange={props.handlePhoneNumberChange}
+                            />
+                        </Col>
+                        </Row>
+
+                        <Col>
+                        <Label for="Address">Address</Label>
+                            <Input
                             type="text"
-                            name="restaurantName"
-                            value={props.restaurantName}
-                            placeholder="Ex: Bob's Burger"
-                            onChange={props.handleRestaurantNameChange}
+                            name="address"
+                            value={props.address}
+                            placeholder="Ex: 3454 Park Ave"
+                            onChange={props.handleAddressChange}
                         />
+                        </Col>
+
+                        <Col>
+                            <Label for = "Description">  Description </Label>
+                            <br/>
+                            <textarea
+                                type = "text"
+                                name = "description"
+                                value = {props.description}
+                                placeholder = "Tell me about you restaurant"
+                                onChange = {props.handleDescriptionChange}
+                                rows="4"
+                                cols="100"
+                                multiline ={true}
+                                style={{resize: "none"}}
+                            />
+
+
+                        </Col>
+
+
                     </div>}
 
                     <Row style={styles.row}>
@@ -126,6 +175,7 @@ const SignupComponent = props => {
                                 onChange={props.handlePasswordChange}
                             />
                         </Col>
+
                         <Col sm={{ size: 6, offset: 1 }}>
                             <Label for="confirmPassword">Confirm Password</Label>
                             <Input
@@ -140,40 +190,31 @@ const SignupComponent = props => {
                     <div>
                         {props.profileEdit}
                     </div>
-                    {props.profileEdit ? (
-                        <div style={{ display: 'flex' }}>
-                            <Button
-                                onClick={props.handleSubmit}
-                                style={{ ...styles.signUp, width: 150 }}
-                                type="submit"
+
+                    <div style={{ display: 'flex' }}>
+                    {props.profileEdit
+                        ? <Button
+                            onClick={props.handleSubmit}
+                            style={{ ...styles.signUp, width: 150 }}
+                            type="submit"
                             >
                                 Submit Changes
-                            </Button>
-                            <Button
-                                onClick={props.handleCancel}
-                                style={{ marginLeft: 8 }}
-                            >
-                                Cancel
-                            </Button>
-                        </div>
-                    ) : (
-                        <div style={{ display: 'flex' }}>
-                            <Button
-                                onClick={props.handleSubmit}
-                                style={{ ...styles.signUp, width: 150 }}
-                                type="submit"
+                        </Button>
+                        : <Button
+                            onClick={props.handleSubmit}
+                            style={{ ...styles.signUp, width: 150 }}
+                            type="submit"
                             >
                                 Sign Up
-                            </Button>
-                            <Button
-                                onClick={props.handleCancel}
-                                style={{ marginLeft: 8 }}
-                            >
-                                Cancel
-                            </Button>
-                        </div>
-                    )
+                        </Button>
                     }
+                        <Button
+                            onClick={props.handleCancel}
+                            style={{ marginLeft: 8 }}
+                        >
+                            Cancel
+                        </Button>
+                    </div>
 
                 </FormGroup>
             </Well>
@@ -187,18 +228,22 @@ SignupComponent.propsTypes = {
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     password2: PropTypes.string.isRequired,
+
     address: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
+    phoneNumber: phoneNumberPropType.isRequired,
+    description: PropTypes.string.isRequired,
+    handleAddressChange: PropTypes.func,
+    handlePostalCodeChange: PropTypes.func,
+    handlePhoneNumberChange: PropTypes.func,
+    handleDescriptionChange: PropTypes.func,
+
     userType: PropTypes.string.isRequired,
     profileEdit: PropTypes.bool.isRequired,
-    phoneNumber: phoneNumberPropType.isRequired,
     handleFirstNameChange: PropTypes.func,
     handleLastNameChange: PropTypes.func,
     handleEmailChange: PropTypes.func,
     handlePasswordChange: PropTypes.func,
-    handleAddressChange: PropTypes.func,
-    handlePostalCodeChange: PropTypes.func,
-    handlePhoneNumberChange: PropTypes.func,
     handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
     handleUserTypeChange: PropTypes.func,

@@ -9,7 +9,7 @@ export default class LikedRestaurantsContainer extends Component {
         super(props);
 
         this.state = {
-            restaurants: []
+            restaurants: ['hello', 'world']
         }
     }
 

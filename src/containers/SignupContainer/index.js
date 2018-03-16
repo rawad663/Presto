@@ -17,7 +17,8 @@ export default class SignupContainer extends Component{
             postalCode:'',
             phoneNumber:'',
             userType: '',
-            restaurantName: ''
+            restaurantName: '',
+            description:''
         };
     }
 
@@ -36,6 +37,7 @@ export default class SignupContainer extends Component{
     handlePassword2Change = e => {
         this.setState({password2: e.target.value})
     };
+
     handleAddressChange = e => {
         this.setState({address: e.target.value})
     };
@@ -45,6 +47,7 @@ export default class SignupContainer extends Component{
     handlePhoneNumberChange = e => {
         this.setState({phoneNumber: e.target.value})
     };
+
     handleRestaurantNameChange = e => {
         this.setState({ restaurantName: e.target.value })
     };
@@ -52,7 +55,12 @@ export default class SignupContainer extends Component{
         this.setState({userType: e.target.value})
     };
 
-    handleSubmit = () => {
+    handleDescriptionChange = e => {
+        this.setState({description: e.target.value})
+    };
+
+
+handleSubmit = () => {
         const { email, firstName, lastName, password, postalCode, phoneNumber, restaurantName, userType } = this.state;
 
         const postData = {
@@ -68,7 +76,7 @@ export default class SignupContainer extends Component{
         if(userType === 'restaurant') {
             postData.resto_name = restaurantName;
             postData.description = 'Hey, welcome to our restaurant!';
-            postData.postalCode = 'h3k0l1';
+            postData.postal_code = 'h3k0l1';
             postData.phone_number = '5145776554';
         }
 
@@ -113,7 +121,8 @@ export default class SignupContainer extends Component{
             postalCode,
             phoneNumber,
             userType,
-            restaurantName
+            restaurantName,
+            description
         } = this.state;
 
         return(
@@ -129,6 +138,7 @@ export default class SignupContainer extends Component{
                 phoneNumber = {phoneNumber}
                 userType = {userType}
                 restaurantName = {restaurantName}
+                description = {description}
                 profileEdit = {false}
                 handleFirstNameChange= {this.handleFirstNameChange}
                 handleLastNameChange= {this.handleLastNameChange}
@@ -143,6 +153,7 @@ export default class SignupContainer extends Component{
                 handleUserTypeChange = {this.handleUserTypeChange}
                 validationState={this.getValidationState}
                 handleRestaurantNameChange = {this.handleRestaurantNameChange}
+                handleDescriptionChange = {this.handleDescriptionChange}
               />;
           </div>
         );

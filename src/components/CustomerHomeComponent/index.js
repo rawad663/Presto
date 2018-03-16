@@ -27,8 +27,19 @@ const CustomerHomeComponent = props => {
     };
 
     const selectRestaurantCards = (list, index) => {
-        console.log(index);
-        return [ list[index - 1], list[index], list[index + 1] ];
+        const buildArray = () => {
+            if (index === 0) {
+                return [ list[index], list[index + 1] ]
+            } else if ( index === list.length - 2 || index === list.length - 1) {
+                return [ list[index] ]
+            } else if (index > list.length - 1) {
+                return [];
+            }
+
+            return [ list[index - 1], list[index], list[index + 1] ];
+        };
+
+        return buildArray().filter(item => item !== null);
     };
 
     return (
