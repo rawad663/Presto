@@ -15,8 +15,7 @@ const SignupComponent = props => {
             margin: '4% 20%'
         },
         row: {
-            marginBottom: 10,
-
+            marginBottom: 10
         },
         signUp: {
             backgroundColor: purple_main,
@@ -74,8 +73,8 @@ const SignupComponent = props => {
                                 onChange={props.handleEmailChange}
                             />
                         </Col>
+        
                         <Col sm={{ size: 6, offset: 1 }}>
-
                             <FormGroup tag="fieldset" column={"true"}>
                                 <Label for="userType"> User Type </Label>
                                 <Row >
@@ -97,39 +96,36 @@ const SignupComponent = props => {
                                     </Col>
                                 </Row>
                             </FormGroup>
-
                         </Col>
                     </Row>
 
 
                     {props.userType === 'restaurant'
                     &&
-
-
                     <div style={styles.row}>
-
                         <Row style={styles.row}>
-                        <Col sm={{size:6, offset :1}} >
-                            <Label for="restaurantName">Restaurant Name</Label>
-                            <Input
-                                type="text"
-                                name="restaurantName"
-                                value={props.restaurantName}
-                                placeholder="Ex: Bob's Burger"
-                                onChange={props.handleRestaurantNameChange}
-                            />
-                        </Col>
-                        <Col sm={{size:6, offset :1}} >
-                            <Label for="PhoneNumber">Phone Number</Label>
-                            <Input
-                                type="number"
-                                name="phoneNumber"
-                                maxlength="10"
-                                value={props.phoneNumber}
-                                placeholder="Ex: 514-874-2479"
-                                onChange={props.handlePhoneNumberChange}
-                            />
-                        </Col>
+                            <Col sm={{size:6, offset :1}} >
+                                <Label for="restaurantName">Restaurant Name</Label>
+                                <Input
+                                    type="text"
+                                    name="restaurantName"
+                                    value={props.restaurantName}
+                                    placeholder="Ex: Bob's Burger"
+                                    onChange={props.handleRestaurantNameChange}
+                                />
+                            </Col>
+
+                            <Col sm={{size:6, offset :1}} >
+                                <Label for="PhoneNumber">Phone Number</Label>
+                                <Input
+                                    type="number"
+                                    name="phoneNumber"
+                                    maxlength="10"
+                                    value={props.phoneNumber}
+                                    placeholder="Ex: 514-874-2479"
+                                    onChange={props.handlePhoneNumberChange}
+                                />
+                            </Col>
                         </Row>
 
                         <Col>
@@ -157,11 +153,7 @@ const SignupComponent = props => {
                                 multiline ={true}
                                 style={{resize: "none"}}
                             />
-
-
                         </Col>
-
-
                     </div>}
 
                     <Row style={styles.row}>
@@ -187,9 +179,6 @@ const SignupComponent = props => {
                             />
                         </Col>
                     </Row>
-                    <div>
-                        {props.profileEdit}
-                    </div>
 
                     <div style={{ display: 'flex' }}>
                     {props.profileEdit
