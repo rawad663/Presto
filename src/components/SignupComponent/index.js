@@ -122,7 +122,7 @@ const SignupComponent = props => {
                         <Col sm={{size:6, offset :1}} >
                             <Label for="PhoneNumber">Phone Number</Label>
                             <Input
-                                type="text"
+                                type="number"
                                 name="phoneNumber"
                                 maxlength="10"
                                 value={props.phoneNumber}
