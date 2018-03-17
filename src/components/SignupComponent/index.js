@@ -128,7 +128,7 @@ const SignupComponent = props => {
                                 onChange = {props.handleDescriptionChange}
                                 rows="4"
                                 cols="100"
-                                multiline ={true}
+                                multiline="true"
                                 style={{resize: "none"}}
                             />
                         </Col>
@@ -139,13 +139,10 @@ const SignupComponent = props => {
                             <ReactPhoneInput
                                 name="phoneNumber"
                                 value={props.phoneNumber}
-                                onChange={phoneNumberPropType.handlePhoneNumberChange}
+                                onChange={props.handlePhoneNumberChange}
                                 defaultCountry="ca"
 
                             />
-
-
-
                         </Col>
                         <Row style={styles.row}>
                             <Col sm={{size:6, offset :1}}>
@@ -171,10 +168,6 @@ const SignupComponent = props => {
                                 />
                             </Col>
                         </Row>
-
-
-
-
                     </div>}
 
                     <Row style={styles.row}>
@@ -238,20 +231,20 @@ SignupComponent.propsTypes = {
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     password2: PropTypes.string.isRequired,
+    userType: PropTypes.string.isRequired,
+    profileEdit: PropTypes.bool.isRequired,
 
     address: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
     phoneNumber: phoneNumberPropType.isRequired,
     description: PropTypes.string.isRequired,
     restaurantName: PropTypes.string.isRequired,
+
     handleAddressChange: PropTypes.func,
     handlePostalCodeChange: PropTypes.func,
     handlePhoneNumberChange: PropTypes.func,
     handleDescriptionChange: PropTypes.func,
     handleRestaurantNameChange: PropTypes.func,
-
-    userType: PropTypes.string.isRequired,
-    profileEdit: PropTypes.bool.isRequired,
     handleFirstNameChange: PropTypes.func,
     handleLastNameChange: PropTypes.func,
     handleEmailChange: PropTypes.func,

@@ -44,8 +44,8 @@ export default class SignupContainer extends Component{
     handlePostalCodeChange = e => {
         this.setState({postalCode: e.target.value})
     };
-    handlePhoneNumberChange = e => {
-        this.setState({phoneNumber: e.target.value})
+    handlePhoneNumberChange = value => {
+        this.setState({phoneNumber: value})
     };
 
     handleRestaurantNameChange = e => {
