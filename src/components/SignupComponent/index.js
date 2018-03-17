@@ -228,7 +228,7 @@ const SignupComponent = props => {
                 </FormGroup>
                 {props.errors.length > 0
                     && <div>
-                        <p style={{ color: 'red', marginTop: 4 }}> Cannot process due to errors: </p>
+                        <p style={{ color: 'red', marginTop: 4 }}> Cannot process request due to errors: </p>
                         {renderAlerts(props.errors)}
                     </div>}
             </Well>

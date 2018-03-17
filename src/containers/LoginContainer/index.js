@@ -39,7 +39,7 @@ export default class LoginContainer extends Component {
                 this.props.history.push('/customer')
             }
         }).catch(err => {
-            if (err.response.data !== null) {
+            if (err.response !== null && err.response !== undefined) {
                 const errors = Object.keys(err.response.data).map(key => ({key, value: err.response.data[key]}));
                 this.setState({errors});
             }
