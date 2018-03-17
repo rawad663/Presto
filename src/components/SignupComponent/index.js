@@ -4,6 +4,7 @@ import { Well } from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
 import { Button, FormGroup, Label, Input, Row, Col, FormFeedback } from 'reactstrap';
+import ReactPhoneInput from "react-phone-input-2"
 
 const SignupComponent = props => {
 
@@ -73,8 +74,8 @@ const SignupComponent = props => {
                                 onChange={props.handleEmailChange}
                             />
                         </Col>
+        
                         <Col sm={{ size: 6, offset: 1 }}>
-
                             <FormGroup tag="fieldset" column={"true"}>
                                 <Label for="userType"> User Type </Label>
                                 <Row >
@@ -96,21 +97,77 @@ const SignupComponent = props => {
                                     </Col>
                                 </Row>
                             </FormGroup>
-
                         </Col>
                     </Row>
 
+
                     {props.userType === 'restaurant'
                     &&
+
                     <div style={styles.row}>
-                        <Label for="confirmPassword">Restaurant Name</Label>
-                        <Input
-                            type="text"
-                            name="restaurantName"
-                            value={props.restaurantName}
-                            placeholder="Ex: Bob's Burger"
-                            onChange={props.handleRestaurantNameChange}
-                        />
+
+                        <Col style={styles.row}>
+                            <Label for="restaurantName">Restaurant Name</Label>
+                            <Input
+                                type="text"
+                                name="restaurantName"
+                                value={props.restaurantName}
+                                placeholder="Ex: Bob's Burger"
+                                onChange={props.handleRestaurantNameChange}
+                            />
+                        </Col>
+
+                        <Col style={styles.row}>
+                            <Label for = "Description">  Description </Label>
+
+                            <Input
+                                type = "textarea"
+                                name = "description"
+                                value = {props.description}
+                                placeholder = "Tell me about you restaurant"
+                                onChange = {props.handleDescriptionChange}
+                                rows="4"
+                                cols="100"
+                                multiline="true"
+                                style={{resize: "none"}}
+                            />
+                        </Col>
+
+                        <Col  style={styles.row}>
+                            <Label for="PhoneNumber">Phone Number</Label>
+
+                            <ReactPhoneInput
+                                name="phoneNumber"
+                                value={props.phoneNumber}
+                                onChange={props.handlePhoneNumberChange}
+                                defaultCountry="ca"
+
+                            />
+                        </Col>
+                        <Row style={styles.row}>
+                            <Col sm={{size:6, offset :1}}>
+                                <Label for="Address">Address</Label>
+                                <Input
+                                    type="text"
+                                    name="address"
+                                    value={props.address}
+                                    placeholder="Ex: 3454 Park Ave"
+                                    onChange={props.handleAddressChange}
+                                />
+                            </Col>
+
+                            <Col sm={{size:6, offset :1}} style={styles.row}>
+
+                                <Label for="PostalCode">Postal Code</Label>
+                                <Input
+                                    type="text"
+                                    name="postalCode"
+                                    value={props.postalCode}
+                                    placeholder="Ex: H2X2E2"
+                                    onChange={props.handlePostalCodeChange}
+                                />
+                            </Col>
+                        </Row>
                     </div>}
 
                     <Row style={styles.row}>
@@ -124,6 +181,7 @@ const SignupComponent = props => {
                                 onChange={props.handlePasswordChange}
                             />
                         </Col>
+
                         <Col sm={{ size: 6, offset: 1 }}>
                             <Label for="confirmPassword">Confirm Password</Label>
                             <Input
@@ -135,9 +193,6 @@ const SignupComponent = props => {
                             />
                         </Col>
                     </Row>
-                    <div>
-                        {props.profileEdit}
-                    </div>
 
                     <div style={{ display: 'flex' }}>
                     {props.profileEdit
@@ -176,22 +231,27 @@ SignupComponent.propsTypes = {
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     password2: PropTypes.string.isRequired,
-    address: PropTypes.string.isRequired,
-    postalCode: PropTypes.string.isRequired,
     userType: PropTypes.string.isRequired,
     profileEdit: PropTypes.bool.isRequired,
+
+    address: PropTypes.string.isRequired,
+    postalCode: PropTypes.string.isRequired,
     phoneNumber: phoneNumberPropType.isRequired,
+    description: PropTypes.string.isRequired,
+    restaurantName: PropTypes.string.isRequired,
+
+    handleAddressChange: PropTypes.func,
+    handlePostalCodeChange: PropTypes.func,
+    handlePhoneNumberChange: PropTypes.func,
+    handleDescriptionChange: PropTypes.func,
+    handleRestaurantNameChange: PropTypes.func,
     handleFirstNameChange: PropTypes.func,
     handleLastNameChange: PropTypes.func,
     handleEmailChange: PropTypes.func,
     handlePasswordChange: PropTypes.func,
-    handleAddressChange: PropTypes.func,
-    handlePostalCodeChange: PropTypes.func,
-    handlePhoneNumberChange: PropTypes.func,
     handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
     handleUserTypeChange: PropTypes.func,
-    handleRestaurantNameChange: PropTypes.func,
     validationState:PropTypes.func
 };
 
