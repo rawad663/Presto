@@ -4,6 +4,7 @@ import { Well } from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
 import { Button, FormGroup, Label, Input, Row, Col, FormFeedback } from 'reactstrap';
+import ReactPhoneInput from "react-phone-input-2"
 
 const SignupComponent = props => {
 
@@ -134,14 +135,17 @@ const SignupComponent = props => {
 
                         <Col  style={styles.row}>
                             <Label for="PhoneNumber">Phone Number</Label>
-                            <Input
-                                type="number"
+
+                            <ReactPhoneInput
                                 name="phoneNumber"
-                                maxlength="10"
                                 value={props.phoneNumber}
-                                placeholder="Ex: 514-874-2479"
-                                onChange={props.handlePhoneNumberChange}
+                                onChange={phoneNumberPropType.handlePhoneNumberChange}
+                                defaultCountry="ca"
+
                             />
+
+
+
                         </Col>
                         <Row style={styles.row}>
                             <Col sm={{size:6, offset :1}}>
@@ -162,7 +166,7 @@ const SignupComponent = props => {
                                     type="text"
                                     name="postalCode"
                                     value={props.postalCode}
-                                    placeholder="H2X2E2"
+                                    placeholder="Ex: H2X2E2"
                                     onChange={props.handlePostalCodeChange}
                                 />
                             </Col>
@@ -237,7 +241,7 @@ SignupComponent.propsTypes = {
 
     address: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
-    phoneNumber: PropTypes.number.isRequired,
+    phoneNumber: phoneNumberPropType.isRequired,
     description: PropTypes.string.isRequired,
     restaurantName: PropTypes.string.isRequired,
     handleAddressChange: PropTypes.func,
