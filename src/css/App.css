@@ -105,8 +105,6 @@ html, body, #root, #root>div {
   text-align: center;
 }
 
-
-
 .card {
   margin: 15px;
   min-width: 225px;
@@ -188,9 +186,15 @@ html, body, #root, #root>div {
   font-weight: bold;
   color: #ffaa00;
 }
+
 .card-subtitle {
   font-family: "Courier New";
   margin-left: 20px;
   font-size: 24px;
+
+}
+
+.front-button {
+  margin: 1px solid #6A1B9A;
 
 }
