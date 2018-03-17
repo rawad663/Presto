@@ -33,19 +33,22 @@ const CustomerReservationsComponent = props => {
     const items = [
         { name: 'Home', route: '/customer' },
         { name: 'Liked Restaurants', route: '/customer/liked' },
-        { name: 'Reservations', route: '/customer/reservations' },
-        { name: 'Profile', route: '/customer/profile' }
+        { name: 'Reservations', route: '/customer/reservations' }
     ];
 
     return (
         <div style={{ height: '100%' }}>
             <NavBar
-                button1="Home"
-                button2="Like Restaurants"
-                button1Click={() => props.history.push('/customer')}
-                fullName="Rawad Karam"
+                fullName={props.loggedInUser !== null
+                    ? `${props.loggedInUser.user.first_name} ${props.loggedInUser.user.last_name}`
+                    : 'Fustat Fargin'}
             />
-            <SideNav items={items} history={props.history} route={props.route} />
+            <SideNav
+                items={items}
+                history={props.history}
+                route={props.route}
+            />
+
             <div style={{ marginLeft: 200 }}>
                 <div style={{ display: 'flex' }}>
                     <h1 style={styles.reservations}>Reservations</h1>
@@ -79,7 +82,8 @@ const CustomerReservationsComponent = props => {
 
 CustomerReservationsComponent.propsTypes = {
     history: PropTypes.object,
-    route: PropTypes.string
+    route: PropTypes.string,
+    loggedInUser: PropTypes.object
 };
 
 export default CustomerReservationsComponent;

@@ -113,10 +113,6 @@ export default class CustomerHomeContainer extends Component{
         this.setState( { index: ++this.state.index, animation: true} );
     };
 
-    handleCustRsvClicked = () => {
-        this.props.history.push('/customer-reservations')
-    };
-
     render(){
         return(
             <div>
@@ -124,7 +120,6 @@ export default class CustomerHomeContainer extends Component{
                     loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}
                     history={this.props.history}
                     route={this.props.location.pathname}
-                    handleCustRsvClicked = {this.handleCustRsvClicked}
                     restaurantList = {this.state.items}
                     handleLike = {this.handleLike}
                     handleDislike = {this.handleDislike}
