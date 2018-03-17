@@ -4,7 +4,8 @@ import { Well } from 'react-bootstrap';
 import phoneNumberPropType from 'phone-number-prop-type';
 import {purple_main} from "../../resources/colors";
 import { Button, FormGroup, Label, Input, Row, Col, FormFeedback } from 'reactstrap';
-import ReactPhoneInput from "react-phone-input-2"
+import ReactPhoneInput from "react-phone-input-2";
+import { Alert } from 'react-bootstrap';
 
 const SignupComponent = props => {
 
@@ -21,9 +22,15 @@ const SignupComponent = props => {
         signUp: {
             backgroundColor: purple_main,
             color:'white'
+        },
+        alerts: {
+            margin: '4px auto',
         }
     };
 
+    const renderAlerts = errors => errors.map(error =>
+        <Alert style={styles.alerts} key={error.key} bsStyle="danger">{`"${error.key}": ${error.value}`}</Alert>
+    );
 
     return (
         <div>
@@ -218,8 +225,12 @@ const SignupComponent = props => {
                             Cancel
                         </Button>
                     </div>
-
                 </FormGroup>
+                {props.errors.length > 0
+                    && <div>
+                        <p style={{ color: 'red', marginTop: 4 }}> Cannot process due to errors: </p>
+                        {renderAlerts(props.errors)}
+                    </div>}
             </Well>
         </div>
     );
@@ -252,7 +263,9 @@ SignupComponent.propsTypes = {
     handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
     handleUserTypeChange: PropTypes.func,
-    validationState:PropTypes.func
+    validationState:PropTypes.func,
+
+    errors: PropTypes.array
 };
 
 export default SignupComponent;
