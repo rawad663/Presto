@@ -102,48 +102,25 @@ const SignupComponent = props => {
 
                     {props.userType === 'restaurant'
                     &&
+
                     <div style={styles.row}>
-                        <Row style={styles.row}>
-                            <Col sm={{size:6, offset :1}} >
-                                <Label for="restaurantName">Restaurant Name</Label>
-                                <Input
-                                    type="text"
-                                    name="restaurantName"
-                                    value={props.restaurantName}
-                                    placeholder="Ex: Bob's Burger"
-                                    onChange={props.handleRestaurantNameChange}
-                                />
-                            </Col>
 
-                            <Col sm={{size:6, offset :1}} >
-                                <Label for="PhoneNumber">Phone Number</Label>
-                                <Input
-                                    type="number"
-                                    name="phoneNumber"
-                                    maxlength="10"
-                                    value={props.phoneNumber}
-                                    placeholder="Ex: 514-874-2479"
-                                    onChange={props.handlePhoneNumberChange}
-                                />
-                            </Col>
-                        </Row>
-
-                        <Col>
-                        <Label for="Address">Address</Label>
+                        <Col style={styles.row}>
+                            <Label for="restaurantName">Restaurant Name</Label>
                             <Input
-                            type="text"
-                            name="address"
-                            value={props.address}
-                            placeholder="Ex: 3454 Park Ave"
-                            onChange={props.handleAddressChange}
-                        />
+                                type="text"
+                                name="restaurantName"
+                                value={props.restaurantName}
+                                placeholder="Ex: Bob's Burger"
+                                onChange={props.handleRestaurantNameChange}
+                            />
                         </Col>
 
-                        <Col>
+                        <Col style={styles.row}>
                             <Label for = "Description">  Description </Label>
-                            <br/>
-                            <textarea
-                                type = "text"
+
+                            <Input
+                                type = "textarea"
                                 name = "description"
                                 value = {props.description}
                                 placeholder = "Tell me about you restaurant"
@@ -154,6 +131,46 @@ const SignupComponent = props => {
                                 style={{resize: "none"}}
                             />
                         </Col>
+
+                        <Col  style={styles.row}>
+                            <Label for="PhoneNumber">Phone Number</Label>
+                            <Input
+                                type="number"
+                                name="phoneNumber"
+                                maxlength="10"
+                                value={props.phoneNumber}
+                                placeholder="Ex: 514-874-2479"
+                                onChange={props.handlePhoneNumberChange}
+                            />
+                        </Col>
+                        <Row style={styles.row}>
+                            <Col sm={{size:6, offset :1}}>
+                                <Label for="Address">Address</Label>
+                                <Input
+                                    type="text"
+                                    name="address"
+                                    value={props.address}
+                                    placeholder="Ex: 3454 Park Ave"
+                                    onChange={props.handleAddressChange}
+                                />
+                            </Col>
+
+                            <Col sm={{size:6, offset :1}} style={styles.row}>
+
+                                <Label for="PostalCode">Postal Code</Label>
+                                <Input
+                                    type="text"
+                                    name="postalCode"
+                                    value={props.postalCode}
+                                    placeholder="H2X2E2"
+                                    onChange={props.handlePostalCodeChange}
+                                />
+                            </Col>
+                        </Row>
+
+
+
+
                     </div>}
 
                     <Row style={styles.row}>
@@ -220,12 +237,14 @@ SignupComponent.propsTypes = {
 
     address: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
-    phoneNumber: phoneNumberPropType.isRequired,
+    phoneNumber: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
+    restaurantName: PropTypes.string.isRequired,
     handleAddressChange: PropTypes.func,
     handlePostalCodeChange: PropTypes.func,
     handlePhoneNumberChange: PropTypes.func,
     handleDescriptionChange: PropTypes.func,
+    handleRestaurantNameChange: PropTypes.func,
 
     userType: PropTypes.string.isRequired,
     profileEdit: PropTypes.bool.isRequired,
@@ -236,7 +255,6 @@ SignupComponent.propsTypes = {
     handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
     handleUserTypeChange: PropTypes.func,
-    handleRestaurantNameChange: PropTypes.func,
     validationState:PropTypes.func
 };
 

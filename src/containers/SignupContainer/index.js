@@ -61,7 +61,19 @@ export default class SignupContainer extends Component{
 
 
 handleSubmit = () => {
-        const { email, firstName, lastName, password, postalCode, phoneNumber, restaurantName, userType } = this.state;
+        const {
+            email,
+            firstName,
+            lastName,
+            password,
+            postalCode,
+            phoneNumber,
+            restaurantName,
+            userType,
+            description,
+            address
+
+        } = this.state;
 
         const postData = {
             user: {
@@ -75,9 +87,10 @@ handleSubmit = () => {
 
         if(userType === 'restaurant') {
             postData.resto_name = restaurantName;
-            postData.description = 'Hey, welcome to our restaurant!';
-            postData.postal_code = 'h3k0l1';
-            postData.phone_number = '5145776554';
+            postData.description = description;
+            postData.postal_code = postalCode;
+            postData.phone_number = phoneNumber;
+            postData.address = address;
         }
 
         console.log(postData);
