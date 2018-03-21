@@ -31,18 +31,9 @@ export default class ProfileEditContainer extends Component{
         this.setState ({firstName: loggedInUser.user.first_name,
             email:loggedInUser.user.email,
             lastName:loggedInUser.user.last_name,
-            userType:userTypeText
+            userType:userTypeText,
+
         });
-            // {firstName: loggedInUser.user.first_name},
-            // {lastName:loggedInUser.user.last_name},
-            // {email:'something'},
-            // {address: loggedInUser.user.address},
-            // {postalCode: loggedInUser.user.postalCode},
-            // {phoneNumber: loggedInUser.user.phoneNumber},
-            // {userType: loggedInUser.user.is_resto},
-            // {restaurantName: loggedInUser.user.restaurantName},
-            // console.log(loggedInUser.user)
-        console.log(this.state.email);
     }
 
     handleFirstNameChange = e => {
@@ -50,7 +41,6 @@ export default class ProfileEditContainer extends Component{
     };
     handleLastNameChange = e => {
         this.setState({lastName: e.target.value})
-        // this.setState({firstName: 'Rawad'})
     };
     handleEmailChange = e => {
         this.setState({email:e.target.value})
