@@ -18,7 +18,8 @@ export default class SignupContainer extends Component{
             phoneNumber:'',
             userType: '',
             restaurantName: '',
-            description:''
+            description:'',
+            errors: []
         };
     }
 
@@ -93,8 +94,6 @@ handleSubmit = () => {
             postData.address = address;
         }
 
-        console.log(postData);
-
         aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
             const { status, data } = response;
 
@@ -109,7 +108,10 @@ handleSubmit = () => {
                 }
             }
         }).catch(err => {
-            console.log(err);
+            if (err.response !== null && err.response !== undefined) {
+                const errors = Object.keys(err.response.data).map(key => ({key, value: err.response.data[key]}));
+                this.setState({errors});
+            }
         });
     };
 
@@ -135,7 +137,8 @@ handleSubmit = () => {
             phoneNumber,
             userType,
             restaurantName,
-            description
+            description,
+            errors
         } = this.state;
 
         return(
@@ -167,6 +170,7 @@ handleSubmit = () => {
                 validationState={this.getValidationState}
                 handleRestaurantNameChange = {this.handleRestaurantNameChange}
                 handleDescriptionChange = {this.handleDescriptionChange}
+                errors = {errors}
               />;
           </div>
         );
