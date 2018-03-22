@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SignupComponent from '../../components/SignupComponent';
-import {routes, aPost} from "../../api/api.js";
+import {routes, aPut} from "../../api/api.js";
 
 export default class ProfileEditContainer extends Component{
 
@@ -21,6 +21,10 @@ export default class ProfileEditContainer extends Component{
             description:'',
             errors:[]
         };
+
+        this.props = {
+            id:''
+        }
     }
 
     componentDidMount(){
@@ -82,51 +86,60 @@ export default class ProfileEditContainer extends Component{
         this.setState({description: e.target.value})
     };
 
+    // TODO: HANDLE SUBMIT HAS NOT BEEN TESTED WITH BACKEND.  NEED TO TEST TO SEE IF INFORMATION GETS CORRECTLY UPDATED
     handleSubmit = () => {
+        const loggedInUser= localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null;
+        const {
+            email,
+            firstName,
+            lastName,
+            password,
+            postalCode,
+            phoneNumber,
+            restaurantName,
+            userType,
+            description,
+            address
 
-        console.log(localStorage.getItem('id')); //returns the id of the customer, need to make call to api with this id
-        this.props.history.push('/customer');
+        } = this.state;
 
-        //TODO: NEED TO UPDATE THE STUFF GIVEN THE USER BY DOING
-        // const { email, firstName, lastName, password, userType, restaurantName } = this.state;
-        // let postData = {
-        //     username: email,
-        //     email,
-        //     first_name: firstName,
-        //     last_name: lastName,
-        //     password
-        // };
-        //
-        // if(userType === 'restaurant') {
-        //     postData = {
-        //         user: {
-        //             username: email,
-        //             email,
-        //             first_name: firstName,
-        //             last_name: lastName,
-        //             password
-        //         },
-        //         name: restaurantName,
-        //         description: 'Restaurant Description'
-        //     };
-        // }
-        //
-        // aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
-        //     const { status, data } = response;
-        //
-        //     if (status === 201) {
-        //         // store user to localStorage for easy access
-        //         localStorage.loggedInUser = data;
-        //
-        //         if (userType === 'customer') {
-        //             this.props.history.push('/customer');
-        //         } else if (userType === 'restaurant') {
-        //             this.props.history.push('/restaurant');
-        //         }
-        //     }
-        // }).catch(err => {
-        //     console.log(err);
-        // });
+        const putData = {
+            user: {
+                username: email,
+                email,
+                first_name: firstName,
+                last_name: lastName,
+                password
+            }
+        };
+
+        if(userType === 'restaurant') {
+            putData.resto_name = restaurantName;
+            putData.description = description;
+            putData.postal_code = postalCode;
+            putData.phone_number = phoneNumber;
+            putData.address = address;
+        }
+
+        aPut(userType === 'customer' ? routes.customer(loggedInUser.user.id) : routes.restaurant(loggedInUser.user.id), putData).then(response => {
+            const { status, data } = response;
+
+            if (status === 201) {
+                // store user to localStorage for easy access
+                localStorage.loggedInUser = JSON.stringify(data);
+
+                if (userType === 'customer') {
+                    this.props.history.push('/customer');
+                } else if (userType === 'restaurant') {
+                    this.props.history.push('/restaurant');
+                }
+            }
+        }).catch(err => {
+            if (err.response !== null && err.response !== undefined) {
+                const errors = Object.keys(err.response.data).map(key => ({key, value: err.response.data[key]}));
+                this.setState({errors});
+            }
+        });
     };
 
     handleCancel = () => {

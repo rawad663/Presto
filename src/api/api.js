@@ -6,6 +6,7 @@ export const routes = {
     registerRestaurant: '/register/resto/',
     registerCustomer: '/register/customer/',
     login: '/login/',
+    restaurant: id => `/restos'/${id}`,
     customer: id => `/customers/${id}`
 };
 

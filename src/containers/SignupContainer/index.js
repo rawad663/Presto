@@ -61,7 +61,7 @@ export default class SignupContainer extends Component{
     };
 
 
-handleSubmit = () => {
+    handleSubmit = () => {
         const {
             email,
             firstName,
