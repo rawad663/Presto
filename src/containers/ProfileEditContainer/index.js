@@ -17,7 +17,9 @@ export default class ProfileEditContainer extends Component{
             postalCode:'',
             phoneNumber:'',
             userType: '',
-            restaurantName: ''
+            restaurantName: '',
+            description:'',
+            errors:[]
         };
     }
 
@@ -26,14 +28,24 @@ export default class ProfileEditContainer extends Component{
         var userTypeText = '';
         loggedInUser.user.is_resto ? userTypeText= 'restaurant' : userTypeText='customer';
 
-        console.log(loggedInUser.user);
+        console.log(loggedInUser);
         console.log(this.state);
         this.setState ({firstName: loggedInUser.user.first_name,
             email:loggedInUser.user.email,
             lastName:loggedInUser.user.last_name,
             userType:userTypeText,
+            // description:loggedInUser.description
 
         });
+        if (loggedInUser.user.is_resto){
+            this.setState({restaurantName:loggedInUser.resto_name,
+                description:loggedInUser.description,
+                phoneNumber:loggedInUser.phone_number,
+                address:loggedInUser.address,
+                postalCode:loggedInUser.postal_code
+            })
+        }
+
     }
 
     handleFirstNameChange = e => {
@@ -65,6 +77,9 @@ export default class ProfileEditContainer extends Component{
     };
     handleUserTypeChange = e => {
         this.setState({userType: e.target.value})
+    };
+    handleDescriptionChange = e => {
+        this.setState({description: e.target.value})
     };
 
     handleSubmit = () => {
@@ -135,7 +150,9 @@ export default class ProfileEditContainer extends Component{
             postalCode,
             phoneNumber,
             userType,
-            restaurantName
+            restaurantName,
+            description,
+            errors
         } = this.state;
 
         return(
@@ -151,6 +168,7 @@ export default class ProfileEditContainer extends Component{
                     phoneNumber = {phoneNumber}
                     userType = {userType}
                     restaurantName = {restaurantName}
+                    description = {description}
                     profileEdit = {true}
                     handleFirstNameChange= {this.handleFirstNameChange}
                     handleLastNameChange= {this.handleLastNameChange}
@@ -163,8 +181,10 @@ export default class ProfileEditContainer extends Component{
                     handleSubmit = {this.handleSubmit}
                     handleCancel = {this.handleCancel}
                     handleUserTypeChange = {this.handleUserTypeChange}
+                    handleDescriptionChange = {this.handleDescriptionChange}
                     validationState={this.getValidationState}
                     handleRestaurantNameChange = {this.handleRestaurantNameChange}
+                    errors = {errors}
                 />;
             </div>
         );
