@@ -191,10 +191,10 @@ html, body, #root, #root>div {
   font-family: "Courier New";
   margin-left: 20px;
   font-size: 24px;
-
 }
 
 .front-button {
   margin: 1px solid #6A1B9A;
-
+  padding: 10px;
+  background-color: hsla(0,0%,15%,0.3);
 }

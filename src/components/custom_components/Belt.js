@@ -5,7 +5,7 @@ import { Glyphicon } from 'react-bootstrap'
 import RestaurantCard from '../custom_components/RestaurantCard';
 import turkishFood from '../../resources/images/turkish-food.jpg'
 import mexicanFood from '../../resources/images/mexican-food.jpg'
-import chineseFood from '../../resources/images/chinese-food.jpg'
+import chineseFood from '../../resources/images/italian-food.jpg'
 
 const Belt = props => {
 
@@ -77,7 +77,7 @@ const Belt = props => {
                 </div>
                     <RestaurantCard
                         id="right-belt-item"
-                        style={{ margin: 'auto 10px', maxWidth: '26%', opacity: 0.2, flex:1 }}
+                        style={{ margin: 'auto 10px', maxWidth: '26%', opacity: 0.2 }}
                         restaurantName={card2.restaurantName}
                         phoneNumber={card2.phoneNumber}
                         postalCode={card2.postalCode}
