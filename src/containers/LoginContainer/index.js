@@ -62,7 +62,7 @@ export default class LoginContainer extends Component {
                     handleSignup={this.handleSignup}
                     validationState={this.getValidationState}
                     errors={this.state.errors}
-                />;
+                />
             </div>
         );
     }
