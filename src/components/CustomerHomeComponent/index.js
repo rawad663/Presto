@@ -21,7 +21,8 @@ const CustomerHomeComponent = props => {
                 restaurantName: restaurant.resto_name,
                 address: restaurant.address,
                 postalCode: restaurant.postal_code,
-                phoneNumber: restaurant.phone_number
+                phoneNumber: restaurant.phone_number,
+                description: restaurant.description
             }
         });
     };
