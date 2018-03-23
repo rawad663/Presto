@@ -36,7 +36,6 @@ const LikedRestaurantsComponent = props => {
             />
             <SideNav
                 items={items}
-                history={props.history}
                 route={props.route}
             />
 
@@ -56,7 +55,6 @@ const LikedRestaurantsComponent = props => {
 
 LikedRestaurantsComponent.propTypes = {
     route: PropTypes.string,
-    history: PropTypes.object,
     restaurants: PropTypes.array,
     loggedInUser: PropTypes.object
 };

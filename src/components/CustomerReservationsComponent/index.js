@@ -45,7 +45,6 @@ const CustomerReservationsComponent = props => {
             />
             <SideNav
                 items={items}
-                history={props.history}
                 route={props.route}
             />
 
@@ -81,7 +80,6 @@ const CustomerReservationsComponent = props => {
 };
 
 CustomerReservationsComponent.propsTypes = {
-    history: PropTypes.object,
     route: PropTypes.string,
     loggedInUser: PropTypes.object
 };

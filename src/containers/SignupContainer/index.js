@@ -99,7 +99,7 @@ handleSubmit = () => {
 
             if (status === 201) {
                 // store user to localStorage for easy access
-                localStorage.loggedInUser = JSON.stringify(data);
+                localStorage.loggedInUser = JSON.stringify({ ...data });
 
                 if (userType === 'customer') {
                     this.props.history.push('/customer');
