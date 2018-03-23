@@ -67,10 +67,10 @@ const Belt = props => {
                         imgUrl={turkishFood}
                     />
                     <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
-                        <Button onClick={props.handleDislike} className="circle-button" id="dislike">
+                        <Button onClick={() => props.handleDislike(card1.id)} className="circle-button" id="dislike">
                             <Glyphicon style={{ color: 'white' }} glyph="thumbs-down" />
                         </Button>
-                        <Button onClick={props.handleLike} className="circle-button" id="like">
+                        <Button onClick={() => props.handleLike(card1.id)} className="circle-button" id="like">
                             <Glyphicon style={{ color: 'white' }} glyph="thumbs-up" />
                         </Button>
                     </div>
@@ -92,6 +92,8 @@ const Belt = props => {
         );
     };
 
+    console.log(props.items[1]);
+
     return (
         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
 
@@ -108,7 +110,9 @@ const Belt = props => {
 
 Belt.propTypes = {
     handleLike: PropTypes.func,
-    handleDislike: PropTypes.func
+    handleDislike: PropTypes.func,
+    items: PropTypes.array,
+    animation: PropTypes.bool
 };
 
 export default Belt;
