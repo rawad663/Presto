@@ -10,6 +10,8 @@ import SettingsContainer from './containers/SettingsContainer';
 import SignupContainer from "./containers/SignupContainer";
 import ProfileEditContainer from "./containers/ProfileEditContainer";
 
+import ReservationsContainer from "./containers/ReservationsContainer";
+
 import './css/App.css';
 import './css/Animations.css';
 
@@ -28,6 +30,8 @@ class App extends Component {
              <Route path="/restaurant/profile" component={RestaurantProfileContainer} />
              <Route path="/settings" component={SettingsContainer} />
              <Route path="/customer-profile" component={ProfileEditContainer} />
+
+             <Route path = "/reservation" component = {ReservationsContainer}/>
          </div>
       );
   }
