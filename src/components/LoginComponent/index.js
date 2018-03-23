@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Well } from 'react-bootstrap';
 import { purple_main } from '../../resources/colors';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
+import { Alert } from 'react-bootstrap';
 
 // This component will not be using state, will get fed from LoginContainer.
 // We can write it as a stateless function (no class)
@@ -23,8 +24,15 @@ const LoginComponent = props => {
         login: {
             backgroundColor: purple_main,
             color: 'white'
+        },
+        alerts: {
+            margin: '4px auto',
         }
     };
+
+    const renderAlerts = errors => errors.map(error =>
+        <Alert style={styles.alerts} key={error.key} bsStyle="danger">{`"${error.key}": ${error.value}`}</Alert>
+    );
 
     return (
         <div>
@@ -68,6 +76,11 @@ const LoginComponent = props => {
                             Sign Up
                         </Button>
                     </div>
+                    {props.errors.length > 0
+                        && <div>
+                            <p style={{ color: 'red', marginTop: 4 }}> Cannot process request due to errors: </p>
+                            {renderAlerts(props.errors)}
+                        </div>}
                 </FormGroup>
             </Well>
         </div>
@@ -77,6 +90,7 @@ const LoginComponent = props => {
 // specify types of this component's props.
 // isRequired symbolizes a prop that has to be specified when used
 LoginComponent.propTypes = {
+    errors: PropTypes.array,
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     handleEmailChange: PropTypes.func,

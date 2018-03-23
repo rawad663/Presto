@@ -1,82 +1,64 @@
 PRESTO UI
---
+==
 
-Web-UI component of the presto application.
+Web-UI component of the Presto app.
+
+This _README_ will go over the functionalities of the app from the Front-End point of view.
+We will start by defining the API functions created in the app and how to use them, then talk
+about forms and their input fields.
+
+
+**Running the App:**
+
+1. Clone the repo: `git clone git@github.com:rawad663/presto.git`
+2. Install the app dependencies:  `npm install`
+3. Run the app:  `npm`
 
 
 API Call Functions
 --
 
-The following functions are specified to make AJAX calls to the server
-using axios:
+
+The following functions are specified to make AJAX calls to the server using axios:
 
 - aGet(route)
+```
+const aGet = route => axios.get(route);
+```
 - aPost(route, postData)
+```
+const aPost = (route, postData_ => axios.post(route, postData);
+```
 - aPut(route, putData)
+```
+const aPut = (route, putData) => axios.put(route, putData);
+```
 - aDelete(route)
+```
+const aDelete = route => axios.delete(route);
+```
 
-API Post Form Data
+Form Input Fields
 --
 
-Sign Up Form Inputs (Customer & Restaurant):
 
-- First Name
-- Last Name
-- Email
-- Password
+#### Sign Up (Customer and Restaurants):
 
-Additional Inputs for Restaurant:
+- First Name: _String_
+- Last Name: _String_
+- Email: _String_
+- User Type: `"customer" || "restaurant"`
+- Password: _String_
+- Confirm Password: _String_
 
-- Address
-- Postal Code
-- Restaurant Name
-- Description
 
-Example Post request for Register:
+**Additional Fields for Restaurant:**
 
-``` javascript
-// postData for /register/resto/
+- Restaurant Name: _String_
+- Description: _String_
+- Address: _String_
+- Postal Code: _String_
+- Cover Image (_coming soon..._)
  
-{
-    "name": "Shakers",
-    "description": "good ass food",
-    "user": {
-        "username": "bou",
-        "email": "teez@gmail.com",
-        "first_name": "Rony",
-        "last_name": "Azrak",
-        "password": "pass1234"
-    }
-}
   
-// postData for /register/customer/
- 
-{
-    "username": "bou",
-    "email": "teez@gmail.com",
-    "first_name": "Rony",
-    "last_name": "Azrak",
-    "password": "pass1234"
-}
-
-```
- 
-Example of a new LikedRestaurant
-``` javascript
-// postData for /likedrestaurants/
-const postData = {
-    "restaurant_id": "12",
-    "customer_username": "example@example.com"
-}
-```
- 
-Example of a new Customer Reservation
-``` javascript
-// postData for /reservation
-const postData = {
-   "customer_username": "example@example.com",
-   "reservation_date": "some date value",
-   "restaurant_id": "5"
-}
-
-```
+(TODO: Add more form info)

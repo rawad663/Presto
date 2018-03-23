@@ -11,8 +11,7 @@ const CustomerHomeComponent = props => {
     const items = [
         { name: 'Home', route: '/customer' },
         { name: 'Liked Restaurants', route: '/customer/liked' },
-        { name: 'Reservations', route: '/customer/reservations' },
-        { name: 'Profile', route: '/customer/profile' }
+        { name: 'Reservations', route: '/customer/reservations' }
     ];
 
     const filterRestaurants = list => {
@@ -45,9 +44,6 @@ const CustomerHomeComponent = props => {
     return (
         <div>
             <NavBar
-                button1="Liked Restaurants"
-                button2="Reservations"
-                button2Click={props.handleCustRsvClicked}
                 fullName={props.loggedInUser !== null
                     ? `${props.loggedInUser.user.first_name} ${props.loggedInUser.user.last_name}`
                     : 'Fustat Fargin'}
@@ -71,7 +67,6 @@ const CustomerHomeComponent = props => {
 
 CustomerHomeComponent.propsTypes = {
     loggedInUser: PropTypes.object,
-    handleCustRsvClicked: PropTypes.func,
     route: PropTypes.string,
     history: PropTypes.object,
     restaurantList: PropTypes.array,

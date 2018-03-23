@@ -24,17 +24,15 @@ const LikedRestaurantsComponent = props => {
     const items = [
         { name: 'Home', route: '/customer'},
         { name: 'Liked Restaurants', route: '/customer/liked'},
-        { name: 'Reservations', route: '/customer/reservations'},
-        { name: 'Profile', route: '/customer/profile'}
+        { name: 'Reservations', route: '/customer/reservations'}
     ];
 
     return (
         <div>
             <NavBar
-                button1="Liked Restaurants"
-                button2="Reservations"
-                button2Click={props.handleCustRsvClicked}
-                fullName={'Fustat Fargin'}
+                fullName={props.loggedInUser !== null
+                    ? `${props.loggedInUser.user.first_name} ${props.loggedInUser.user.last_name}`
+                    : 'Fustat Fargin'}
             />
             <SideNav
                 items={items}
@@ -57,8 +55,10 @@ const LikedRestaurantsComponent = props => {
 };
 
 LikedRestaurantsComponent.propTypes = {
+    route: PropTypes.string,
     history: PropTypes.object,
-    restaurants: PropTypes.array
+    restaurants: PropTypes.array,
+    loggedInUser: PropTypes.object
 };
 
 export default LikedRestaurantsComponent;
