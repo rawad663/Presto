@@ -15,7 +15,7 @@ const Belt = props => {
                 <RestaurantCard
                     id="middle-belt-item"
                     className={props.animation ? 'animateLeft' : null}
-                    style={{ margin: 'auto 10px' }}
+                    style={{ margin: 'auto 10px'}}
                     restaurantName={card1.restaurantName}
                     phoneNumber={card1.phoneNumber}
                     postalCode={card1.postalCode}
@@ -49,6 +49,7 @@ const Belt = props => {
                     postalCode={card0.postalCode}
                     address={card0.address}
                     email={card0.email}
+                    description={card0.description}
                     restaurantRating={4.5}
                     imgUrl={mexicanFood}
                 />
@@ -57,7 +58,7 @@ const Belt = props => {
                     <RestaurantCard
                         id="middle-belt-item"
                         className={props.animation ? 'animateLeft' : null}
-                        style={{ margin: 'auto 10px' }}
+                        style={{ margin: 'auto 10px'}}
                         restaurantName={card1.restaurantName}
                         phoneNumber={card1.phoneNumber}
                         postalCode={card1.postalCode}

@@ -183,14 +183,17 @@ html, body, #root, #root>div {
 }
 
 .card-title {
-  font-size: 35px;
-  font-family: "Courier New";
-  font-weight: bold;
+  font-size: 30px;
+  font-weight: lighter;
   color: #ffaa00;
+  /*margin-bottom: -1px;*/
+  /*margin-left: 5px;*/
 }
 .card-subtitle {
-  font-family: "Courier New";
-  margin-left: 20px;
-  font-size: 24px;
+  font-weight: lighter;
+  margin-left:2px;
+  margin-right: 2px;
+  font-size: 15px;
+
 
 }

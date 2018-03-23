@@ -1,57 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Row, Col} from 'reactstrap';
+import { Card, CardBody, CardTitle, CardSubtitle, CardText} from 'reactstrap';
 import Ratings from 'react-ratings-declarative';
 
 const RestaurantCard = props => {
     const styles = {
-        container:{
+        img:{
+            height:'200px',
+            width:'100%',
+            backgroundSize: 'cover',
+            backgroundRepeat:'no-repeat',
+            backgroundPosition:'center',
+            backgroundImage:`url("${props.imgUrl}")`
+        },
 
-        },
-        text: {
-            marginLeft: 5,
-        },
-        img: {
-            borderRadius: 3,
-            width: '100%',
-            height: 'auto'
-        },
-        infoBlock: {
-            paddingTop: 7,
-            paddingBottom: 7
+        row: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
         }
+
     };
 
     return (
         <div id={props.id} style={props.style} className={"card-info " + props.className}>
             <Card>
-                <CardImg width = "100%" src={props.imgUrl} />
+                <div style={styles.img}/>
                 <CardBody>
-                    <CardTitle className="card-title" style={styles.text}>
-                        {props.restaurantName}
-                    </CardTitle>
+                    <div style={styles.row}>
+                        <CardTitle className="card-title" >
+                            {props.restaurantName}
+                        </CardTitle>
+                        <Ratings rating={props.restaurantRating} widgetDimensions="20px" widgetSpacings="1px">
+                            <Ratings.Widget/>
+                            <Ratings.Widget/>
+                            <Ratings.Widget/>
+                            <Ratings.Widget/>
+                            <Ratings.Widget/>
+                        </Ratings>
+                    </div>
 
-                    <Row style={styles.row}>
-                        <Col sm={{ size: 6, offset: 1 }}>
-                            <CardSubtitle className="card-subtitle">
-                                {props.address}
-                            </CardSubtitle>
 
-                        </Col>
-                        <Col sm={{ size: 6, offset: 1 }}>
-                            <CardSubtitle className="card-subtitle">
-                                {props.postalCode}
-                            </CardSubtitle>
-                        </Col>
-                    </Row>
+                    <div style={styles.row}>
+                        <CardSubtitle className="card-subtitle">
+                            {props.address}
+                        </CardSubtitle>
+                        <CardSubtitle className="card-subtitle">
+                            {props.postalCode}
+                        </CardSubtitle>
+                    </div>
+                    <CardText>
+                        {props.description}
+                    </CardText>
 
-                    <Ratings rating={props.restaurantRating} widgetDimensions="32px">
-                        <Ratings.Widget/>
-                        <Ratings.Widget/>
-                        <Ratings.Widget/>
-                        <Ratings.Widget/>
-                        <Ratings.Widget/>
-                    </Ratings>
 
                 </CardBody>
             </Card>
@@ -66,6 +68,7 @@ RestaurantCard.propTypes = {
     restaurantRating: PropTypes.number,
     address: PropTypes.string,
     postalCode: PropTypes.string,
+    description: PropTypes.string,
     phoneNumber: PropTypes.string,
     email: PropTypes.string,
     style: PropTypes.object
@@ -76,6 +79,7 @@ RestaurantCard.defaultProps = {
     restaurantRating: 3.5,
     address: 'Susurluk, Balikesir',
     phoneNumber: '+90-266-862-2615',
+    description: 'The best Kebab within a 82 km radius.  Come enjoy breakfast lunch or dinner with fresh Doner and Turkish tea.',
     postalCode: '10600',
     email: 'example@example.com',
     style: {}
