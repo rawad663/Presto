@@ -23,6 +23,12 @@ const RestaurantCard = props => {
 
     };
 
+    const filterDescription = desc => {
+        if (desc.length>140){
+            return desc.substring(0,135) + '...';
+        } else return desc;
+    };
+
     return (
         <div id={props.id} style={props.style} className={"card-info " + props.className}>
             <Card>
@@ -50,8 +56,8 @@ const RestaurantCard = props => {
                             {props.postalCode}
                         </CardSubtitle>
                     </div>
-                    <CardText>
-                        {props.description}
+                    <CardText style={{marginLeft:'5px', marginBottom:'5px'}}>
+                        {filterDescription(props.description)}
                     </CardText>
 
 

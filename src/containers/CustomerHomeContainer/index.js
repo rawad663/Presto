@@ -29,7 +29,7 @@ export default class CustomerHomeContainer extends Component{
                     description: 'French food for the rich.  Hungry? Nice dude',
                     resto_name: 'French Cuisine',
                     address: '5600 Waldorf',
-                    postalCode: 'K7L8E3',
+                    postal_code: 'K7L8E3',
                     phoneNumber: '657657646453'
                 },
                 {
@@ -42,7 +42,7 @@ export default class CustomerHomeContainer extends Component{
                     description: 'Bar that serves beer with lasagna and meatballs served in cold turkey with beef jerky legs',
                     resto_name: 'Pasta Bar',
                     address: '1247 Beauregard',
-                    postalCode: 'H3B4J6',
+                    postal_code: 'H3B4J6',
                     phoneNumber: '657657646453'
                 },
                 {
@@ -53,10 +53,11 @@ export default class CustomerHomeContainer extends Component{
                         last_name: 'ytrytdfbcx'
                     },
                     description: 'Call this restaurant Gentle cuz its gentille to ur body, mind, and soul.  ' +
-                    'Serves no alcohol what soever.  Sunday is the day of the lord',
+                    'Serves no alcohol what soever.  Sunday is the day of the lord, but Saturaday is the day of the king.' +
+                    'Now the old king is dead, long live the queen. ',
                     resto_name: 'Gentile',
                     address: '9299 Park Ave',
-                    postalCode: 'H2N2A2',
+                    postal_code: 'H2N2A2',
                     phoneNumber: '657657646453'},
                 {
                     user: {
@@ -69,7 +70,7 @@ export default class CustomerHomeContainer extends Component{
                     'once in a lifetime experience do not come here, go to Iron across the street instead.',
                     resto_name: 'Mercury',
                     address: '555 Gordon st.',
-                    postalCode: 'J7G0P0',
+                    postal_code: 'J7G0P0',
                     phoneNumber: '657657646453'},
                 {
                     user: {
@@ -83,7 +84,7 @@ export default class CustomerHomeContainer extends Component{
                     'lightning mcqueen fans eat for free',
                     resto_name: 'Amir',
                     address: '432 Bertrand st.',
-                    postalCode: 'J1JE5F6',
+                    postal_code: 'J1JE5F6',
                     phoneNumber: '657657646453'}
             ]
         });
