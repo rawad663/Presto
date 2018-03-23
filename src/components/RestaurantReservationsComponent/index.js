@@ -1,38 +1,31 @@
 import React from 'react';
 import {blue,purple_main} from "../../resources/colors";
-import { Button, Form, FormGroup, Label, Input, FormText, Row, Col } from 'reactstrap';
+import { Well } from 'react-bootstrap';
 import PropTypes from "prop-types";
 import NavBar from '../custom_components/NavBar';
 import {routes, aGet} from "../../api/api";
 import SideNav from '../custom_components/SideNav';
-import { Well } from 'react-bootstrap';
-
-
-
-
+import RestoReservation from "../custom_components/RestoReservation";
 
 
 const RestaurantReservationsComponent = props => {
 
     const styles = {
-
-        buttonAccept:{
-            backgroundColor:purple_main,
-            color: 'white',
-            width: 100
-        },
-        buttonDecline:{
-            backgroundColor:'#4d79ff',
-            color:'white',
-            width: 100
+        RestoReservation: {
+            fontWeight: 'lighter',
+            color: purple_main,
 
         },
-        buttonNotChosen:{
-            backgroundColor:'gray',
-            width: 100,
-            color: '#404040'
+        well: {
+            minWidth: 300,
+            maxWidth: '80%',
+            height: 530,
+            display: 'flex',
+            flexWrap: 'wrap',
+            margin: 50,
+            marginTop:20,
+            overflowY: 'scroll'
         },
-
         list:{
             marginLeft:200
 
@@ -41,92 +34,33 @@ const RestaurantReservationsComponent = props => {
             marginLeft:220
         },
         row:{
-            marginBottom:10,
-
+            marginBottom:10
         },
-
-
+        column:{
+            verticalAlign:'middle',
+            backgroundColor:'white',
+            width: '100%',
+            margin: '15px 15px',
+            fontSize: 15
+        },
+        display:{
+            margin:70
+        },
+        name:{
+            marginLeft:125
+        }
 
     };
 
 
-    function createNode(element) {
-        return document.createElement(element);
-    }
-
-    function append(parent, el) {
-        return parent.appendChild(el);
-    }
-
-    const ul = document.getElementById('reservation');
-
-
-    fetch(aGet(routes.RSTReservation))
-        .then((resp) => resp.json())
-        .then(function(data) {
-            var reservation = data.results;
-            return reservation.map(function(reservation) {
-                let li = createNode('li'),
-                    span = createNode('span');
-                span.innerHTML = `${reservation.name.last}`;
-                append(li, span);
-                append(ul, li);
-            })
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
-
-    var  res1 =  {name:'Kevin', NumberOfPpl: 3, time:Date("October 13, 2014 11:13:00")};
-    var  res2 =  {name:'Rawad', NumberOfPpl: 4, time:Date("October 13, 2014 11:13:00")};
-
-
-
-
-    const reservationlist = [res1,res2];
-
-    const listItems = reservationlist.map((reservations) =>
-
-        <Well  bsSize="small">
-            <FormGroup>
-                 <span style={styles.list} >{reservations.name}
-                     <span style={styles.list}>{reservations.NumberOfPpl}</span>
-             <span style={styles.list}>{reservations.time}</span>
-            <Button
-                onClick={props.handleAccept}
-                style={{ ...styles.buttonAccept, }}
-                id = 'acceptButton'
-            >
-                Accept
-            </Button>
-
-            <Button
-                onClick={props.handleDecline}
-                style={{ ...styles.buttonDecline, marginLeft: 8 }}
-                id = 'declineButton'
-            >
-                Decline
-            </Button>
-            <br/>
-            <br/>
-            </span>
-
-            </FormGroup>
-        </Well>
-
-
-
-    );
-
-
     const items = [
-        { name: 'Home', route: '/customer' },
+        { name: 'Home', route: '/restaurantReservation' },
         { name: 'Liked Restaurants', route: '/customer/liked' },
         { name: 'Reservations', route: '/customer/reservations' }
     ];
 
-    return(
 
+    return(
         <div>
             <NavBar
                 fullName={props.loggedInUser !== null
@@ -138,30 +72,66 @@ const RestaurantReservationsComponent = props => {
                 history={props.history}
                 route={props.route}
             />
-            <Row>
-                <Col style ={styles.head}> Name</Col>
-                <Col style={styles.head}>Number of people </Col>
-                <Col style={styles.head}>Date</Col>
-            </Row>
+            <div style={{ marginLeft: 200 }}>
+                <div style={{ display: 'flex' }} className = "reservation">
+                    <h1  style = {styles.reservations}>Reservations</h1>
+                </div>
+                <Well style={styles.well}>
 
+                    <Well style={styles.column}>
+                        <div>
+                            <span style={styles.name}>Name</span>
+                            <span style={styles.display}>Number of People </span>
+                            <span style={styles.display}>Date</span>
+                        </div>
+                    </Well>
+                    <RestoReservation
+                        style={styles.RestoReservation}
+                        customerName= 'Vivek'
+                        numOfPpl= '1'
+                        date='Sunday, March 04, 1997. 8:30pm'
 
-            <div >
+                    />
+                    <RestoReservation
+                        style={styles.RestoReservation}
+                        customerName= 'Vivek'
+                        numOfPpl= '1'
+                        date='Sunday, March 04, 1997. 8:30pm'
 
-                <ul>{listItems}</ul>
+                    />
+                    <RestoReservation
+                        style={styles.RestoReservation}
+                        customerName= 'Vivek'
+                        numOfPpl= '1'
+                        date='Sunday, March 04, 1997. 8:30pm'
 
+                    />
+                    <RestoReservation
+                        style={styles.RestoReservation}
+                        customerName= 'Vivek'
+                        numOfPpl= '1'
+                        date='Sunday, March 04, 1997. 8:30pm'
+
+                    />
+
+                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
+                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
+                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
+                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
+                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
+                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
+                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
+                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
+                </Well>
             </div>
         </div>
-
-
-
     );
 
 
 };
 
 RestaurantReservationsComponent.propsTypes = {
-    handleAccept: PropTypes.func,
-    handleDecline: PropTypes.func,
+
     history: PropTypes.object,
     route: PropTypes.string,
     loggedInUser: PropTypes.object

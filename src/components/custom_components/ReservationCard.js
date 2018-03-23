@@ -46,7 +46,6 @@ const ReservationCard = props => {
                 <p style={styles.description}>{props.address}</p>
                 <p style={styles.description}>{props.postalCode}</p>
                 <p style={styles.description}>{props.city}, {props.province}</p>
-
                 <p style={{...styles.description, color: purple_main}}>{props.date}</p>
                 <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
                     <Button className="button-click" title="Edit Reservation" style={styles.button} color="primary">
@@ -69,6 +68,7 @@ ReservationCard.propTypes = {
     province: PropTypes.string,
     date: PropTypes.string,
     style: PropTypes.object
+
 };
 
 ReservationCard.defaultProps = {

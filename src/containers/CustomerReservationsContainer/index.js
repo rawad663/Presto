@@ -20,6 +20,7 @@ export default class ReservationsContainer extends Component{
                     history={this.props.history}
                     loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}
                 />
+
             </div>
         );
     }
