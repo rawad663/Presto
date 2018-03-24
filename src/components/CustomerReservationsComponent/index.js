@@ -38,15 +38,8 @@ const CustomerReservationsComponent = props => {
 
     return (
         <div style={{ height: '100%' }}>
-            <NavBar
-                fullName={props.loggedInUser !== null
-                    ? `${props.loggedInUser.user.first_name} ${props.loggedInUser.user.last_name}`
-                    : 'Fustat Fargin'}
-            />
-            <SideNav
-                items={items}
-                route={props.route}
-            />
+            <NavBar />
+            <SideNav items={items} route={props.route} />
 
             <div style={{ marginLeft: 200 }}>
                 <div style={{ display: 'flex' }}>

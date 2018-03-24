@@ -28,10 +28,22 @@ const NavBar = props => {
         }
     };
 
+    // load user from localStorage
+    const user = (localStorage.loggedInUser !== undefined && localStorage.loggedInUser.user !== null)
+                        ? JSON.parse(localStorage.loggedInUser).user
+                        : {
+                            first_name: 'Example',
+                            last_name: 'Name',
+                            email: 'example@example.com',
+                            username: 'example@example.com',
+                            is_resto: false
+                        };
+
+    console.log(user);
     return (
         <div>
             <div id="nav-bar" style={styles.navBar}>
-                <h4 style={styles.title}>Presto - {props.fullName}</h4>
+                <h4 style={styles.title}>Presto - {`${user.first_name} ${user.last_name}`}</h4>
                 <div>
                     <Button onClick={() => props.history.push('/customer/profile')} style={styles.button}>Profile</Button>
                     <Button onClick={() => props.history.push('/customer/settings')} style={styles.button}>Settings</Button>
@@ -41,14 +53,6 @@ const NavBar = props => {
             {props.children}
         </div>
     );
-};
-
-NavBar.propTypes = {
-    fullName: PropTypes.string
-};
-
-NavBar.defaultProps = {
-    fullName: 'Lebron James'
 };
 
 // withRouter connects the component to react-router

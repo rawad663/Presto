@@ -29,24 +29,17 @@ const LikedRestaurantsComponent = props => {
 
     return (
         <div>
-            <NavBar
-                fullName={props.loggedInUser !== null
-                    ? `${props.loggedInUser.user.first_name} ${props.loggedInUser.user.last_name}`
-                    : 'Fustat Fargin'}
-            />
-            <SideNav
-                items={items}
-                route={props.route}
-            />
+            <NavBar />
+            <SideNav items={items} route={props.route} />
 
             <div style={{ marginLeft: 200 }}>
                 <div>
                     <h1 style={styles.reservations}>Liked Restaurants</h1>
                 </div>
                 <div style={{ maxWidth: '80%', margin: 50}}>
-                {props.restaurants.length > 0
-                ? renderLikedRestaurants(props.restaurants)
-                : <p style={{ color: '#616161', fontSize: 14 }}>* No Liked Restaurants found! Try checking a few out.</p>}
+                    {props.restaurants.length > 0
+                    ? renderLikedRestaurants(props.restaurants)
+                    : <p style={{ color: '#616161', fontSize: 14 }}>* No Liked Restaurants found! Try checking a few out.</p>}
                 </div>
             </div>
         </div>

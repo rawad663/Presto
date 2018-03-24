@@ -43,12 +43,7 @@ const CustomerHomeComponent = props => {
 
     return (
         <div>
-            <NavBar
-                fullName={props.loggedInUser !== null
-                    ? `${props.loggedInUser.user.first_name} ${props.loggedInUser.user.last_name}`
-                    : 'Fustat Fargin'}
-            />
-
+            <NavBar />
             <SideNav items={items} route={props.route} />
 
             <div style={{ marginLeft: 200, maxWidth: '100%' }}>
