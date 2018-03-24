@@ -173,6 +173,8 @@ html, body, #root, #root>div {
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.66);
 }
 
+
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { purple_dark, purple_main } from '../../resources/colors';
 import { withRouter } from 'react-router';
@@ -29,7 +28,7 @@ const NavBar = props => {
     };
 
     // load user from localStorage
-    const user = (localStorage.loggedInUser !== undefined && localStorage.loggedInUser.user !== null)
+    const user = (localStorage.loggedInUser !== undefined && localStorage.loggedInUser !== null)
                         ? JSON.parse(localStorage.loggedInUser).user
                         : {
                             first_name: 'Example',
@@ -39,7 +38,6 @@ const NavBar = props => {
                             is_resto: false
                         };
 
-    console.log(user);
     return (
         <div>
             <div id="nav-bar" style={styles.navBar}>

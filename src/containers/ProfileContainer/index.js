@@ -9,30 +9,43 @@ export default class ProfileContainer extends Component {
         super(props);
 
         this.state = {
-            user: {
-                first_name: 'Example',
-                last_name: 'Name',
-                email: 'example@example.com',
-                username: 'example@example.com'
-            },
-            address: null,
-            resto_name: null,
-            description: null,
-            phone_number: null,
-            postal_code: null
+            account: {
+                user: {
+                    first_name: 'Example',
+                    last_name: 'Name',
+                    email: 'example@example.com',
+                    username: 'example@example.com',
+                    is_resto: false
+                },
+                address: null,
+                resto_name: null,
+                description: null,
+                phone_number: null,
+                postal_code: null
+            }
         }
     }
 
     componentDidMount() {
         const loggedInUser = localStorage.loggedInUser !== undefined && JSON.parse(localStorage.loggedInUser);
-        console.log(loggedInUser);
-
-        this.setState({ ...loggedInUser });
+        if (localStorage.loggedInUser !== undefined) {
+            this.setState({ account: { ...loggedInUser } })
+        }
     }
+
+    handeEditProfile = () => {
+        this.props.history.push(this.state.account.user.is_resto ? '/restaurant/edit' : '/customer-profile');
+    };
 
     render() {
         return (
-            <ProfileComponent route={this.props.location.pathname} loggedInUser={this.state} />
+            <ProfileComponent
+                handleEditProfile={this.handeEditProfile}
+                toogle={this.toggle}
+                tooltipOpen={this.state.tooltipOpen}
+                route={this.props.location.pathname}
+                loggedInUser={this.state.account}
+            />
         );
     }
 }
