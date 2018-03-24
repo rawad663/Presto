@@ -19,7 +19,7 @@ const LikedRestaurantsComponent = props => {
     };
 
     const renderLikedRestaurants = restos => restos.map(resto => (
-        <LikedRestaurant style={styles.likedRestaurants} title={resto.resto_name} />
+        <LikedRestaurant style={styles.likedRestaurants} resto={resto} />
     ));
     const items = [
         { name: 'Home', route: '/customer'},

@@ -17,10 +17,11 @@ const CustomerHomeComponent = props => {
     const filterRestaurants = list => {
         return list.map(restaurant => {
             return {
-                restaurantName: restaurant.name,
+                id: restaurant.user.id,
+                restaurantName: restaurant.resto_name,
                 address: restaurant.address,
-                postalCode: restaurant.postalCode,
-                phoneNumber: restaurant.phoneNumber
+                postalCode: restaurant.postal_code,
+                phoneNumber: restaurant.phone_number
             }
         });
     };
