@@ -19,7 +19,7 @@ const LikedRestaurantsComponent = props => {
     };
 
     const renderLikedRestaurants = restos => restos.map(resto => (
-        <LikedRestaurant style={styles.likedRestaurants} title={resto.resto_name} />
+        <LikedRestaurant style={styles.likedRestaurants} resto={resto} />
     ));
     const items = [
         { name: 'Home', route: '/customer'},
@@ -45,7 +45,7 @@ const LikedRestaurantsComponent = props => {
                     <h1 style={styles.reservations}>Liked Restaurants</h1>
                 </div>
                 <div style={{ maxWidth: '80%', margin: 50}}>
-                {props.restaurants.length > 0
+                {props.restaurants !== undefined && props.restaurants.length > 0
                 ? renderLikedRestaurants(props.restaurants)
                 : <p style={{ color: '#616161', fontSize: 14 }}>* No Liked Restaurants found! Try checking a few out.</p>}
                 </div>
