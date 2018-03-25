@@ -2,6 +2,11 @@ import axios from 'axios';
 
 const baseUrl = 'https://presto-core.herokuapp.com';
 
+const header = (token) => ({
+    'Content-Type': 'application/json',
+    'Authorization': 'Token ' + token
+});
+
 export const routes = {
     registerRestaurant: '/register/resto/',
     registerCustomer: '/register/customer/',
@@ -15,7 +20,9 @@ export const routes = {
     restos: '/restos/'
 };
 
-export const aGet = route => axios.get(baseUrl + route);
-export const aPost = (route, data) => axios.post(baseUrl + route, data);
-export const aDelete = route => axios.delete(baseUrl + route);
-export const aPut = (route, data) => axios.put(baseUrl + route, data);
+const token = localStorage.token;
+
+export const aGet = route => axios.get(baseUrl + route, { headers: header(token) });
+export const aPost = (route, data) => axios.post(baseUrl + route, data, { headers: header(token) });
+export const aDelete = route => axios.delete(baseUrl + route, { headers: header(token) });
+export const aPut = (route, data) => axios.put(baseUrl + route, data, { headers: header(token) });

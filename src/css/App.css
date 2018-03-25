@@ -171,6 +171,8 @@ html, body, #root, #root>div {
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.66);
 }
 
+
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
@@ -181,16 +183,23 @@ html, body, #root, #root>div {
 }
 
 .card-title {
-  font-size: 35px;
-  font-family: "Courier New", sans-serif;
-  font-weight: bold;
+  font-size: 30px;
+  font-weight: lighter;
   color: #ffaa00;
+  padding-left: 10px;
 }
 
 .card-subtitle {
-  font-family: "Courier New", sans-serif;
-  margin-left: 20px;
-  font-size: 24px;
+  font-weight: lighter;
+  margin-top: 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: 18px;
+}
+.address {
+  padding-left:7px;
+  padding-right:7px;
+  padding-top:7px;
 }
 
 .front-button {
@@ -223,9 +232,15 @@ html, body, #root, #root>div {
     background-size: cover;
 }
 
+.ratings {
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
 .fade-in {
   animation: fadein 0.8s;
 }
+
 
 @font-face {
     font-family: 'Noteworthy Light';

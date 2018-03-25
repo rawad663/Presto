@@ -19,6 +19,7 @@ export default class SignupContainer extends Component{
             userType: '',
             restaurantName: '',
             description:'',
+            profilePic: '',
             errors: []
         };
     }
@@ -60,6 +61,21 @@ export default class SignupContainer extends Component{
         this.setState({description: e.target.value})
     };
 
+    handleProfilePic = e => {
+        const getBase64 = (file) => {
+            return new Promise((resolve,reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        };
+
+        getBase64(e.target.files[0]).then(base64 => {
+            this.setState({profilePic: base64})
+        });
+    };
+
 
 handleSubmit = () => {
         const {
@@ -72,8 +88,8 @@ handleSubmit = () => {
             restaurantName,
             userType,
             description,
-            address
-
+            address,
+            profilePic
         } = this.state;
 
         const postData = {
@@ -92,6 +108,7 @@ handleSubmit = () => {
             postData.postal_code = postalCode;
             postData.phone_number = phoneNumber;
             postData.address = address;
+            postData.photo = profilePic;
         }
 
         aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
@@ -99,7 +116,7 @@ handleSubmit = () => {
 
             if (status === 201) {
                 // store user to localStorage for easy access
-                localStorage.loggedInUser = JSON.stringify(data);
+                localStorage.loggedInUser = JSON.stringify({ ...data });
 
                 if (userType === 'customer') {
                     this.props.history.push('/customer');
@@ -164,6 +181,7 @@ handleSubmit = () => {
                 handleAddressChange= {this.handleAddressChange}
                 handlePostalCodeChange= {this.handlePostalCodeChange}
                 handlePhoneNumberChange= {this.handlePhoneNumberChange}
+                handleProfilePic={this.handleProfilePic}
                 handleSubmit = {this.handleSubmit}
                 handleCancel = {this.handleCancel}
                 handleUserTypeChange = {this.handleUserTypeChange}

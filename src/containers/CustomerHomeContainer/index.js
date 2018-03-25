@@ -20,8 +20,7 @@ export default class CustomerHomeContainer extends Component{
             this.setState({
                 items: response.data
             });
-        })
-
+        });
     }
 
     handleLike = id => {
@@ -46,7 +45,6 @@ export default class CustomerHomeContainer extends Component{
             <div>
                 <CustomerHomeComponent
                     loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}
-                    history={this.props.history}
                     route={this.props.location.pathname}
                     restaurantList = {this.state.items}
                     handleLike = {this.handleLike}
