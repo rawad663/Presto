@@ -5,7 +5,7 @@ import { Glyphicon } from 'react-bootstrap'
 import RestaurantCard from '../custom_components/RestaurantCard';
 import turkishFood from '../../resources/images/turkish-food.jpg'
 import mexicanFood from '../../resources/images/mexican-food.jpg'
-import chineseFood from '../../resources/images/chinese-food.jpg'
+import chineseFood from '../../resources/images/italian-food.jpg'
 
 const Belt = props => {
 
@@ -25,10 +25,10 @@ const Belt = props => {
                     imgUrl={turkishFood}
                 />
                 <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
-                    <Button onClick={props.handleDislike} className="circle-button" id="dislike">
+                    <Button onClick={() => props.handleDislike(card1.id)} className="circle-button" id="dislike">
                         <Glyphicon style={{ color: 'white' }} glyph="thumbs-down" />
                     </Button>
-                    <Button onClick={props.handleLike} className="circle-button" id="like">
+                    <Button onClick={() => props.handleLike(card1.id)} className="circle-button" id="like">
                         <Glyphicon style={{ color: 'white' }} glyph="thumbs-up" />
                     </Button>
                 </div>
@@ -77,7 +77,7 @@ const Belt = props => {
                 </div>
                     <RestaurantCard
                         id="right-belt-item"
-                        style={{ margin: 'auto 10px', maxWidth: '26%', opacity: 0.2, flex:1 }}
+                        style={{ margin: 'auto 10px', maxWidth: '26%', opacity: 0.2 }}
                         restaurantName={card2.restaurantName}
                         phoneNumber={card2.phoneNumber}
                         postalCode={card2.postalCode}
@@ -92,12 +92,10 @@ const Belt = props => {
         );
     };
 
-    console.log(props.items[1]);
-
     return (
         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
 
-            {props.items.length === 0
+            {props.items[0] === undefined || props.items.length === 0
                 ? <p style={{ color: '#616161', fontSize: 14 }}>* No restaurants found! Looks like you're done for the day.</p>
                 : props.items.length === 1 || props.items.length === 2
                     ? renderOneCard(props.items[0])

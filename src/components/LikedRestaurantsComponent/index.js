@@ -37,9 +37,9 @@ const LikedRestaurantsComponent = props => {
                     <h1 style={styles.reservations}>Liked Restaurants</h1>
                 </div>
                 <div style={{ maxWidth: '80%', margin: 50}}>
-                    {props.restaurants.length > 0
-                    ? renderLikedRestaurants(props.restaurants)
-                    : <p style={{ color: '#616161', fontSize: 14 }}>* No Liked Restaurants found! Try checking a few out.</p>}
+                {props.restaurants !== undefined && props.restaurants.length > 0
+                ? renderLikedRestaurants(props.restaurants)
+                : <p style={{ color: '#616161', fontSize: 14 }}>* No Liked Restaurants found! Try checking a few out.</p>}
                 </div>
             </div>
         </div>

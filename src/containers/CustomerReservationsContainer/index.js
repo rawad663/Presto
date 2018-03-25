@@ -12,7 +12,6 @@ export default class ReservationsContainer extends Component{
     }
 
     render(){
-        console.log(this.props);
         return(
             <div>
                 <CustomerReservationsComponent

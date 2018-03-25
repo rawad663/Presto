@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import CustomerHomeComponent from '../../components/CustomerHomeComponent';
 import {routes, aPost, aGet} from "../../api/api.js";
 
-
 export default class CustomerHomeContainer extends Component{
 
     constructor(props){
@@ -10,7 +9,7 @@ export default class CustomerHomeContainer extends Component{
 
         this.state = {
             items: [],
-            index: 1,
+            index: 0,
             animation: false
         };
 
@@ -26,8 +25,7 @@ export default class CustomerHomeContainer extends Component{
     }
 
     handleLike = id => {
-        //keep resto card in liked restos
-        aPost(routes.likeRestaraunt(id), {}).then(response => {
+        aPost(routes.likeRestaraunt(id), {}).then(() => {
             this.setState( { index: ++this.state.index, animation: true} );
         }).catch(err => {
             console.log(err);
@@ -36,8 +34,7 @@ export default class CustomerHomeContainer extends Component{
     };
 
     handleDislike = id => {
-        //keep resto card in liked restos
-        aPost(routes.dislikeRestaraunt(id), {}).then(response => {
+        aPost(routes.dislikeRestaraunt(id), {}).then(() => {
             this.setState( { index: ++this.state.index, animation: true} );
         }).catch(err => {
             console.log(err);
@@ -59,5 +56,4 @@ export default class CustomerHomeContainer extends Component{
             </div>
         );
     }
-
 }

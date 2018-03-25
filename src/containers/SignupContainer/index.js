@@ -142,7 +142,7 @@ handleSubmit = () => {
         } = this.state;
 
         return(
-          <div>
+          <div className="fade-in">
               <SignupComponent
                 first_name = {firstName}
                 last_name = {lastName}
