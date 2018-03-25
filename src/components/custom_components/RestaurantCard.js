@@ -67,7 +67,7 @@ const RestaurantCard = props => {
                     </CardText>
 
                     {/*Conditional Rendering for reserve button for LIKED RESTAURANTS Component (still hasnt been done)*/}
-                    {!props.likedRestos &&
+                    {props.likedRestos &&
                     <div style={{margin:"5px"}}>
 
                         <Button
