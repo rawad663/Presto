@@ -41,9 +41,9 @@ const RestaurantCard = props => {
                         <CardTitle className="card-title" >
                             {props.restaurantName}
                         </CardTitle>
-                        <div >
+                        <div className="address">
                             <CardSubtitle className="card-subtitle">
-                                {props.address},
+                                {props.address}
                             </CardSubtitle>
                             <CardSubtitle className="card-subtitle">
                                 {props.postalCode}
@@ -62,7 +62,7 @@ const RestaurantCard = props => {
                             <Ratings.Widget/>
                         </Ratings>
                     </div>
-                    <CardText style={{marginLeft:'9px', marginBottom:'10px', fontSize: 17}}>
+                    <CardText style={{marginBottom:'10px', fontSize: 17, padding:'10px'}}>
                         {filterDescription(props.description)}
                     </CardText>
 
