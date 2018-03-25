@@ -88,8 +88,8 @@ handleSubmit = () => {
             restaurantName,
             userType,
             description,
-            address
-
+            address,
+            profilePic
         } = this.state;
 
         const postData = {
@@ -108,7 +108,7 @@ handleSubmit = () => {
             postData.postal_code = postalCode;
             postData.phone_number = phoneNumber;
             postData.address = address;
-            postData.profile
+            postData.photo = profilePic;
         }
 
         aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
