@@ -17,8 +17,11 @@ const RestaurantCard = props => {
         row: {
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
+            justifyContent: 'space-around',
+            // flexWrap: 'wrap',
+        },
+        rating: {
+
         }
 
     };
@@ -38,6 +41,19 @@ const RestaurantCard = props => {
                         <CardTitle className="card-title" >
                             {props.restaurantName}
                         </CardTitle>
+                        <div >
+                            <CardSubtitle className="card-subtitle">
+                                {props.address},
+                            </CardSubtitle>
+                            <CardSubtitle className="card-subtitle">
+                                {props.postalCode}
+                            </CardSubtitle>
+                        </div>
+
+
+
+                    </div>
+                    <div className="ratings" >
                         <Ratings rating={props.restaurantRating} widgetDimensions="20px" widgetSpacings="1px">
                             <Ratings.Widget/>
                             <Ratings.Widget/>
@@ -46,21 +62,9 @@ const RestaurantCard = props => {
                             <Ratings.Widget/>
                         </Ratings>
                     </div>
-
-
-                    <div style={styles.row}>
-                        <CardSubtitle className="card-subtitle">
-                            {props.address}
-                        </CardSubtitle>
-                        <CardSubtitle className="card-subtitle">
-                            {props.postalCode}
-                        </CardSubtitle>
-                    </div>
-                    <CardText style={{marginLeft:'5px', marginBottom:'5px'}}>
+                    <CardText style={{marginLeft:'9px', marginBottom:'22px', fontSize: 17}}>
                         {filterDescription(props.description)}
                     </CardText>
-
-
                 </CardBody>
             </Card>
         </div>
