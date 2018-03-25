@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginComponent from '../../components/LoginComponent';
-import {aPost, routes} from "../../api/api";
+import {aPost, routes, aGet} from "../../api/api";
 
 export default class LoginContainer extends Component {
 
@@ -34,9 +34,11 @@ export default class LoginContainer extends Component {
             const { status, data } = response;
 
             if (status === 200) {
-                localStorage.token = data.token;
-                localStorage.loggedInUser = JSON.stringify({ user: data.user });
-                this.props.history.push('/customer')
+                aGet(routes.customer(data.user.id)).then(custResponse => {
+                    localStorage.token = data.token;
+                    localStorage.loggedInUser = JSON.stringify({ ...custResponse.data });
+                    this.props.history.push('/customer')
+                });
             }
         }).catch(err => {
             if (err.response !== null && err.response !== undefined) {
