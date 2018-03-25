@@ -16,12 +16,12 @@ export default class CustomerHomeContainer extends Component{
     }
 
     componentDidMount() {
+        this.setState({
         aGet(routes.restos).then(response => {
             this.setState({
                 items: response.data
             });
         })
-
     }
 
     handleLike = id => {

@@ -15,7 +15,7 @@ const Belt = props => {
                 <RestaurantCard
                     id="middle-belt-item"
                     className={props.animation ? 'animateLeft' : null}
-                    style={{ margin: 'auto 10px' }}
+                    style={{ margin: 'auto 10px'}}
                     restaurantName={card1.restaurantName}
                     phoneNumber={card1.phoneNumber}
                     postalCode={card1.postalCode}
@@ -23,6 +23,8 @@ const Belt = props => {
                     email={card1.email}
                     restaurantRating={2.5}
                     imgUrl={turkishFood}
+                    description={card1.description}
+                    likedRestos={false}
                 />
                 <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
                     <Button onClick={() => props.handleDislike(card1.id)} className="circle-button" id="dislike">
@@ -49,15 +51,17 @@ const Belt = props => {
                     postalCode={card0.postalCode}
                     address={card0.address}
                     email={card0.email}
+                    description={card0.description}
                     restaurantRating={4.5}
                     imgUrl={mexicanFood}
+                    likedRestos={false}
                 />
 
                 <div style={{maxWidth:'30%'}}>
                     <RestaurantCard
                         id="middle-belt-item"
                         className={props.animation ? 'animateLeft' : null}
-                        style={{ margin: 'auto 10px' }}
+                        style={{ margin: 'auto 10px'}}
                         restaurantName={card1.restaurantName}
                         phoneNumber={card1.phoneNumber}
                         postalCode={card1.postalCode}
@@ -65,6 +69,8 @@ const Belt = props => {
                         email={card1.email}
                         restaurantRating={2.5}
                         imgUrl={turkishFood}
+                        description={card1.description}
+                        likedRestos={false}
                     />
                     <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
                         <Button onClick={() => props.handleDislike(card1.id)} className="circle-button" id="dislike">
@@ -85,6 +91,8 @@ const Belt = props => {
                         email={card2.email}
                         restaurantRating={3.7}
                         imgUrl={chineseFood}
+                        description={card2.description}
+                        likedRestos={false}
                     />
             </div>
 
