@@ -14,7 +14,6 @@ export default class LikedRestaurantsContainer extends Component {
     }
 
     componentDidMount() {
-
         if(localStorage.loggedInUser !== undefined) {
             const loggedInUser = JSON.parse(localStorage.loggedInUser);
             aGet(routes.customer(loggedInUser.user.id)).then(response => {

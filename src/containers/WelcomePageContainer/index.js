@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import WelcomePageComponent from '../../components/WelcomePageComponent';
-import {aPost, routes} from "../../api/api";
 
 export default class WelcomePageContainer extends Component {
 
@@ -13,9 +12,8 @@ export default class WelcomePageContainer extends Component {
     };
 
     render() {
-        console.log(this.props);
         return(
-            <div>
+            <div className="fade-in">
                 <WelcomePageComponent
                     handleLogin={this.handleLogin}
                     handleSignUp={this.handleSignUp}

@@ -52,7 +52,7 @@ export default class LoginContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="fade-in">
                 <LoginComponent
                     email={this.state.email}
                     password={this.state.password}
