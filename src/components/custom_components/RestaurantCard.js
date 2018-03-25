@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText} from 'reactstrap';
+import {Card, CardBody, CardTitle, CardSubtitle, CardText, Button} from 'reactstrap';
 import Ratings from 'react-ratings-declarative';
 
 const RestaurantCard = props => {
@@ -27,8 +27,8 @@ const RestaurantCard = props => {
     };
 
     const filterDescription = desc => {
-        if (desc.length>140){
-            return desc.substring(0,135) + '...';
+        if (desc.length>100){
+            return desc.substring(0,100) + '...';
         } else return desc;
     };
 
@@ -36,7 +36,7 @@ const RestaurantCard = props => {
         <div id={props.id} style={props.style} className={"card-info " + props.className}>
             <Card>
                 <div style={styles.img}/>
-                <CardBody>
+                <CardBody style={{paddingBottom:"1px"}}>
                     <div style={styles.row}>
                         <CardTitle className="card-title" >
                             {props.restaurantName}
@@ -54,7 +54,7 @@ const RestaurantCard = props => {
 
                     </div>
                     <div className="ratings" >
-                        <Ratings rating={props.restaurantRating} widgetDimensions="20px" widgetSpacings="1px">
+                        <Ratings rating={props.restaurantRating} widgetDimensions="25px" widgetSpacings="1px">
                             <Ratings.Widget/>
                             <Ratings.Widget/>
                             <Ratings.Widget/>
@@ -62,9 +62,24 @@ const RestaurantCard = props => {
                             <Ratings.Widget/>
                         </Ratings>
                     </div>
-                    <CardText style={{marginLeft:'9px', marginBottom:'22px', fontSize: 17}}>
+                    <CardText style={{marginLeft:'9px', marginBottom:'10px', fontSize: 17}}>
                         {filterDescription(props.description)}
                     </CardText>
+
+                    {/*Conditional Rendering for reserve button for LIKED RESTAURANTS Component (still hasnt been done)*/}
+                    {!props.likedRestos &&
+                    <div style={{margin:"5px"}}>
+
+                        <Button
+                            onClick={props.handleReserve}
+                            style={{ width:"100%", backgroundColor:"#E1BEE7", color:"white", fontSize:"20px"}}
+                        >
+                            Reserve
+                        </Button>
+                    </div>
+                    }
+
+
                 </CardBody>
             </Card>
         </div>
@@ -81,7 +96,9 @@ RestaurantCard.propTypes = {
     description: PropTypes.string,
     phoneNumber: PropTypes.string,
     email: PropTypes.string,
-    style: PropTypes.object
+    style: PropTypes.object,
+    handleReserve: PropTypes.func,
+    likedRestos: PropTypes.bool.isRequired
 };
 
 RestaurantCard.defaultProps = {
@@ -92,7 +109,8 @@ RestaurantCard.defaultProps = {
     description: 'The best Kebab within a 82 km radius.  Come enjoy breakfast lunch or dinner with fresh Doner and Turkish tea.',
     postalCode: '10600',
     email: 'example@example.com',
-    style: {}
+    style: {},
+    likedRestos:false
 };
 
 export default RestaurantCard;

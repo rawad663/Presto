@@ -24,6 +24,7 @@ const Belt = props => {
                     restaurantRating={2.5}
                     imgUrl={turkishFood}
                     description={card1.description}
+                    likedRestos={false}
                 />
                 <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
                     <Button onClick={props.handleDislike} className="circle-button" id="dislike">
@@ -53,6 +54,7 @@ const Belt = props => {
                     description={card0.description}
                     restaurantRating={4.5}
                     imgUrl={mexicanFood}
+                    likedRestos={false}
                 />
 
                 <div style={{maxWidth:'30%'}}>
@@ -68,6 +70,7 @@ const Belt = props => {
                         restaurantRating={2.5}
                         imgUrl={turkishFood}
                         description={card1.description}
+                        likedRestos={false}
                     />
                     <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
                         <Button onClick={() => props.handleDislike(card1.id)} className="circle-button" id="dislike">
@@ -89,6 +92,7 @@ const Belt = props => {
                         restaurantRating={3.7}
                         imgUrl={chineseFood}
                         description={card2.description}
+                        likedRestos={false}
                     />
             </div>
 
