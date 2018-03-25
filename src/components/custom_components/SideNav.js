@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { purple_main } from "../../resources/colors";
+import { withRouter } from 'react-router';
 
 const SideNav = props => {
     const renderItems = items => items.map(item => (
@@ -17,15 +18,14 @@ const SideNav = props => {
     return (
         <div className="sidenav">
             {renderItems(props.items)}
-            <a onClick={() => { props.history.push('/'); localStorage.loggedInUser = null; }} id="signout-sidenav">Sign out </a>
+            <a onClick={() => { props.history.push('/'); delete localStorage.loggedInUser;}} id="signout-sidenav">Sign out </a>
         </div>
     )
 };
 
 SideNav.propTypes = {
     items: PropTypes.array,
-    history: PropTypes.object,
     route: PropTypes.string
 };
 
-export default SideNav;
+export default withRouter(SideNav);

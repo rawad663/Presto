@@ -14,7 +14,6 @@ export default class LikedRestaurantsContainer extends Component {
     }
 
     componentDidMount() {
-
         if(localStorage.loggedInUser !== undefined) {
             const loggedInUser = JSON.parse(localStorage.loggedInUser);
             aGet(routes.customer(loggedInUser.user.id)).then(response => {
@@ -30,7 +29,6 @@ export default class LikedRestaurantsContainer extends Component {
         return(
             <LikedRestaurantsComponent
                 route={this.props.location.pathname}
-                history={this.props.history}
                 restaurants={this.state.restaurants}
                 loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}
             />

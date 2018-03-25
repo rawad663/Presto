@@ -12,12 +12,10 @@ export default class ReservationsContainer extends Component{
     }
 
     render(){
-        console.log(this.props);
         return(
             <div>
                 <CustomerReservationsComponent
                     route={this.props.location.pathname}
-                    history={this.props.history}
                     loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}
                 />
             </div>

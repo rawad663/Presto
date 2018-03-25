@@ -78,6 +78,7 @@ const SignupComponent = props => {
                                 name="email"
                                 value={props.email}
                                 placeholder="example@domain.com"
+                                disabled={props.profileEdit}
                                 onChange={props.handleEmailChange}
                             />
                         </Col>
@@ -191,6 +192,7 @@ const SignupComponent = props => {
                                 name="password"
                                 value={props.password}
                                 placeholder="********"
+                                disabled={props.profileEdit}
                                 onChange={props.handlePasswordChange}
                             />
                         </Col>
@@ -201,6 +203,7 @@ const SignupComponent = props => {
                                 type="password"
                                 name="confirmPassword"
                                 value={props.password2}
+                                disabled={props.profileEdit}
                                 placeholder="********"
                                 onChange={props.handlePassword2Change}
                             />
@@ -273,6 +276,9 @@ SignupComponent.propsTypes = {
     validationState:PropTypes.func,
 
     errors: PropTypes.array
+};
+SignupComponent.defaultProps = {
+    profileEdit: false
 };
 
 export default SignupComponent;
