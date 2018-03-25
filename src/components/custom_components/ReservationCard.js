@@ -1,6 +1,5 @@
 import React from 'react';
 import { Glyphicon } from 'react-bootstrap';
-import Bar from '../../resources/images/bar-buffet.jpg';
 import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import {purple_main} from "../../resources/colors";
@@ -39,7 +38,7 @@ const ReservationCard = props => {
     return (
         <div className="reservation-card" style={{...props.style, ...styles.card}}>
             <div style={styles.wrapper}>
-                <img src={Bar} style={styles.img} />
+                <img src={props.img} style={styles.img} />
                 <h3 style={styles.title}>{props.title}</h3>
             </div>
             <div style={{ margin: '0 0 0 8px' }}>
@@ -68,7 +67,8 @@ ReservationCard.propTypes = {
     city: PropTypes.string,
     province: PropTypes.string,
     date: PropTypes.string,
-    style: PropTypes.object
+    style: PropTypes.object,
+    img: PropTypes.any
 };
 
 ReservationCard.defaultProps = {
@@ -78,8 +78,7 @@ ReservationCard.defaultProps = {
     city: 'Montreal',
     province: 'Quebec',
     date: 'Sunday, March 25, 1997. 4:20pm',
-    style: {
-    }
+    style: {}
 };
 
 export default ReservationCard;

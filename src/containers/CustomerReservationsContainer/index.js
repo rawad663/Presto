@@ -7,18 +7,28 @@ export default class ReservationsContainer extends Component{
         super(props);
 
         this.state = {
-
+            show: false
         };
     }
 
+    handleClose = () => {
+        this.setState({ show: false });
+    };
+
+    handleShow = () => {
+        this.setState({ show: true });
+    };
+
     render(){
-        console.log(this.props);
         return(
             <div>
                 <CustomerReservationsComponent
                     route={this.props.location.pathname}
                     history={this.props.history}
                     loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}
+                    show={this.state.show}
+                    handleShow={this.handleShow}
+                    handleClose={this.handleClose}
                 />
             </div>
         );

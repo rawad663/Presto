@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
+    "moment": "^2.21.0",
     "phone-number-prop-type": "^1.0.3",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -15,6 +16,8 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0",
+    "react-widgets": "^4.2.2",
+    "react-widgets-moment": "^4.0.9",
     "reactstrap": "^5.0.0-beta"
   },
   "proxy": "https://presto-core.herokuapp.com/",
