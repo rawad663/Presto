@@ -9,6 +9,7 @@ import RestaurantProfileContainer from './containers/RestaurantProfileContainer'
 import SettingsContainer from './containers/SettingsContainer';
 import SignupContainer from "./containers/SignupContainer";
 import ProfileEditContainer from "./containers/ProfileEditContainer";
+import ProfileContainer from './containers/ProfileContainer';
 import WelcomePageContainer from "./containers/WelcomePageContainer";
 
 import './css/App.css';
@@ -23,9 +24,12 @@ class App extends Component {
              <Route exact path="/" component={WelcomePageContainer} />
              <Route exact path="/login" component={LoginContainer} />
              <Route path="/signup" component={SignupContainer} />
+
              <Route exact path="/customer" component={CustomerHomeContainer} />
              <Route path="/customer/reservations" component={CustomerReservationsContainer} />
              <Route path="/customer/liked" component={LikedRestaurantsContainer} />
+             <Route path="/customer/profile" component={ProfileContainer} />
+
              <Route path="/restaurant/profile" component={RestaurantProfileContainer} />
              <Route path="/settings" component={SettingsContainer} />
              <Route path="/customer-profile" component={ProfileEditContainer} />
