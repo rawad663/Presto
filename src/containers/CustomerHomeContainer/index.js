@@ -20,9 +20,8 @@ export default class CustomerHomeContainer extends Component{
             this.setState({
                 items: response.data
             });
-        })
-
-    };
+        });
+    }
 
     handleLike = id => {
         aPost(routes.likeRestaraunt(id), {}).then(() => {
