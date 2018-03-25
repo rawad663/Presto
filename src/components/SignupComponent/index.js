@@ -140,17 +140,23 @@ const SignupComponent = props => {
                             />
                         </Col>
 
-                        <Col  style={styles.row}>
-                            <Label for="PhoneNumber">Phone Number</Label>
+                        <div style={{ ...styles.row, display: 'flex', justifyContent: 'space-between'}}>
+                            <div  style={styles.row}>
+                                <Label for="PhoneNumber">Phone Number</Label>
+                                <ReactPhoneInput
+                                    name="phoneNumber"
+                                    value={props.phoneNumber}
+                                    onChange={props.handlePhoneNumberChange}
+                                    defaultCountry="ca"
 
-                            <ReactPhoneInput
-                                name="phoneNumber"
-                                value={props.phoneNumber}
-                                onChange={props.handlePhoneNumberChange}
-                                defaultCountry="ca"
+                                />
+                            </div>
+                            <div style={{ marginLeft: 15 }}>
+                                <Label for="profilePicture">Profile Picture</Label>
+                                <Input onChange={props.handleProfilePic} type="file" name="profilePicture"/>
+                            </div>
+                        </div>
 
-                            />
-                        </Col>
                         <Row style={styles.row}>
                             <Col sm={{size:6, offset :1}}>
                                 <Label for="Address">Address</Label>
@@ -263,6 +269,7 @@ SignupComponent.propsTypes = {
     handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
     handleUserTypeChange: PropTypes.func,
+    handleProfilePic: PropTypes.func,
     validationState:PropTypes.func,
 
     errors: PropTypes.array
