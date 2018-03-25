@@ -105,8 +105,6 @@ html, body, #root, #root>div {
   text-align: center;
 }
 
-
-
 .card {
   margin: 15px;
   min-width: 225px;
@@ -188,9 +186,48 @@ html, body, #root, #root>div {
   font-weight: bold;
   color: #ffaa00;
 }
+
 .card-subtitle {
   font-family: "Courier New";
   margin-left: 20px;
   font-size: 24px;
+}
 
+.front-button {
+    border: 0.1em solid #6A1B9A;
+    padding: 10px;
+    background-color: hsla(0,0%,15%,0.7);
+    color: white;
+    font-family: "Noteworthy Light";
+    letter-spacing: 2px;
+    font-size: 17px;
+    padding-top: 10px;
+    padding-bottom: 14px;
+    width: 160px;
+    margin: 60px 40px 60px 40px;
+    transition: all 0.8s;
+}
+
+.front-button:hover{
+    background-color: hsla(274,16%,86%,0.82);
+    color: black;
+}
+
+#welcome-wrapper {
+    background-image: url("../resources/images/welcomepage.jpg");
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@font-face {
+    font-family: 'Noteworthy Light';
+    font-style: italic;
+    font-weight: normal;
+    src: local('Noteworthy Light'), url('../resources/fonts/Noteworthy-Light.ttf') format('woff');
 }
