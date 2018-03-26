@@ -25,14 +25,13 @@ export const routes = {
 
 export const aGet = route => {
     const token = localStorage.token;
-    axios.get(baseUrl + route, { headers: header(token) });
+    return axios.get(baseUrl + route, { headers: header(token) });
 };
 
 export const aPost = (route, data) => {
     const token = localStorage.token;
 
     if (route === routes.registerRestaurant || route === routes.registerCustomer || route === routes.login) {
-        console.log('here');
         return axios.post(baseUrl + route, data);
     }
 
@@ -41,10 +40,10 @@ export const aPost = (route, data) => {
 
 export const aDelete = route => {
     const token = localStorage.token;
-    axios.delete(baseUrl + route, { headers: header(token) });
+    return axios.delete(baseUrl + route, { headers: header(token) });
 };
 
 export const aPut = (route, data) => {
     const token = localStorage.token;
-    axios.put(baseUrl + route, data, { headers: header(token) });
+    return axios.put(baseUrl + route, data, { headers: header(token) });
 };
