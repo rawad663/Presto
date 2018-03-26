@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import SignupComponent from '../../components/SignupComponent';
 import {routes, aPost} from "../../api/api.js";
-import {aGet} from "../../api/api";
 
 export default class SignupContainer extends Component{
 

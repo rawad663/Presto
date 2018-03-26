@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginComponent from '../../components/LoginComponent';
-import {aPost, routes, aGet} from "../../api/api";
+import {aPost, routes} from "../../api/api";
 
 export default class LoginContainer extends Component {
 
