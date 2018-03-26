@@ -16,7 +16,7 @@ export default class SignupContainer extends Component{
             address:'',
             postalCode:'',
             phoneNumber:'',
-            userType: '',
+            userType: 'customer',
             restaurantName: '',
             description:'',
             profilePic: '',
