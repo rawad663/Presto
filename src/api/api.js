@@ -25,6 +25,11 @@ export const routes = {
 const token = localStorage.token;
 
 export const aGet = route => axios.get(baseUrl + route, { headers: header(token) });
-export const aPost = (route, data) => axios.post(baseUrl + route, data, { headers: header(token) });
+
+export const aPost = (route, data) => axios.post(baseUrl + route, data,
+    route === routes.registerRestaurant || route === routes.registerCustomer || route === routes.login
+    ? { headers: header(token) }
+    : null);
+
 export const aDelete = route => axios.delete(baseUrl + route, { headers: header(token) });
 export const aPut = (route, data) => axios.put(baseUrl + route, data, { headers: header(token) });
