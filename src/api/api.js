@@ -27,10 +27,10 @@ const token = localStorage.token;
 export const aGet = route => axios.get(baseUrl + route, { headers: header(token) });
 
 export const aPost = (route, data) => {
-    // if (route === routes.registerRestaurant || route === routes.registerCustomer || route === routes.login) {
-    //     console.log('here');
-    //     return axios.post(baseUrl + route, data);
-    // }
+    if (route === routes.registerRestaurant || route === routes.registerCustomer || route === routes.login) {
+        console.log('here');
+        return axios.post(baseUrl + route, data);
+    }
 
     return axios.post(baseUrl + route, data, { headers: header(token) });
 };
