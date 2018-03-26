@@ -39,7 +39,7 @@ const ReservationCard = props => {
     return (
         <div className="reservation-card" style={{...props.style, ...styles.card}}>
             <div style={styles.wrapper}>
-                <img src={Bar} style={styles.img} />
+                <img alt="profile-pic" src={Bar} style={styles.img} />
                 <h3 style={styles.title}>{props.title}</h3>
             </div>
             <div style={{ margin: '0 0 0 8px' }}>

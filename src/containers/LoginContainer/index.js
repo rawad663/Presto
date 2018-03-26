@@ -35,7 +35,7 @@ export default class LoginContainer extends Component {
 
             if (status === 200) {
                 localStorage.token = data.token;
-                localStorage.loggedInUser = JSON.stringify({ user: data.user });
+                localStorage.loggedInUser = JSON.stringify({ ...data });
                 this.props.history.push('/customer')
             }
         }).catch(err => {
@@ -52,7 +52,7 @@ export default class LoginContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="fade-in">
                 <LoginComponent
                     email={this.state.email}
                     password={this.state.password}
@@ -62,7 +62,7 @@ export default class LoginContainer extends Component {
                     handleSignup={this.handleSignup}
                     validationState={this.getValidationState}
                     errors={this.state.errors}
-                />;
+                />
             </div>
         );
     }
