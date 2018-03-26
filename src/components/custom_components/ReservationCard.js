@@ -3,6 +3,7 @@ import { Glyphicon } from 'react-bootstrap';
 import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import {purple_main} from "../../resources/colors";
+import incognito from '../../resources/images/incognito.png';
 
 const ReservationCard = props => {
     const styles = {
@@ -16,8 +17,11 @@ const ReservationCard = props => {
             alignItems: 'center',
         },
         img: {
-            width: 40,
-            height: 40,
+            width: 90,
+            height: 90,
+            backgroundImage: props.img !== null ? `url("${props.img}")` : `url("${incognito}")`,
+            backgroundSize: 'cover',
+            backgroundPosition: '50% 50%',
             margin: 5,
             borderRadius: '50%'
         },
@@ -27,7 +31,7 @@ const ReservationCard = props => {
             fontWeight: 'lighter'
         },
         description: {
-            fontSize: 15,
+            fontSize: 16,
             margin: 2
         },
         button: {
@@ -38,15 +42,15 @@ const ReservationCard = props => {
     return (
         <div className="reservation-card" style={{...props.style, ...styles.card}}>
             <div style={styles.wrapper}>
-                <img alt="profile-pic" src={props.img} style={styles.img} />
+                <div style={styles.img} />
                 <h3 style={styles.title}>{props.title}</h3>
             </div>
             <div style={{ margin: '0 0 0 8px' }}>
                 <p style={styles.description}>{props.address}</p>
                 <p style={styles.description}>{props.postalCode}</p>
-                <p style={styles.description}>{props.city}, {props.province}</p>
 
                 <p style={{...styles.description, color: purple_main}}>{props.date}</p>
+                <p style={{...styles.description, color: purple_main}}>{props.people} People</p>
                 <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
                     <Button className="button-click" title="Edit Reservation" style={styles.button} color="primary">
                         <Glyphicon glyph="pencil" />
@@ -64,11 +68,10 @@ ReservationCard.propTypes = {
     title: PropTypes.string,
     address: PropTypes.string,
     postalCode: PropTypes.string,
-    city: PropTypes.string,
-    province: PropTypes.string,
     date: PropTypes.string,
     style: PropTypes.object,
-    img: PropTypes.any
+    img: PropTypes.any,
+    people: PropTypes.number
 };
 
 ReservationCard.defaultProps = {

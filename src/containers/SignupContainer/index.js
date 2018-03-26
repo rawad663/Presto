@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SignupComponent from '../../components/SignupComponent';
 import {routes, aPost} from "../../api/api.js";
+import {aGet} from "../../api/api";
 
 export default class SignupContainer extends Component{
 
@@ -115,13 +116,19 @@ handleSubmit = () => {
             const { status, data } = response;
 
             if (status === 201) {
-                // store user to localStorage for easy access
-                localStorage.loggedInUser = JSON.stringify({ ...data });
+                localStorage.token = data.token;
 
-                if (userType === 'customer') {
-                    this.props.history.push('/customer');
-                } else if (userType === 'restaurant') {
-                    this.props.history.push('/restaurant');
+                if( data.user.is_resto ) {
+                    aGet(routes.resto(data.user.id)).then(restoResponse => {
+                        localStorage.loggedInUser = JSON.stringify({ ...restoResponse.data });
+                        this.props.history.push('/restaurant')
+                    });
+                } else {
+                    aGet(routes.customer(data.user.id)).then(custResponse => {
+                        localStorage.token = data.token;
+                        localStorage.loggedInUser = JSON.stringify({ ...custResponse.data });
+                        this.props.history.push('/customer')
+                    });
                 }
             }
         }).catch(err => {

@@ -14,9 +14,11 @@ export const routes = {
     createReservation: (customerId, restoId) => `/reserve/${customerId}/${restoId}/`,
     acceptReservation: customerId => `/reservations/${customerId}/accept/`,
     declineReservation: customerId => `/reservations/${customerId}/decline/`,
+    reservations: '/reservations/',
     likeRestaraunt: id => `/like-resto/${id}/`,
     dislikeRestaraunt: id => `/dislike-resto/${id}/`,
     customer: id => `/customers/${id}/`,
+    resto: id => `/restos/${id}/`,
     restos: '/restos/'
 };
 

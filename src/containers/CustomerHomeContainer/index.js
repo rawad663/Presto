@@ -9,7 +9,7 @@ export default class CustomerHomeContainer extends Component{
 
         this.state = {
             items: [],
-            index: 0,
+            index: 1,
             animation: false
         };
 

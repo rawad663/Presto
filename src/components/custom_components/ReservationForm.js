@@ -27,9 +27,10 @@ export default class ReservationForm extends Component {
     componentDidMount() {
         if (localStorage.loggedInUser !== undefined) {
             const loggedInUser = JSON.parse(localStorage.loggedInUser);
-            if(loggedInUser.liked_restos.length >= 0){
-                this.setState({ restaurantList: loggedInUser.liked_restos });
-            }
+
+            aGet(routes.customer(loggedInUser.user.id)).then(response => {
+                this.setState({ restaurantList: response.data.liked_restos });
+            });
         }
     }
 
@@ -76,7 +77,7 @@ export default class ReservationForm extends Component {
                     <Label for="numberOfPeople">Number of People</Label>
                     <Input
                         style={{ marginBottom: 5 }}
-                        name="numberOfPeopl"
+                        name="numberOfPeople"
                         value={this.state.numberOfPeople}
                         onChange={e => this.setState({ numberOfPeople: e.target.value })}
                     />

@@ -22,7 +22,7 @@ const Belt = props => {
                     address={card1.address}
                     email={card1.email}
                     restaurantRating={2.5}
-                    imgUrl={turkishFood}
+                    imgUrl={card1.photo}
                     description={card1.description}
                     likedRestos={false}
                 />
@@ -53,7 +53,7 @@ const Belt = props => {
                     email={card0.email}
                     description={card0.description}
                     restaurantRating={4.5}
-                    imgUrl={mexicanFood}
+                    imgUrl={card0.photo}
                     likedRestos={false}
                 />
 
@@ -68,7 +68,7 @@ const Belt = props => {
                         address={card1.address}
                         email={card1.email}
                         restaurantRating={2.5}
-                        imgUrl={turkishFood}
+                        imgUrl={card1.photo}
                         description={card1.description}
                         likedRestos={false}
                     />
@@ -90,7 +90,7 @@ const Belt = props => {
                         address={card2.address}
                         email={card2.email}
                         restaurantRating={3.7}
-                        imgUrl={chineseFood}
+                        imgUrl={card2.photo}
                         description={card2.description}
                         likedRestos={false}
                     />

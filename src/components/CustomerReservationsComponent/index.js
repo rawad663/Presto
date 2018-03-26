@@ -46,6 +46,22 @@ const CustomerReservationsComponent = props => {
         { name: 'Reservations', route: '/customer/reservations' }
     ];
 
+    const renderReservations = reservations => reservations.map(item => {
+        const resto = item.resto;
+        const baseUrl = 'https://presto-core.herokuapp.com';
+
+        return <ReservationCard
+                style={styles.reservationCard}
+                title={resto.resto_name}
+                address={resto.address}
+                img={baseUrl+resto.photo}
+                postalCod={resto.postal_code}
+                date={item.date}
+                people={item.num_people}
+            />
+
+    });
+
     return (
         <div style={{ height: '100%' }}>
             <NavBar />
@@ -60,6 +76,8 @@ const CustomerReservationsComponent = props => {
                     <ReservationForm handleShow={props.handleShow} handleClose={props.handleClose} show={props.show} />
                 </div>
                 <Well style={styles.well}>
+                    { renderReservations(props.reservations) }
+
                     <ReservationCard
                         style={styles.reservationCard}
                         title="Bar Lounge"

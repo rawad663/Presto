@@ -16,13 +16,15 @@ const CustomerHomeComponent = props => {
 
     const filterRestaurants = list => {
         return list.map(restaurant => {
+            const photo = 'https://presto-core.herokuapp.com'+restaurant.photo;
             return {
                 id: restaurant.user.id,
                 restaurantName: restaurant.resto_name,
                 address: restaurant.address,
                 postalCode: restaurant.postal_code,
                 phoneNumber: restaurant.phone_number,
-                description: restaurant.description
+                description: restaurant.description,
+                photo
             }
         });
     };
@@ -31,7 +33,7 @@ const CustomerHomeComponent = props => {
         const buildArray = () => {
             if (index === 0) {
                 return [ list[index], list[index + 1] ]
-            } else if ( index === list.length - 2 || index === list.length - 1) {
+            } else if ( index === list.length - 1) {
                 return [ list[index] ]
             } else if (index > list.length - 1) {
                 return [];
