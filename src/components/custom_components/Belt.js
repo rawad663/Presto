@@ -152,7 +152,7 @@ const Belt = props => {
             {props.items[0] === undefined || props.items.length === 0
                 ? <p style={{ color: '#616161', fontSize: 14, marginLeft: 60 }}>* No restaurants found! Looks like you're done for the day.</p>
                 : props.items.length === 2 && props.index > 0
-                    ? renderTwoCardsEnd(props.items[0], props.items[1])
+                    ? renderTwoCardsEnd(props.items[1], props.items[0])
                     : props.items.length === 2 && props.index === 0
                         ? renderTwoCardsStart(props.items[0], props.items[1])
                         : renderThreeCards(props.items[0], props.items[1], props.items[2])
