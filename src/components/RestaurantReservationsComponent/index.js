@@ -53,8 +53,8 @@ const RestaurantReservationsComponent = props => {
     };
 
 
-    const renderRestoReservation = restos => restos.map(resto => (
-        <RestoReservation style={styles.RestoReservation} resto={resto} />
+    const renderRestoReservation = restos => restos.map(restoReservation => (
+        <RestoReservation style={styles.RestoReservation} resto={restoReservation} />
     ));
 
     const items = [
@@ -90,10 +90,10 @@ const RestaurantReservationsComponent = props => {
                         </div>
                     </Well>
                     <div>
-                        {/*{props.RestoReservation.length > 0*/}
-                            {/*? renderRestoReservation(props.restaurants)*/}
-                            {/*: <p style={{ color: '#616161', fontSize: 14 }}>* No Liked Restaurants found! Try checking a few out.</p>}*/}
-                        {renderRestoReservation(props.restaurants) }
+                        {props.RestoReservation.length > 0
+                            ? renderRestoReservation(props.restaurants)
+                            : <p style={{ color: '#616161', fontSize: 14 }}>* No Reservations yet</p>}
+
                         <RestoReservation
                             style={styles.RestoReservation}
                             customerName= 'Vivek'

@@ -22,8 +22,9 @@ export default class ReservationsContainer extends Component{
         if(localStorage.loggedInUser !== undefined) {
             const loggedInUser = JSON.parse(localStorage.loggedInUser);
             aGet(routes.customer(loggedInUser.user.id)).then(response => {
+
                 this.setState({
-                    restaurants: response.data.liked_restos
+                    restaurants: response.data.restoReservations
                 });
             });
         }
