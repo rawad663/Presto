@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import CustomerReservationsComponent from '../../components/CustomerReservationsComponent';
 import RestaurantReservationsComponent from "../../components/RestaurantReservationsComponent";
 import {routes, aPost, aGet} from "../../api/api";
 
@@ -19,6 +18,15 @@ export default class ReservationsContainer extends Component{
         // aGet('/reservations').then(response => {
         //     this.setState({ restos: response.data });
         // });
+
+        if(localStorage.loggedInUser !== undefined) {
+            const loggedInUser = JSON.parse(localStorage.loggedInUser);
+            aGet(routes.customer(loggedInUser.user.id)).then(response => {
+                this.setState({
+                    restaurants: response.data.liked_restos
+                });
+            });
+        }
         this.setState({ restos: [
                 {
                     customerPic : 'r',

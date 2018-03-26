@@ -19,7 +19,7 @@ const RestaurantReservationsComponent = props => {
         well: {
             minWidth: 300,
             maxWidth: '80%',
-            height: 530,
+            height: 480,
             display: 'flex',
             flexWrap: 'wrap',
             margin: 50,
@@ -53,6 +53,10 @@ const RestaurantReservationsComponent = props => {
     };
 
 
+    const renderRestoReservation = restos => restos.map(resto => (
+        <RestoReservation style={styles.RestoReservation} resto={resto} />
+    ));
+
     const items = [
         { name: 'Home', route: '/restaurantReservation' },
         { name: 'Liked Restaurants', route: '/customer/liked' },
@@ -85,34 +89,41 @@ const RestaurantReservationsComponent = props => {
                             <span style={styles.display}>Date</span>
                         </div>
                     </Well>
-                    <RestoReservation
-                        style={styles.RestoReservation}
-                        customerName= 'Vivek'
-                        numOfPpl= '1'
-                        date='Sunday, March 04, 1997. 8:30pm'
+                    <div>
+                        {/*{props.RestoReservation.length > 0*/}
+                            {/*? renderRestoReservation(props.restaurants)*/}
+                            {/*: <p style={{ color: '#616161', fontSize: 14 }}>* No Liked Restaurants found! Try checking a few out.</p>}*/}
+                        {renderRestoReservation(props.restaurants) }
+                        <RestoReservation
+                            style={styles.RestoReservation}
+                            customerName= 'Vivek'
+                            numOfPpl= '1'
+                            date='Sunday, March 04, 1997. 8:30pm'
 
-                    />
-                    <RestoReservation
-                        style={styles.RestoReservation}
-                        customerName= 'Vivek'
-                        numOfPpl= '1'
-                        date='Sunday, March 04, 1997. 8:30pm'
+                        />
+                        <RestoReservation
+                            style={styles.RestoReservation}
+                            customerName= 'Vivek'
+                            numOfPpl= '1'
+                            date='Sunday, March 04, 1997. 8:30pm'
 
-                    />
-                    <RestoReservation
-                        style={styles.RestoReservation}
-                        customerName= 'Vivek'
-                        numOfPpl= '1'
-                        date='Sunday, March 04, 1997. 8:30pm'
+                        />
+                        <RestoReservation
+                            style={styles.RestoReservation}
+                            customerName= 'Vivek'
+                            numOfPpl= '1'
+                            date='Sunday, March 04, 1997. 8:30pm'
 
-                    />
-                    <RestoReservation
-                        style={styles.RestoReservation}
-                        customerName= 'Vivek'
-                        numOfPpl= '1'
-                        date='Sunday, March 04, 1997. 8:30pm'
+                        />
+                        <RestoReservation
+                            style={styles.RestoReservation}
+                            customerName= 'Vivek'
+                            numOfPpl= '1'
+                            date='Sunday, March 04, 1997. 8:30pm'
 
-                    />
+                        />
+
+                    </div>
 
                     {/*<RestoReservation  style={styles.RestoReservation} />*/}
                     {/*<RestoReservation  style={styles.RestoReservation} />*/}

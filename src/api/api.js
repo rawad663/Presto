@@ -5,8 +5,15 @@ const baseUrl = 'https://presto-core.herokuapp.com';
 export const routes = {
     registerRestaurant: '/register/resto/',
     registerCustomer: '/register/customer/',
-    login: '/login/',
-    customer: id => `/customers/${id}`
+    login: '/login-main/',
+    createReservation: (customerId, restoId) => `/reserve/${customerId}/${restoId}/`,
+    acceptReservation: customerId => `/reservations/${customerId}/accept/`,
+    declineReservation: customerId => `/reservations/${customerId}/decline/`,
+    likeRestaraunt: id => `/like-resto/${id}/`,
+    dislikeRestaraunt: id => `/dislike-resto/${id}/`,
+    customer: id => `/customers/${id}/`,
+    restos: '/restos/'
+
 };
 
 export const aGet = route => axios.get(baseUrl + route);
