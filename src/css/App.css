@@ -40,23 +40,25 @@ html, body, #root, #root>div {
 #dislike {
   margin-left: 18%;
   margin-right: 30px;
-  background-color: #FF1744;
+  background-color: white;
+  border: 1px solid black;
   align-self: center;
 }
 
 #dislike:active {
-  background-color: #D50000;
+  background-color: #F5F5F5;
 }
 
 #like {
   margin-left: 30px;
   margin-right: 18%;
-  background-color: #00E676;
+  background-color: white;
+  border: 1px solid black;
   align-self: center;
 }
 
 #like:active {
-  background-color: #00C853;
+  background-color: #F5F5F5;
 }
 
 @media (max-width: 900px) {
@@ -121,13 +123,12 @@ html, body, #root, #root>div {
 .sidenav {
   height: 100%;
   width: 200px;
-  position: absolute;
+  position: fixed;
   z-index: 0;
   left: 0;
   top: 0;
   bottom: 0;
   background-color: #4A148C;
-  overflow-x: hidden;
   transition: 0.5s;
   padding-top: 130px;
 }

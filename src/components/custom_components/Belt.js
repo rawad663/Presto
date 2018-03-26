@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { Glyphicon } from 'react-bootstrap'
 import RestaurantCard from '../custom_components/RestaurantCard';
-import turkishFood from '../../resources/images/turkish-food.jpg'
-import mexicanFood from '../../resources/images/mexican-food.jpg'
-import chineseFood from '../../resources/images/italian-food.jpg'
+import ThumbsUp from 'react-icons/lib/fa/thumbs-up';
+import ThumbsDown from 'react-icons/lib/fa/thumbs-down';
 
 const Belt = props => {
 
@@ -28,10 +27,10 @@ const Belt = props => {
                 />
                 <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
                     <Button onClick={() => props.handleDislike(card1.id)} className="circle-button" id="dislike">
-                        <Glyphicon style={{ color: 'white' }} glyph="thumbs-down" />
+                        <Glyphicon glyph="thumbs-down" />
                     </Button>
                     <Button onClick={() => props.handleLike(card1.id)} className="circle-button" id="like">
-                        <Glyphicon style={{ color: 'white' }} glyph="thumbs-up" />
+                        <Glyphicon glyph="thumbs-up" />
                     </Button>
                 </div>
             </div>
@@ -41,7 +40,7 @@ const Belt = props => {
 
     const renderThreeCards = (card0, card1, card2) => {
         return (
-            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: -30 }}>
 
                 <RestaurantCard
                     id="left-belt-item"
@@ -74,10 +73,10 @@ const Belt = props => {
                     />
                     <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
                         <Button onClick={() => props.handleDislike(card1.id)} className="circle-button" id="dislike">
-                            <Glyphicon style={{ color: 'white' }} glyph="thumbs-down" />
+                            <ThumbsDown style={{ fontSize: 20, color: '#FF5252' }} />
                         </Button>
                         <Button onClick={() => props.handleLike(card1.id)} className="circle-button" id="like">
-                            <Glyphicon style={{ color: 'white' }} glyph="thumbs-up" />
+                            <ThumbsUp style={{ fontSize: 20, color: '#00BFA5' }} />
                         </Button>
                     </div>
                 </div>
