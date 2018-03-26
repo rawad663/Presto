@@ -34,7 +34,7 @@ const CustomerHomeComponent = props => {
             if (index === 0) {
                 return [ list[index], list[index + 1] ]
             } else if ( index === list.length - 1) {
-                return [ list[index] ]
+                return [ list[index-1], list[index] ]
             } else if (index > list.length - 1) {
                 return [];
             }
@@ -56,6 +56,7 @@ const CustomerHomeComponent = props => {
                     handleLike={props.handleLike}
                     handleDislike={props.handleDislike}
                     items={selectRestaurantCards(filterRestaurants(props.restaurantList), props.index)}
+                    index={props.index}
                 />
             </div>
 
@@ -68,7 +69,8 @@ CustomerHomeComponent.propsTypes = {
     route: PropTypes.string,
     restaurantList: PropTypes.array,
     handleLike: PropTypes.func,
-    handleDislike: PropTypes.func
+    handleDislike: PropTypes.func,
+    index: PropTypes.number
 };
 
 export default CustomerHomeComponent;
