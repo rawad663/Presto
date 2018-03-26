@@ -35,8 +35,15 @@ export default class LoginContainer extends Component {
 
             if (status === 200) {
                 localStorage.token = data.token;
-                localStorage.loggedInUser = JSON.stringify({ ...data });
-                this.props.history.push('/customer')
+
+                if (data.customer !== undefined && data.customer !== null) {
+                    localStorage.loggedInUser = JSON.stringify(data.customer);
+                    this.props.history.push('/customer');
+
+                } else if (data.resto !== undefined && data.resto !== null) {
+                    localStorage.loggedInUser = JSON.stringify(data.resto);
+                    this.props.history.push('/restaurant');
+                }
             }
         }).catch(err => {
             if (err.response !== null && err.response !== undefined) {

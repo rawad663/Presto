@@ -6,8 +6,8 @@ import Ratings from 'react-ratings-declarative';
 const RestaurantCard = props => {
     const styles = {
         img:{
-            height:'200px',
-            width:'100%',
+            height: 250,
+            width: '100%',
             backgroundSize: 'cover',
             backgroundRepeat:'no-repeat',
             backgroundPosition:'center',
@@ -78,8 +78,6 @@ const RestaurantCard = props => {
                         </Button>
                     </div>
                     }
-
-
                 </CardBody>
             </Card>
         </div>

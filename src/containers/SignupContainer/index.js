@@ -16,7 +16,7 @@ export default class SignupContainer extends Component{
             address:'',
             postalCode:'',
             phoneNumber:'',
-            userType: '',
+            userType: 'customer',
             restaurantName: '',
             description:'',
             profilePic: '',
@@ -115,12 +115,14 @@ handleSubmit = () => {
             const { status, data } = response;
 
             if (status === 201) {
-                // store user to localStorage for easy access
-                localStorage.loggedInUser = JSON.stringify({ ...data });
+                localStorage.token = data.token;
 
-                if (userType === 'customer') {
+                if (data.customer !== undefined && data.customer !== null) {
+                    localStorage.loggedInUser = JSON.stringify(data.customer);
                     this.props.history.push('/customer');
-                } else if (userType === 'restaurant') {
+
+                } else if (data.resto !== undefined && data.resto !== null) {
+                    localStorage.loggedInUser = JSON.stringify(data.resto);
                     this.props.history.push('/restaurant');
                 }
             }
