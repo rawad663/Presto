@@ -1,19 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
-import { Glyphicon } from 'react-bootstrap'
 import RestaurantCard from '../custom_components/RestaurantCard';
 import ThumbsUp from 'react-icons/lib/fa/thumbs-up';
 import ThumbsDown from 'react-icons/lib/fa/thumbs-down';
 
 const Belt = props => {
-
     const renderOneCard = (card1) => {
         return (
             <div style={{maxWidth:'30%'}}>
                 <RestaurantCard
                     id="middle-belt-item"
-                    className={props.animation ? 'animateLeft' : null}
                     style={{ margin: 'auto 10px'}}
                     restaurantName={card1.restaurantName}
                     phoneNumber={card1.phoneNumber}
@@ -23,14 +20,13 @@ const Belt = props => {
                     restaurantRating={2.5}
                     imgUrl={card1.photo}
                     description={card1.description}
-                    likedRestos={false}
                 />
                 <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
                     <Button onClick={() => props.handleDislike(card1.id)} className="circle-button" id="dislike">
-                        <Glyphicon glyph="thumbs-down" />
+                        <ThumbsDown style={{ fontSize: 20, color: '#FF5252' }} />
                     </Button>
                     <Button onClick={() => props.handleLike(card1.id)} className="circle-button" id="like">
-                        <Glyphicon glyph="thumbs-up" />
+                        <ThumbsUp style={{ fontSize: 20, color: '#00BFA5' }} />
                     </Button>
                 </div>
             </div>
@@ -53,13 +49,11 @@ const Belt = props => {
                     description={card0.description}
                     restaurantRating={4.5}
                     imgUrl={card0.photo}
-                    likedRestos={false}
                 />
 
                 <div style={{maxWidth:'30%'}}>
                     <RestaurantCard
                         id="middle-belt-item"
-                        className={props.animation ? 'animateLeft' : null}
                         style={{ margin: 'auto 10px'}}
                         restaurantName={card1.restaurantName}
                         phoneNumber={card1.phoneNumber}
@@ -69,7 +63,6 @@ const Belt = props => {
                         restaurantRating={2.5}
                         imgUrl={card1.photo}
                         description={card1.description}
-                        likedRestos={false}
                     />
                     <div style={{ display: 'flex', margin: 'auto', justifyContent: 'space-around' }}>
                         <Button onClick={() => props.handleDislike(card1.id)} className="circle-button" id="dislike">
@@ -91,11 +84,8 @@ const Belt = props => {
                         restaurantRating={3.7}
                         imgUrl={card2.photo}
                         description={card2.description}
-                        likedRestos={false}
                     />
             </div>
-
-
         );
     };
 
@@ -116,8 +106,7 @@ const Belt = props => {
 Belt.propTypes = {
     handleLike: PropTypes.func,
     handleDislike: PropTypes.func,
-    items: PropTypes.array,
-    animation: PropTypes.bool
+    items: PropTypes.array
 };
 
 export default Belt;

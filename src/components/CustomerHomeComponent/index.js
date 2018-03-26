@@ -56,7 +56,6 @@ const CustomerHomeComponent = props => {
                     handleLike={props.handleLike}
                     handleDislike={props.handleDislike}
                     items={selectRestaurantCards(filterRestaurants(props.restaurantList), props.index)}
-                    animation={props.animation}
                 />
             </div>
 

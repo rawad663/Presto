@@ -9,10 +9,8 @@ export default class CustomerHomeContainer extends Component{
 
         this.state = {
             items: [],
-            index: 1,
-            animation: false
+            index: 1
         };
-
     }
 
     componentDidMount() {
@@ -25,7 +23,7 @@ export default class CustomerHomeContainer extends Component{
 
     handleLike = id => {
         aPost(routes.likeRestaraunt(id), {}).then(() => {
-            this.setState( { index: ++this.state.index, animation: true} );
+            this.setState( { index: ++this.state.index } );
         }).catch(err => {
             console.log(err);
         });
@@ -34,7 +32,7 @@ export default class CustomerHomeContainer extends Component{
 
     handleDislike = id => {
         aPost(routes.dislikeRestaraunt(id), {}).then(() => {
-            this.setState( { index: ++this.state.index, animation: true} );
+            this.setState( { index: ++this.state.index } );
         }).catch(err => {
             console.log(err);
         });
@@ -50,7 +48,6 @@ export default class CustomerHomeContainer extends Component{
                     handleLike = {this.handleLike}
                     handleDislike = {this.handleDislike}
                     index = {this.state.index}
-                    animation = {this.state.animation}
                 />
             </div>
         );
