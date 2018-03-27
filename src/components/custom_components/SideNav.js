@@ -17,8 +17,10 @@ const SideNav = props => {
 
     return (
         <div className="sidenav">
-            {renderItems(props.items)}
-            <a onClick={() => { props.history.push('/'); delete localStorage.loggedInUser;}} id="signout-sidenav">Sign out </a>
+            <div style={{ marginTop: 50 }}>
+                {renderItems(props.items)}
+            </div>
+            <a onClick={() => { props.history.push('/'); delete localStorage.loggedInUser; delete localStorage.token}} id="signout-sidenav">Sign out </a>
         </div>
     )
 };

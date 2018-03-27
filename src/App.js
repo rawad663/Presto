@@ -5,7 +5,6 @@ import CustomerHomeContainer from './containers/CustomerHomeContainer';
 import LoginContainer from './containers/LoginContainer';
 import CustomerReservationsContainer from './containers/CustomerReservationsContainer';
 import LikedRestaurantsContainer from './containers/LikedRestaurantsContainer';
-import RestaurantProfileContainer from './containers/RestaurantProfileContainer';
 import SettingsContainer from './containers/SettingsContainer';
 import SignupContainer from "./containers/SignupContainer";
 import ProfileEditContainer from "./containers/ProfileEditContainer";
@@ -32,7 +31,7 @@ class App extends Component {
              <Route path="/customer/liked" component={LikedRestaurantsContainer} />
              <Route path="/customer/profile" component={ProfileContainer} />
 
-             <Route path="/restaurant/profile" component={RestaurantProfileContainer} />
+             <Route path="/restaurant/profile" component={ProfileContainer} />
              <Route path="/settings" component={SettingsContainer} />
              <Route path="/customer-profile" component={ProfileEditContainer} />
 
