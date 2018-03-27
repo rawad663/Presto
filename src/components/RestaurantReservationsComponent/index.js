@@ -16,7 +16,7 @@ const RestaurantReservationsComponent = props => {
 };
 
 RestaurantReservationsComponent.propsTypes = {
-
+np
 
 };
 

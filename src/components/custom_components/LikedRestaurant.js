@@ -42,7 +42,7 @@ const LikedRestaurant = props => {
                 <img alt="profile-pic" style={styles.img} src={props.src} />
                 <h3 style={styles.title}>{props.resto.resto_name}</h3>
             </div>
-            <Button style={styles.reserve} color={'#F3E5F5'}>Reserve</Button>
+            <Button style={styles.reserve} onClick={() => props.reserveRestaurant(props.loggedInUser.user.id, props.resto.id)} color={'#F3E5F5'}>Reserve</Button>
         </div>
     );
 };
