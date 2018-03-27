@@ -3,7 +3,6 @@ import {blue,purple_main} from "../../resources/colors";
 import { Well } from 'react-bootstrap';
 import PropTypes from "prop-types";
 import NavBar from '../custom_components/NavBar';
-import {routes, aGet} from "../../api/api";
 import SideNav from '../custom_components/SideNav';
 import RestoReservation from "../custom_components/RestoReservation";
 
@@ -54,7 +53,7 @@ const RestaurantReservationsComponent = props => {
 
 
     const renderRestoReservation = restos => restos.map(restoReservation => (
-        <RestoReservation style={styles.RestoReservation} resto={restoReservation} />
+        <RestoReservation style={styles.RestoReservation} restoReservation={restoReservation} />
     ));
 
     const items = [
@@ -80,60 +79,31 @@ const RestaurantReservationsComponent = props => {
                 <div style={{ display: 'flex' }} className = "reservation">
                     <h1  style = {styles.reservations}>Reservations</h1>
                 </div>
-                <Well style={styles.well}>
 
-                    <Well style={styles.column}>
-                        <div>
-                            <span style={styles.name}>Name</span>
-                            <span style={styles.display}>Number of People </span>
-                            <span style={styles.display}>Date</span>
-                        </div>
-                    </Well>
+
                     <div>
-                        {props.RestoReservation.length > 0
-                            ? renderRestoReservation(props.restaurants)
-                            : <p style={{ color: '#616161', fontSize: 14 }}>* No Reservations yet</p>}
+                        {props.RestoReservation !== undefined && props.RestoReservation.length > 0
 
-                        <RestoReservation
-                            style={styles.RestoReservation}
-                            customerName= 'Vivek'
-                            numOfPpl= '1'
-                            date='Sunday, March 04, 1997. 8:30pm'
+                            ?
 
-                        />
-                        <RestoReservation
-                            style={styles.RestoReservation}
-                            customerName= 'Vivek'
-                            numOfPpl= '1'
-                            date='Sunday, March 04, 1997. 8:30pm'
-
-                        />
-                        <RestoReservation
-                            style={styles.RestoReservation}
-                            customerName= 'Vivek'
-                            numOfPpl= '1'
-                            date='Sunday, March 04, 1997. 8:30pm'
-
-                        />
-                        <RestoReservation
-                            style={styles.RestoReservation}
-                            customerName= 'Vivek'
-                            numOfPpl= '1'
-                            date='Sunday, March 04, 1997. 8:30pm'
-
-                        />
-
+                            <Well style={styles.well}>
+                                <Well style={styles.column}>
+                                    <div>
+                                        <span style={styles.name}>Name</span>
+                                        <span style={styles.display}>Number of People </span>
+                                        <span style={styles.display}>Date</span>
+                                    </div>
+                                </Well>
+                            <div>
+                                {renderRestoReservation(props.RestoReservation)}
+                            </div>
+                            </Well>
+                            : <p style={{ color: '#616161', fontSize: 14 , marginLeft:50}}>* No reservation yet!! </p>}
                     </div>
 
-                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
-                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
-                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
-                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
-                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
-                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
-                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
-                    {/*<RestoReservation  style={styles.RestoReservation} />*/}
-                </Well>
+
+
+
             </div>
         </div>
     );
@@ -144,6 +114,7 @@ const RestaurantReservationsComponent = props => {
 RestaurantReservationsComponent.propsTypes = {
 
     history: PropTypes.object,
+    RestoReservation: PropTypes.array,
     route: PropTypes.string,
     loggedInUser: PropTypes.object
 

@@ -28,36 +28,23 @@ export default class ReservationsContainer extends Component{
                 });
             });
         }
-        this.setState({ restos: [
-                {
-                    customerPic : 'r',
-                    customerName: 'Vivek',
-                    numOfPpl: '1',
-                    date:'Sunday, March 04, 1997. 8:30pm',
-                    state: null,
-                },
-                {
-                    customerPic : '',
-                    customerName: 'Ven',
-                    numOfPpl: '3',
-                    date: '06/13/2007',
-                    state: null
-                },
-                {
-                    customerPic : '',
-                    customerName: 'Rawad',
-                    numOfPpl: '5',
-                    date: '08/13/2007',
-                    state: null
-                }] });
+
     }
 
-    handleAccept = () => {
-        this.setState();
+    handleAccept = id => {
+        aPost(routes.acceptReservation(id), {}).then(() => {
+            this.setState(  );
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
-    handleDecline = () => {
-        this.setState();
+    handleDecline = id => {
+        aPost(routes.declineReservation(id), {}).then(() => {
+            this.setState(  );
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
 
@@ -70,8 +57,8 @@ export default class ReservationsContainer extends Component{
                     route={this.props.location.pathname}
                     history={this.props.history}
                     loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}
-                    handleAccept = {this.handleAccept()}
-                    handleDecline = {this.handleDecline()}
+                    handleAccept = {this.handleAccept}
+                    handleDecline = {this.handleDecline}
 
                 />
             </div>
