@@ -20,7 +20,6 @@ export const routes = {
     customer: id => `/customers/${id}/`,
     resto: id => `/restos/${id}/`,
     restos: '/restos/'
-
 };
 
 
