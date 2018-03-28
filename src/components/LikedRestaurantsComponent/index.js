@@ -51,7 +51,7 @@ const LikedRestaurantsComponent = props => {
             <div style={{ marginLeft: 200 }}>
                 <ReservationForm resto={props.resto} handleShow={() => props.handleShow(props.resto)} handleClose={props.handleClose} show={props.show} />
                 <div>
-                    <h1 style={styles.reservations}>Liked Restaurants</h1>
+                    <h1 style={styles.reservations}>Previously Liked</h1>
                 </div>
                 <div style={{ maxWidth: '80%', margin: 50, display: 'flex', flexWrap: 'wrap' }}>
                 {props.restaurants !== undefined && props.restaurants.length > 0
