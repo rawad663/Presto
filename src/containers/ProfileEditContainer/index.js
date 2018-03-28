@@ -118,19 +118,14 @@ export default class ProfileEditContainer extends Component{
         aPatch(userType === 'customer' ? routes.customer(loggedInUser.user.id) : routes.restaurant(loggedInUser.user.id), putData).then(response => {
             const { status, data } = response;
 
-            console.log('data', data);
-            console.log(data.resto);
             if (status === 200) {
-                // store user to localStorage for easy access
+                localStorage.token = data.token;
                 localStorage.loggedInUser = JSON.stringify(data);
-
-                if (data.user.is_resto === true ) {
-                    this.props.history.push('/restaurant');
-                    console.log('pushed restaurant')
-
-                } else if (data.user.is_resto === false) {
+                if (data.user.is_resto === false) {
                     this.props.history.push('/customer');
-                    console.log('pushed customer')
+
+                } else if (data.user.is_resto === true) {
+                    this.props.history.push('/restaurant');
                 }
             }
         }).catch(err => {

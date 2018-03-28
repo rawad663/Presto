@@ -32,7 +32,7 @@ export default class LoginContainer extends Component {
 
         aPost(routes.login, postData).then(response => {
             const { status, data } = response;
-
+            console.log('data', data);
             if (status === 200) {
                 localStorage.token = data.token;
 
