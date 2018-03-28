@@ -92,7 +92,6 @@ const RestaurantReservationsComponent = props => {
 };
 
 RestaurantReservationsComponent.propsTypes = {
-
     history: PropTypes.object,
     reservations: PropTypes.array,
     route: PropTypes.string,
