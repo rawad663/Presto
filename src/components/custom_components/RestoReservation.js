@@ -11,25 +11,19 @@ const RestoReservation  = props => {
 
     const styles = {
         buttonAccept:{
-            backgroundColor:purple_main,
+            backgroundColor: '#651FFF',
             color: 'white',
             width: 100
         },
         buttonDecline:{
-            backgroundColor:'#4d79ff',
+            backgroundColor:'#424242',
             color:'white',
             width: 100
-
-        },
-        buttonNotChosen:{
-            backgroundColor:'gray',
-            width: 100,
-            color: '#404040'
         },
         img: {
+            margin: '0 8px',
             width: 60,
             height: 60,
-            margin: 5,
             borderRadius: '50%'
         },
         display:{
@@ -37,16 +31,17 @@ const RestoReservation  = props => {
             marginLeft:60
         },
         well:{
-            verticalAlign:'middle',
+            verticalAlign:'center',
             backgroundColor:'white',
-            width: '100%',
-            margin: '15px 10px 0px 8px',
+            maxWidth: 900,
+            height: 90,
+            display: 'flex',
+            justifyContent: 'space-around',
+            margin: '15px auto',
 
         },
         name:{
-            fontWeight:'bold',
-            fontSize: 17,
-            margin:60
+            fontSize: 17
         },
         date:{
             marginLeft:80,
@@ -55,21 +50,20 @@ const RestoReservation  = props => {
         }
 
     };
+
+    const date = new Date(props.date);
+
     return (
-        <div>
-            <Well style = {styles.well}>
-                <div>
-                    <img src={props.img} style={styles.img}/>
-                    <span  style={styles.name}>{props.customerName}</span>
-                    <span  style={styles.display}>{props.numOfPpl}</span>
-                    <span  style={styles.date}>{props.date}</span>
-                    <Button onClick={props.handleAccept} style={{ ...styles.buttonAccept, }} id = 'acceptButton'> Accept </Button>
-                    <Button onClick={props.handleDecline} style={{ ...styles.buttonDecline, marginLeft: 8 }} id = 'declineButton'> Decline </Button>
-
-                </div>
-            </Well>
-
-        </div>
+        <Well style={styles.well}>
+            <img src={props.img} style={styles.img}/>
+            <p style={styles.name}>{props.customerName}</p>
+            <p style={styles.display}>{props.numOfPpl}</p>
+            <p style={styles.date}>{`${date.getDay()}/${date.getMonth()}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`}</p>
+            <div style={{ display: 'flex' }}>
+                <Button onClick={props.handleAccept} style={styles.buttonAccept} id = 'acceptButton'> Accept </Button>
+                <Button onClick={props.handleDecline} style={{ ...styles.buttonDecline, marginLeft: 8 }} id = 'declineButton'> Decline </Button>
+            </div>
+        </Well>
     )
 };
 RestoReservation.prototype = {

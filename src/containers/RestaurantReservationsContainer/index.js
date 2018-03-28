@@ -9,8 +9,7 @@ export default class ReservationsContainer extends Component{
         super(props);
 
         this.state = {
-            reservation: []
-
+            reservations: []
         };
     }
 
@@ -19,9 +18,8 @@ export default class ReservationsContainer extends Component{
         if(localStorage.loggedInUser !== undefined) {
             aGet(routes.reservations).then(response => {
                 this.setState({
-                    reservation: response.data
+                    reservations: response.data
                 });
-                console.log(response.data);
             });
         }
 
@@ -33,7 +31,7 @@ export default class ReservationsContainer extends Component{
         }).catch(err => {
             console.log(err);
         });
-    }
+    };
 
     handleDecline = id => {
         aPost(routes.declineReservation(id), {}).then(() => {
@@ -41,7 +39,7 @@ export default class ReservationsContainer extends Component{
         }).catch(err => {
             console.log(err);
         });
-    }
+    };
 
 
 
@@ -49,7 +47,7 @@ export default class ReservationsContainer extends Component{
         return(
             <div>
                 <RestaurantReservationsComponent
-                    reservation={this.state.reservation}
+                    reservations={this.state.reservations}
                     route={this.props.location.pathname}
                     history={this.props.history}
                     loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}

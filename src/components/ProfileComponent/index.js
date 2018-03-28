@@ -17,7 +17,7 @@ const ProfileComponent = props => {
             { name: 'Reservations', route: '/customer/reservations' }
         ]
         : [
-            { name: 'Reservations', route: '/restaurant/reservations' }
+            { name: 'Reservations', route: '/restaurant' }
         ];
 
     const styles = {
