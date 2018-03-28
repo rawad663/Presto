@@ -44,15 +44,21 @@ export default class ReservationForm extends Component {
             num_people: this.state.numberOfPeople
         };
 
-        const loggedInUser = localStorage.loggedInUser !== undefined && JSON.parse(localStorage.loggedInUser);
+        if(this.state.numberOfPeople === 0) {
+            alert('Cannot reserve for 0 people.');
+        }else if (new Date() >= this.state.dateTime){
+            alert('Cannot reserve past date.');
+        } else {
+            const loggedInUser = localStorage.loggedInUser !== undefined && JSON.parse(localStorage.loggedInUser);
 
-        if (loggedInUser !== null && loggedInUser.user.is_resto === false) {
-            aPost(routes.createReservation(loggedInUser.user.id, this.state.resto), postData).then(response => {
-                console.log(response.data);
-               this.props.handleClose();
-            }).catch(err => {
-                console.log(err);
-            })
+            if (loggedInUser !== null && loggedInUser.user.is_resto === false) {
+                aPost(routes.createReservation(loggedInUser.user.id, this.state.resto), postData).then(response => {
+                    console.log(response.data);
+                    this.props.handleClose();
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
         }
 
     };
