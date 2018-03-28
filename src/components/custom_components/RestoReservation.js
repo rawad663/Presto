@@ -42,7 +42,6 @@ const RestoReservation  = props => {
             width: '100%',
             margin: '15px 10px 0px 8px',
 
-
         },
         name:{
             fontWeight:'bold',
@@ -54,10 +53,6 @@ const RestoReservation  = props => {
             marginRight:30,
             fontSize: 17,
         }
-
-
-
-
 
     };
     return (
@@ -88,7 +83,6 @@ RestoReservation.prototype = {
 };
 
 ReservationCard.defaultProps = {
-
     customerName: 'Vivek',
     numOfPpl: '1',
     date: '05/13/2007',

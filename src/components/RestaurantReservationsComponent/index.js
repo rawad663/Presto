@@ -29,7 +29,6 @@ const RestaurantReservationsComponent = props => {
         },
         list:{
             marginLeft:200
-
         },
         head:{
             marginLeft:220
@@ -54,7 +53,6 @@ const RestaurantReservationsComponent = props => {
 
     };
 
-
     const renderRestoReservation = restos => restos.map((restoReservation,i) => {
         const data ={
             customerName:restoReservation.customer.user.first_name + restoReservation.customer.user.last_name,
@@ -68,7 +66,6 @@ const RestaurantReservationsComponent = props => {
     const items = [
         { name: 'Home', route: '/restaurant' },
     ];
-
 
     return(
         <div>
@@ -86,8 +83,6 @@ const RestaurantReservationsComponent = props => {
                 <div style={{ display: 'flex' }} className = "reservation">
                     <h1  style = {styles.reservations}>reservations</h1>
                 </div>
-
-
                     <div>
                         {props.reservation !== undefined && props.reservation.length > 0
                             ?
@@ -105,16 +100,9 @@ const RestaurantReservationsComponent = props => {
                             </Well>
                             : <p style={{ color: '#616161', fontSize: 14 , marginLeft:50}}>* No reservation yet!! </p>}
                     </div>
-
-
-
-
-
             </div>
         </div>
     );
-
-
 };
 
 RestaurantReservationsComponent.propsTypes = {
