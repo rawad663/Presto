@@ -35,7 +35,7 @@ class App extends Component {
              <Route path="/settings" component={SettingsContainer} />
              <Route path="/customer-profile" component={ProfileEditContainer} />
 
-             <Route path = "/restaurant/reservations" component = {RestaurantReservationsContainer}/>
+             <Route path = "/restaurant" component = {RestaurantReservationsContainer}/>
          </div>
       );
   }

@@ -9,23 +9,19 @@ export default class ReservationsContainer extends Component{
         super(props);
 
         this.state = {
-            restos: []
+            reservation: []
 
         };
     }
 
     componentDidMount() {
-        // aGet('/reservations').then(response => {
-        //     this.setState({ restos: response.data });
-        // });
 
         if(localStorage.loggedInUser !== undefined) {
-            const loggedInUser = JSON.parse(localStorage.loggedInUser);
-            aGet(routes.customer(loggedInUser.user.id)).then(response => {
-
+            aGet(routes.reservations).then(response => {
                 this.setState({
-                    restaurants: response.data.restoReservations
+                    reservation: response.data
                 });
+                console.log(response.data);
             });
         }
 
@@ -53,7 +49,7 @@ export default class ReservationsContainer extends Component{
         return(
             <div>
                 <RestaurantReservationsComponent
-                    restos={this.state.restos}
+                    reservation={this.state.reservation}
                     route={this.props.location.pathname}
                     history={this.props.history}
                     loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}
