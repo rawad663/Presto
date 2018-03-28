@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SignupComponent from '../../components/SignupComponent';
-import {routes, aPut} from "../../api/api.js";
+import {routes, aPatch} from "../../api/api.js";
 
 export default class ProfileEditContainer extends Component{
 
@@ -37,9 +37,7 @@ export default class ProfileEditContainer extends Component{
         this.setState ({firstName: loggedInUser.user.first_name,
             email:loggedInUser.user.email,
             lastName:loggedInUser.user.last_name,
-            userType:userTypeText,
-            // description:loggedInUser.description
-
+            userType:userTypeText
         });
         if (loggedInUser.user.is_resto){
             this.setState({restaurantName:loggedInUser.resto_name,
@@ -88,12 +86,10 @@ export default class ProfileEditContainer extends Component{
 
     // TODO: HANDLE SUBMIT HAS NOT BEEN TESTED WITH BACKEND.  NEED TO TEST TO SEE IF INFORMATION GETS CORRECTLY UPDATED
     handleSubmit = () => {
-        const loggedInUser= localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null;
+        const loggedInUser = localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null;
         const {
-            email,
             firstName,
             lastName,
-            password,
             postalCode,
             phoneNumber,
             restaurantName,
@@ -105,11 +101,8 @@ export default class ProfileEditContainer extends Component{
 
         const putData = {
             user: {
-                username: email,
-                email,
                 first_name: firstName,
                 last_name: lastName,
-                password
             }
         };
 
@@ -120,18 +113,24 @@ export default class ProfileEditContainer extends Component{
             putData.phone_number = phoneNumber;
             putData.address = address;
         }
+        console.log('putdata', putData.user);
 
-        aPut(userType === 'customer' ? routes.customer(loggedInUser.user.id) : routes.restaurant(loggedInUser.user.id), putData).then(response => {
+        aPatch(userType === 'customer' ? routes.customer(loggedInUser.user.id) : routes.restaurant(loggedInUser.user.id), putData).then(response => {
             const { status, data } = response;
 
-            if (status === 201) {
+            console.log('data', data);
+            console.log(data.resto);
+            if (status === 200) {
                 // store user to localStorage for easy access
                 localStorage.loggedInUser = JSON.stringify(data);
 
-                if (userType === 'customer') {
-                    this.props.history.push('/customer');
-                } else if (userType === 'restaurant') {
+                if (data.user.is_resto === true ) {
                     this.props.history.push('/restaurant');
+                    console.log('pushed restaurant')
+
+                } else if (data.user.is_resto === false) {
+                    this.props.history.push('/customer');
+                    console.log('pushed customer')
                 }
             }
         }).catch(err => {

@@ -91,6 +91,7 @@ const SignupComponent = props => {
                                         <Label check>
                                             <Input type="radio" name="userType" value="customer"
                                                    checked = {props.userType==='customer'}
+                                                   disabled={props.profileEdit}
                                                    onChange={props.handleUserTypeChange}/>{' '}
                                             Customer
                                         </Label>

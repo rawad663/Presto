@@ -11,8 +11,8 @@ export const routes = {
     registerRestaurant: '/register/resto/',
     registerCustomer: '/register/customer/',
     login: '/login/',
-    restaurant: id => `/restos'/${id}`,
-    customer: id => `/customers/${id}`
+    restaurant: id => `/restos/${id}/`,
+    customer: id => `/customers/${id}/`,
     login: '/login-main/',
     createReservation: (customerId, restoId) => `/reserve/${customerId}/${restoId}/`,
     acceptReservation: customerId => `/reservations/${customerId}/accept/`,
@@ -21,7 +21,6 @@ export const routes = {
     likeRestaraunt: id => `/like-resto/${id}/`,
     dislikeRestaraunt: id => `/dislike-resto/${id}/`,
     customer: id => `/customers/${id}/`,
-    resto: id => `/restos/${id}/`,
     restos: '/restos/'
 };
 
