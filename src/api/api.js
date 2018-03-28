@@ -13,4 +13,8 @@ export const routes = {
 export const aGet = route => axios.get(baseUrl + route);
 export const aPost = (route, data) => axios.post(baseUrl + route, data);
 export const aDelete = route => axios.delete(baseUrl + route);
+export const aPatch = (route, data) => {
+    const token = localStorage.token;
+    return axios.patch(baseUrl + route, data, { headers: header(token) });
+};
 export const aPut = (route, data) => axios.put(baseUrl + route, data);
