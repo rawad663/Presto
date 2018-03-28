@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import NavBar from '../custom_components/NavBar';
 import SideNav from '../custom_components/SideNav';
 import RestaurantCard from '../custom_components/RestaurantCard';
+import ReservationForm from '../custom_components/ReservationForm';
 import {purple_main} from "../../resources/colors";
 
 const LikedRestaurantsComponent = props => {
@@ -18,9 +19,11 @@ const LikedRestaurantsComponent = props => {
         }
     };
 
-    const renderLikedRestaurants = restos => restos.map(resto => (
+    const renderLikedRestaurants = restos => restos.map((resto, i) => (
         <RestaurantCard
-            id="middle-belt-item"
+            key={i}
+            handleReserve={props.handleShow}
+            id={resto.user.id}
             className={props.animation ? 'animateLeft' : null}
             style={{ margin: 'auto 10px', width: 390}}
             restaurantName={resto.resto_name}
@@ -46,6 +49,7 @@ const LikedRestaurantsComponent = props => {
             <SideNav items={items} route={props.route} />
 
             <div style={{ marginLeft: 200 }}>
+                <ReservationForm resto={props.resto} handleShow={() => props.handleShow(props.resto)} handleClose={props.handleClose} show={props.show} />
                 <div>
                     <h1 style={styles.reservations}>Liked Restaurants</h1>
                 </div>
@@ -62,7 +66,10 @@ const LikedRestaurantsComponent = props => {
 LikedRestaurantsComponent.propTypes = {
     route: PropTypes.string,
     restaurants: PropTypes.array,
-    loggedInUser: PropTypes.object
+    loggedInUser: PropTypes.object,
+    handleShow: PropTypes.func,
+    handleClose: PropTypes.func,
+    show: PropTypes.bool,
 };
 
 export default LikedRestaurantsComponent;

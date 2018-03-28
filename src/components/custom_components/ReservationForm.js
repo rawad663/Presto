@@ -34,6 +34,10 @@ export default class ReservationForm extends Component {
         }
     }
 
+    componentWillReceiveProps(next) {
+        this.setState({ resto: next.resto })
+    }
+
     handleSubmit = () => {
         const postData = {
             datetime: this.state.dateTime,

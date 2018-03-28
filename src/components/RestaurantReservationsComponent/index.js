@@ -1,5 +1,5 @@
 import React from 'react';
-import {blue,purple_main} from "../../resources/colors";
+import {purple_main} from "../../resources/colors";
 import { Well } from 'react-bootstrap';
 import PropTypes from "prop-types";
 import NavBar from '../custom_components/NavBar';

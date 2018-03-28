@@ -14,8 +14,6 @@ import chinese from '../../resources/images/chinese-food.jpg';
 import mexican from '../../resources/images/mexican-food.jpg';
 import turkish from '../../resources/images/turkish-food.jpg';
 
-
-
 import {purple_main} from "../../resources/colors";
 
 const CustomerReservationsComponent = props => {
