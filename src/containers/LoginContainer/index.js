@@ -11,7 +11,8 @@ export default class LoginContainer extends Component {
         // use this.setState() outside of constructor to set the value
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            errors: []
         };
     }
 
@@ -31,16 +32,24 @@ export default class LoginContainer extends Component {
 
         aPost(routes.login, postData).then(response => {
             const { status, data } = response;
-            console.log(status);
-            console.log(data);
 
             if (status === 200) {
                 localStorage.token = data.token;
-                localStorage.loggedInUser = JSON.stringify({ user: data.user });
-                this.props.history.push('/customer')
+
+                if (data.customer !== undefined && data.customer !== null) {
+                    localStorage.loggedInUser = JSON.stringify(data.customer);
+                    this.props.history.push('/customer');
+
+                } else if (data.resto !== undefined && data.resto !== null) {
+                    localStorage.loggedInUser = JSON.stringify(data.resto);
+                    this.props.history.push('/restaurant');
+                }
             }
         }).catch(err => {
-            console.log(err);
+            if (err.response !== null && err.response !== undefined) {
+                const errors = Object.keys(err.response.data).map(key => ({key, value: err.response.data[key]}));
+                this.setState({errors});
+            }
         });
     };
 
@@ -50,7 +59,7 @@ export default class LoginContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="fade-in">
                 <LoginComponent
                     email={this.state.email}
                     password={this.state.password}
@@ -59,7 +68,8 @@ export default class LoginContainer extends Component {
                     handleLogin={this.handleLogin}
                     handleSignup={this.handleSignup}
                     validationState={this.getValidationState}
-                />;
+                    errors={this.state.errors}
+                />
             </div>
         );
     }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SignupComponent from '../../components/SignupComponent';
-import {routes, aPost} from "../../api/api.js";
+import {routes, aPatch} from "../../api/api.js";
 
 export default class ProfileEditContainer extends Component{
 
@@ -17,8 +17,37 @@ export default class ProfileEditContainer extends Component{
             postalCode:'',
             phoneNumber:'',
             userType: '',
-            restaurantName: ''
+            restaurantName: '',
+            description:'',
+            errors:[]
         };
+
+        this.props = {
+            id:''
+        }
+    }
+
+    componentDidMount(){
+        const loggedInUser= localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null;
+        var userTypeText = '';
+        loggedInUser.user.is_resto ? userTypeText= 'restaurant' : userTypeText='customer';
+
+        console.log(loggedInUser);
+        console.log(this.state);
+        this.setState ({firstName: loggedInUser.user.first_name,
+            email:loggedInUser.user.email,
+            lastName:loggedInUser.user.last_name,
+            userType:userTypeText
+        });
+        if (loggedInUser.user.is_resto){
+            this.setState({restaurantName:loggedInUser.resto_name,
+                description:loggedInUser.description,
+                phoneNumber:loggedInUser.phone_number,
+                address:loggedInUser.address,
+                postalCode:loggedInUser.postal_code
+            })
+        }
+
     }
 
     handleFirstNameChange = e => {
@@ -51,56 +80,67 @@ export default class ProfileEditContainer extends Component{
     handleUserTypeChange = e => {
         this.setState({userType: e.target.value})
     };
+    handleDescriptionChange = e => {
+        this.setState({description: e.target.value})
+    };
 
+    // TODO: HANDLE SUBMIT HAS NOT BEEN TESTED WITH BACKEND.  NEED TO TEST TO SEE IF INFORMATION GETS CORRECTLY UPDATED
     handleSubmit = () => {
+        const loggedInUser = localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null;
+        const {
+            firstName,
+            lastName,
+            postalCode,
+            phoneNumber,
+            restaurantName,
+            userType,
+            description,
+            address
 
-        console.log(localStorage.getItem('id')); //returns the id of the customer, need to make call to api with this id
-        this.props.history.push('/customer');
+        } = this.state;
 
-        //TODO: NEED TO UPDATE THE STUFF GIVEN THE USER BY DOING
-        // const { email, firstName, lastName, password, userType, restaurantName } = this.state;
-        // let postData = {
-        //     username: email,
-        //     email,
-        //     first_name: firstName,
-        //     last_name: lastName,
-        //     password
-        // };
-        //
-        // if(userType === 'restaurant') {
-        //     postData = {
-        //         user: {
-        //             username: email,
-        //             email,
-        //             first_name: firstName,
-        //             last_name: lastName,
-        //             password
-        //         },
-        //         name: restaurantName,
-        //         description: 'Restaurant Description'
-        //     };
-        // }
-        //
-        // aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
-        //     const { status, data } = response;
-        //
-        //     if (status === 201) {
-        //         // store user to localStorage for easy access
-        //         localStorage.loggedInUser = data;
-        //
-        //         if (userType === 'customer') {
-        //             this.props.history.push('/customer');
-        //         } else if (userType === 'restaurant') {
-        //             this.props.history.push('/restaurant');
-        //         }
-        //     }
-        // }).catch(err => {
-        //     console.log(err);
-        // });
+        const putData = {
+            user: {
+                first_name: firstName,
+                last_name: lastName,
+            }
+        };
+
+        if(userType === 'restaurant') {
+            putData.resto_name = restaurantName;
+            putData.description = description;
+            putData.postal_code = postalCode;
+            putData.phone_number = phoneNumber;
+            putData.address = address;
+        }
+
+        aPatch(userType === 'customer' ? routes.customer(loggedInUser.user.id) : routes.restaurant(loggedInUser.user.id), putData).then(response => {
+            const { status, data } = response;
+
+            if (status === 200) {
+                localStorage.loggedInUser = JSON.stringify(data);
+                if (data.user.is_resto === false) {
+                    this.props.history.push('/customer/profile');
+
+                } else if (data.user.is_resto === true) {
+                    this.props.history.push('/restaurant/profile');
+                }
+            }
+        }).catch(err => {
+            if (err.response !== null && err.response !== undefined) {
+                const errors = Object.keys(err.response.data).map(key => ({key, value: err.response.data[key]}));
+                this.setState({errors});
+            }
+        });
     };
 
     handleCancel = () => {
-        this.props.history.push('/customer');
+        const user = localStorage.loggedInUser !== undefined && JSON.parse(localStorage.loggedInUser);
+        if(user.customer !== null && user.customer !== undefined) {
+            this.props.history.push('/customer');
+        } else {
+            this.props.history.push('/restaurant');
+        }
     };
 
 
@@ -120,7 +160,9 @@ export default class ProfileEditContainer extends Component{
             postalCode,
             phoneNumber,
             userType,
-            restaurantName
+            restaurantName,
+            description,
+            errors
         } = this.state;
 
         return(
@@ -136,6 +178,7 @@ export default class ProfileEditContainer extends Component{
                     phoneNumber = {phoneNumber}
                     userType = {userType}
                     restaurantName = {restaurantName}
+                    description = {description}
                     profileEdit = {true}
                     handleFirstNameChange= {this.handleFirstNameChange}
                     handleLastNameChange= {this.handleLastNameChange}
@@ -148,8 +191,10 @@ export default class ProfileEditContainer extends Component{
                     handleSubmit = {this.handleSubmit}
                     handleCancel = {this.handleCancel}
                     handleUserTypeChange = {this.handleUserTypeChange}
+                    handleDescriptionChange = {this.handleDescriptionChange}
                     validationState={this.getValidationState}
                     handleRestaurantNameChange = {this.handleRestaurantNameChange}
+                    errors = {errors}
                 />;
             </div>
         );

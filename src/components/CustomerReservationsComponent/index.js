@@ -1,10 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import NavBar from '../custom_components/NavBar';
 import SideNav from '../custom_components/SideNav';
 import ReservationCard from '../custom_components/ReservationCard';
+import ReservationForm from '../custom_components/ReservationForm';
+
 import { Well, Glyphicon } from 'react-bootstrap';
 import { Button } from 'reactstrap';
+
+import bar from '../../resources/images/bar-buffet.jpg';
+import chinese from '../../resources/images/chinese-food.jpg';
+import mexican from '../../resources/images/mexican-food.jpg';
+import turkish from '../../resources/images/turkish-food.jpg';
 
 import {purple_main} from "../../resources/colors";
 
@@ -33,44 +41,87 @@ const CustomerReservationsComponent = props => {
     const items = [
         { name: 'Home', route: '/customer' },
         { name: 'Liked Restaurants', route: '/customer/liked' },
-        { name: 'Reservations', route: '/customer/reservations' },
-        { name: 'Profile', route: '/customer/profile' }
+        { name: 'Reservations', route: '/customer/reservations' }
     ];
+
+    const renderReservations = reservations => reservations.map((item, i) => {
+        const resto = item.resto;
+        const baseUrl = 'https://presto-core.herokuapp.com';
+
+        return <ReservationCard
+            key={i}
+            style={styles.reservationCard}
+            title={resto.resto_name}
+            address={resto.address}
+            img={baseUrl+resto.photo}
+            postalCod={resto.postal_code}
+            date={item.datetime}
+            people={item.num_people}
+            status={item.status}
+            />
+
+    });
 
     return (
         <div style={{ height: '100%' }}>
-            <NavBar
-                button1="Home"
-                button2="Like Restaurants"
-                button1Click={() => props.history.push('/customer')}
-                fullName="Rawad Karam"
-            />
-            <SideNav items={items} history={props.history} route={props.route} />
+            <NavBar />
+            <SideNav items={items} route={props.route} />
+
             <div style={{ marginLeft: 200 }}>
                 <div style={{ display: 'flex' }}>
                     <h1 style={styles.reservations}>Reservations</h1>
-                    <Button id="new-reservation" className="button-click">
+                    <Button onClick={props.handleShow} id="new-reservation" className="button-click">
                         <Glyphicon glyph="plus"/>
                     </Button>
+                    <ReservationForm handleShow={props.handleShow} handleClose={props.handleClose} show={props.show} />
                 </div>
                 <Well style={styles.well}>
+                    { renderReservations(props.reservations) }
+
                     <ReservationCard
                         style={styles.reservationCard}
-                        title="Subway"
-                        address="377 Des Seigneurs, Apt. 307"
+                        title="Bar Lounge"
+                        address="377 Des Seigneurs"
+                        img={bar}
                         postalCod="H3J0A9"
                         city="Montreal"
                         province="Quebec"
-                        date="Sunday, March 04, 1997. 8:30pm"
+                        date="03/07/2"
+                        people={7}
                     />
-                    <ReservationCard  style={styles.reservationCard} />
-                    <ReservationCard  style={styles.reservationCard} />
-                    <ReservationCard  style={styles.reservationCard} />
-                    <ReservationCard  style={styles.reservationCard} />
-                    <ReservationCard  style={styles.reservationCard} />
-                    <ReservationCard  style={styles.reservationCard} />
-                    <ReservationCard  style={styles.reservationCard} />
-                    <ReservationCard  style={styles.reservationCard} />
+                    <ReservationCard
+                        style={styles.reservationCard}
+                        title="Wa Tu It"
+                        address="5424 Park Avn"
+                        img={chinese}
+                        postalCod="H4K4B2"
+                        city="Montreal"
+                        province="Quebec"
+                        date="03-07-2020"
+                        people={3}
+                    />
+                    <ReservationCard
+                        style={styles.reservationCard}
+                        title="3 Amigos"
+                        address="3200 Maisonneuve Avn."
+                        img={mexican}
+                        postalCod="H4L9A9"
+                        city="Montreal"
+                        province="Quebec"
+                        date="03/07/2"
+                        people={2}
+                    />
+                    <ReservationCard
+                        style={styles.reservationCard}
+                        title="Antep Kebab"
+                        address="2000 AtWater Street"
+                        img={turkish}
+                        postalCod="L0P5B8"
+                        city="Montreal"
+                        province="Quebec"
+                        date="03-06-2020"
+                        people={1}
+                    />
                 </Well>
             </div>
         </div>
@@ -78,8 +129,15 @@ const CustomerReservationsComponent = props => {
 };
 
 CustomerReservationsComponent.propsTypes = {
-    history: PropTypes.object,
-    route: PropTypes.string
+    show: PropTypes.bool,
+    route: PropTypes.string,
+    loggedInUser: PropTypes.object,
+    handleShow: PropTypes.func,
+    handleClose: PropTypes.func
+};
+
+CustomerReservationsComponent.defaultProps = {
+    show: false
 };
 
 export default CustomerReservationsComponent;
