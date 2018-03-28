@@ -32,14 +32,14 @@ export default class ProfileContainer extends Component {
         }
     }
 
-    handeEditProfile = () => {
-        this.props.history.push(this.state.account.user.is_resto ? '/restaurant/edit' : '/customer-profile');
+    handleEditProfile = () => {
+        this.props.history.push(this.state.account.user.is_resto ? '/restaurant/profile-edit' : '/customer/profile-edit');
     };
 
     render() {
         return (
             <ProfileComponent
-                handleEditProfile={this.handeEditProfile}
+                handleEditProfile={this.handleEditProfile}
                 toogle={this.toggle}
                 tooltipOpen={this.state.tooltipOpen}
                 route={this.props.location.pathname}

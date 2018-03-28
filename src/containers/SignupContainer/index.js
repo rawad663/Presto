@@ -77,7 +77,7 @@ export default class SignupContainer extends Component{
     };
 
 
-handleSubmit = () => {
+    handleSubmit = () => {
         const {
             email,
             firstName,
@@ -116,7 +116,6 @@ handleSubmit = () => {
 
             if (status === 201) {
                 localStorage.token = data.token;
-
                 if (data.customer !== undefined && data.customer !== null) {
                     localStorage.loggedInUser = JSON.stringify(data.customer);
                     this.props.history.push('/customer');

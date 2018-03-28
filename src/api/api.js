@@ -22,19 +22,21 @@ export const routes = {
     restos: '/restos/'
 };
 
-
 export const aGet = route => {
     const token = localStorage.token;
     return axios.get(baseUrl + route, { headers: header(token) });
 };
 
+export const aPatch = (route, data) => {
+    const token = localStorage.token;
+    return axios.patch(baseUrl + route, data, { headers: header(token) });
+};
+
 export const aPost = (route, data) => {
     const token = localStorage.token;
-
     if (route === routes.registerRestaurant || route === routes.registerCustomer || route === routes.login) {
         return axios.post(baseUrl + route, data);
     }
-
     return axios.post(baseUrl + route, data, { headers: header(token) });
 };
 
