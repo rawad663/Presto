@@ -44,13 +44,21 @@ const RestaurantReservationsComponent = props => {
     };
 
     const renderRestoReservation = restos => restos.map((restoReservation,i) => {
+        console.log(restoReservation);
         const data ={
+            id: restoReservation.id,
             customerName:restoReservation.customer.user.first_name + restoReservation.customer.user.last_name,
             numOfPpl:restoReservation.num_people,
             date:restoReservation.datetime,
-            img:'https://presto-core.herokuapp.com' + restoReservation.resto.photo
+            img:'https://presto-core.herokuapp.com' + restoReservation.resto.photo,
+            status: restoReservation.status
         };
-        return <RestoReservation key={i} style={styles.restoReservation} {...data} />
+        return <RestoReservation
+            handleAccept={props.handleAccept}
+            handleDecline={props.handleDecline}
+            key={i} style={styles.restoReservation}
+            {...data}
+        />
     });
 
     const items = [

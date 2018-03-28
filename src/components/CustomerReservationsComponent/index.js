@@ -44,18 +44,20 @@ const CustomerReservationsComponent = props => {
         { name: 'Reservations', route: '/customer/reservations' }
     ];
 
-    const renderReservations = reservations => reservations.map(item => {
+    const renderReservations = reservations => reservations.map((item, i) => {
         const resto = item.resto;
         const baseUrl = 'https://presto-core.herokuapp.com';
 
         return <ReservationCard
-                style={styles.reservationCard}
-                title={resto.resto_name}
-                address={resto.address}
-                img={baseUrl+resto.photo}
-                postalCod={resto.postal_code}
-                date={item.date}
-                people={item.num_people}
+            key={i}
+            style={styles.reservationCard}
+            title={resto.resto_name}
+            address={resto.address}
+            img={baseUrl+resto.photo}
+            postalCod={resto.postal_code}
+            date={item.datetime}
+            people={item.num_people}
+            status={item.status}
             />
 
     });
@@ -84,7 +86,8 @@ const CustomerReservationsComponent = props => {
                         postalCod="H3J0A9"
                         city="Montreal"
                         province="Quebec"
-                        date="Sunday, March 04, 1997. 7:30pm"
+                        date="03/07/2"
+                        people={7}
                     />
                     <ReservationCard
                         style={styles.reservationCard}
@@ -94,7 +97,8 @@ const CustomerReservationsComponent = props => {
                         postalCod="H4K4B2"
                         city="Montreal"
                         province="Quebec"
-                        date="Sunday, March 04, 1997. 8:30pm"
+                        date="03-07-2020"
+                        people={3}
                     />
                     <ReservationCard
                         style={styles.reservationCard}
@@ -104,7 +108,8 @@ const CustomerReservationsComponent = props => {
                         postalCod="H4L9A9"
                         city="Montreal"
                         province="Quebec"
-                        date="Saturday, March 05, 2018. 9:30pm"
+                        date="03/07/2"
+                        people={2}
                     />
                     <ReservationCard
                         style={styles.reservationCard}
@@ -114,7 +119,8 @@ const CustomerReservationsComponent = props => {
                         postalCod="L0P5B8"
                         city="Montreal"
                         province="Quebec"
-                        date="Sunday, March 04, 1997. 8:30pm"
+                        date="03-06-2020"
+                        people={1}
                     />
                 </Well>
             </div>

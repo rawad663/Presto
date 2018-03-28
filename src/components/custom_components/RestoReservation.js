@@ -11,13 +11,12 @@ const RestoReservation  = props => {
     const styles = {
         buttonAccept:{
             backgroundColor: '#651FFF',
-            color: 'white',
-            width: 100
+            color: 'white'
         },
         buttonDecline:{
+            marginRight: -50,
             backgroundColor:'#424242',
-            color:'white',
-            width: 100
+            color:'white'
         },
         img: {
             margin: '0 8px',
@@ -43,24 +42,33 @@ const RestoReservation  = props => {
             fontSize: 17
         },
         date:{
-            marginLeft:80,
-            marginRight:30,
+            marginLeft:10,
+            marginRight:-80,
             fontSize: 17,
         }
 
     };
 
-    const date = new Date(props.date);
+
+    const date = new Date(props.date.slice(0, -1));
 
     return (
         <Well style={styles.well}>
             <img alt="Restaurant" src={props.img} style={styles.img}/>
             <p style={styles.name}>{props.customerName}</p>
             <p style={styles.display}>{props.numOfPpl}</p>
-            <p style={styles.date}>{`${date.getDay()}/${date.getMonth()}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`}</p>
-            <div style={{ display: 'flex' }}>
-                <Button onClick={props.handleAccept} style={styles.buttonAccept} id = 'acceptButton'> Accept </Button>
-                <Button onClick={props.handleDecline} style={{ ...styles.buttonDecline, marginLeft: 8 }} id = 'declineButton'> Decline </Button>
+            <div>
+                <p style={styles.date}>{date.toString().slice(0, -18)}</p>
+                <p>
+                    <span style={{ color: '#3F51B5' }}>Status: </span>
+                    <span style={{ color: props.status === 'a' ? '#2E7D32' : props.status === 'd' && '#E65100'}}>
+                    {props.status === 'a' ? 'Accepted' : props.status === 'd' ? 'Declined' : 'Pending...'}
+                    </span>
+                </p>
+            </div>
+            <div style={{ display: 'flex', marginLeft: 80 }}>
+                <Button onClick={() => { props.handleAccept(props.id) }} style={styles.buttonAccept} id = 'acceptButton'> Accept </Button>
+                <Button onClick={() => { props.handleDecline(props.id) }} style={{ ...styles.buttonDecline, marginLeft: 8 }} id = 'declineButton'> Decline </Button>
             </div>
         </Well>
     )
@@ -72,6 +80,7 @@ RestoReservation.prototype = {
     pic: PropTypes.object,
     handleAccept: PropTypes.func,
     handleDecline: PropTypes.func,
+    id: PropTypes.number
 
 };
 

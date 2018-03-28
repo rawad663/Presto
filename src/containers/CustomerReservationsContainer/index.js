@@ -15,7 +15,6 @@ export default class ReservationsContainer extends Component{
 
     componentDidMount() {
         aGet(routes.reservations).then(response => {
-            console.log(response.data);
             this.setState({ reservations: response.data });
         })
     }

@@ -11,7 +11,6 @@ const Belt = props => {
             <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%'}}>
                 <div  style={{ maxWidth: '47%', marginTop: 30, marginLeft: 20 }}>
                     <RestaurantCard
-                        id="middle-belt-item"
                         style={{ width: '100%', opacity: 0.2 }}
                         restaurantName={card1.restaurantName}
                         phoneNumber={card1.phoneNumber}
@@ -25,7 +24,6 @@ const Belt = props => {
                 </div>
                 <div style={{ maxWidth: '47%', marginLeft: -60 }}>
                     <RestaurantCard
-                        id="middle-belt-item"
                         style={{ width: '100%' }}
                         restaurantName={card0.restaurantName}
                         phoneNumber={card0.phoneNumber}
@@ -55,7 +53,6 @@ const Belt = props => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%'}}>
                     <div style={{ maxWidth: '47%', marginRight: -80 }}>
                         <RestaurantCard
-                            id="middle-belt-item"
                             style={{ width: '100%' }}
                             restaurantName={card0.restaurantName}
                             phoneNumber={card0.phoneNumber}
@@ -77,7 +74,6 @@ const Belt = props => {
                     </div>
                     <div  style={{ maxWidth: '47%', marginTop: 30, marginRight: 50 }}>
                         <RestaurantCard
-                            id="middle-belt-item"
                             style={{ width: '100%', opacity: 0.2 }}
                             restaurantName={card1.restaurantName}
                             phoneNumber={card1.phoneNumber}
@@ -97,7 +93,6 @@ const Belt = props => {
     const renderThreeCards = (card0, card1, card2) => (
         <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: -30 }}>
             <RestaurantCard
-                id="left-belt-item"
                 style={{ margin: 'auto 10px', maxWidth: '31%', opacity: 0.2 }}
                 restaurantName={card0.restaurantName}
                 phoneNumber={card0.phoneNumber}
@@ -111,7 +106,6 @@ const Belt = props => {
 
             <div style={{maxWidth:'31%'}}>
                 <RestaurantCard
-                    id="middle-belt-item"
                     style={{ margin: 'auto 10px'}}
                     restaurantName={card1.restaurantName}
                     phoneNumber={card1.phoneNumber}
@@ -132,7 +126,6 @@ const Belt = props => {
                 </div>
             </div>
                 <RestaurantCard
-                    id="right-belt-item"
                     style={{ margin: 'auto 10px', maxWidth: '31%', opacity: 0.2 }}
                     restaurantName={card2.restaurantName}
                     phoneNumber={card2.phoneNumber}
@@ -150,7 +143,7 @@ const Belt = props => {
         <div style={{ display: 'flex', justifyContent: (props.items.length === 2 && props.index > 0) || props.items.length === 0 ? 'flex-start' : 'flex-end' }}>
 
             {props.items[0] === undefined || props.items.length === 0
-                ? <p style={{ color: '#616161', fontSize: 14, marginLeft: 60 }}>* No restaurants found! Looks like you're done for the day.</p>
+                ? <p style={{ color: '#616161', fontSize: 14, marginRight: 600 }}>* No restaurants found! Looks like you're done for the day.</p>
                 : props.items.length === 2 && props.index > 0
                     ? renderTwoCardsEnd(props.items[1], props.items[0])
                     : props.items.length === 2 && props.index === 0

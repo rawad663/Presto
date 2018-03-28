@@ -1,6 +1,4 @@
 import React from 'react';
-import { Glyphicon } from 'react-bootstrap';
-import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import {purple_main} from "../../resources/colors";
 import incognito from '../../resources/images/incognito.png';
@@ -38,6 +36,7 @@ const ReservationCard = props => {
             margin: '10px 8px 5px 0'
         }
     };
+    const date = new Date(props.date.slice(0, -1));
 
     return (
         <div className="reservation-card" style={{...props.style, ...styles.card}}>
@@ -49,18 +48,14 @@ const ReservationCard = props => {
                 <p style={styles.description}>{props.address}</p>
                 <p style={styles.description}>{props.postalCode}</p>
 
-
-
-                <p style={{...styles.description, color: purple_main}}>{props.date}</p>
-                <p style={{...styles.description, color: purple_main}}>{props.people} People</p>
-                <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
-                    <Button className="button-click" title="Edit Reservation" style={styles.button} color="primary">
-                        <Glyphicon glyph="pencil" />
-                    </Button>
-                    <Button className="button-click" title="Cancel Reservation" style={styles.button} color="danger">
-                        <Glyphicon glyph="remove" />
-                    </Button>
-                </div>
+                <p style={{...styles.description, color: purple_main}}>{date.toString().slice(0, -18)}</p>
+                <p style={{...styles.description, color: purple_main}}>{props.people} {props.people === 1 ? 'Person' : 'People'}</p>
+                <p>
+                    <span style={{ color: '#3F51B5' }}>Status: </span>
+                    <span style={{ color: props.status === 'a' ? '#2E7D32' : props.status === 'd' && '#E65100'}}>
+                    {props.status === 'a' ? 'Accepted' : props.status === 'd' ? 'Declined' : 'Pending...'}
+                    </span>
+                </p>
             </div>
         </div>
     );
@@ -71,8 +66,7 @@ ReservationCard.propTypes = {
     address: PropTypes.string,
     postalCode: PropTypes.string,
     date: PropTypes.string,
-
-
+    status: PropTypes.string,
 
     style: PropTypes.object,
     img: PropTypes.any,
@@ -86,8 +80,10 @@ ReservationCard.defaultProps = {
     postalCode: 'H4K 0L1',
     city: 'Montreal',
     province: 'Quebec',
-    date: 'Sunday, March 25, 1997. 4:20pm',
-    style: {}
+    date: '03-07-2020',
+    style: {},
+    status: 'pending',
+    people: 2
 };
 
 export default ReservationCard;
