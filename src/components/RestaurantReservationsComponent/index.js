@@ -10,9 +10,11 @@ import RestoReservation from "../custom_components/RestoReservation";
 const RestaurantReservationsComponent = props => {
 
     const styles = {
-        RestoReservation: {
+        reservation: {
             fontWeight: 'lighter',
             color: purple_main,
+            maxWidth: '100%',
+            height: 60
 
         },
         well: {
@@ -27,7 +29,6 @@ const RestaurantReservationsComponent = props => {
         },
         list:{
             marginLeft:200
-
         },
         head:{
             marginLeft:220
@@ -40,7 +41,8 @@ const RestaurantReservationsComponent = props => {
             backgroundColor:'white',
             width: '100%',
             margin: '15px 15px',
-            fontSize: 15
+            fontSize: 15,
+
         },
         display:{
             margin:70
@@ -51,17 +53,19 @@ const RestaurantReservationsComponent = props => {
 
     };
 
-
-    const renderRestoReservation = restos => restos.map(restoReservation => (
-        <RestoReservation style={styles.RestoReservation} restoReservation={restoReservation} />
-    ));
+    const renderRestoReservation = restos => restos.map((restoReservation,i) => {
+        const data ={
+            customerName:restoReservation.customer.user.first_name + restoReservation.customer.user.last_name,
+            numOfPpl:restoReservation.num_people,
+            date:restoReservation.datetime,
+            img:'https://presto-core.herokuapp.com' + restoReservation.resto.photo
+        };
+        return <RestoReservation key={i} style={styles.reservation} {...data} />
+    });
 
     const items = [
-        { name: 'Home', route: '/restaurantReservation' },
-        { name: 'Liked Restaurants', route: '/customer/liked' },
-        { name: 'Reservations', route: '/customer/reservations' }
+        { name: 'Home', route: '/restaurant' },
     ];
-
 
     return(
         <div>
@@ -77,44 +81,34 @@ const RestaurantReservationsComponent = props => {
             />
             <div style={{ marginLeft: 200 }}>
                 <div style={{ display: 'flex' }} className = "reservation">
-                    <h1  style = {styles.reservations}>Reservations</h1>
+                    <h1  style = {styles.reservations}>reservations</h1>
                 </div>
-
-
                     <div>
-                        {props.RestoReservation !== undefined && props.RestoReservation.length > 0
-
+                        {props.reservation !== undefined && props.reservation.length > 0
                             ?
-
                             <Well style={styles.well}>
-                                <Well style={styles.column}>
+                                <Well style={{...styles.column, height:60}}>
                                     <div>
                                         <span style={styles.name}>Name</span>
                                         <span style={styles.display}>Number of People </span>
                                         <span style={styles.display}>Date</span>
                                     </div>
                                 </Well>
-                            <div>
-                                {renderRestoReservation(props.RestoReservation)}
+                            <div style = {{marginTop:-130}}>
+                                {renderRestoReservation(props.reservation)}
                             </div>
                             </Well>
                             : <p style={{ color: '#616161', fontSize: 14 , marginLeft:50}}>* No reservation yet!! </p>}
                     </div>
-
-
-
-
             </div>
         </div>
     );
-
-
 };
 
 RestaurantReservationsComponent.propsTypes = {
 
     history: PropTypes.object,
-    RestoReservation: PropTypes.array,
+    reservation: PropTypes.array,
     route: PropTypes.string,
     loggedInUser: PropTypes.object
 

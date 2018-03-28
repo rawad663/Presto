@@ -4,7 +4,7 @@ import React from 'react';
 import {purple_main} from "../../resources/colors";
 import PropTypes from "prop-types";
 import ReservationCard from "./ReservationCard";
-import Bar from '../../resources/images/bar-buffet.jpg';
+
 
 
 const RestoReservation  = props => {
@@ -37,10 +37,11 @@ const RestoReservation  = props => {
             marginLeft:60
         },
         well:{
-           verticalAlign:'middle',
+            verticalAlign:'middle',
             backgroundColor:'white',
             width: '100%',
-            margin: '15px 10px 0px 8px'
+            margin: '15px 10px 0px 8px',
+
         },
         name:{
             fontWeight:'bold',
@@ -51,19 +52,14 @@ const RestoReservation  = props => {
             marginLeft:80,
             marginRight:30,
             fontSize: 17,
-
         }
-
-
-
-
 
     };
     return (
-        <div >
+        <div>
             <Well style = {styles.well}>
                 <div>
-                    <img src={Bar} style={styles.img}/>
+                    <img src={props.img} style={styles.img}/>
                     <span  style={styles.name}>{props.customerName}</span>
                     <span  style={styles.display}>{props.numOfPpl}</span>
                     <span  style={styles.date}>{props.date}</span>
@@ -87,7 +83,6 @@ RestoReservation.prototype = {
 };
 
 ReservationCard.defaultProps = {
-
     customerName: 'Vivek',
     numOfPpl: '1',
     date: '05/13/2007',
