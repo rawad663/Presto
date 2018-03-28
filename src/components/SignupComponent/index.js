@@ -78,6 +78,7 @@ const SignupComponent = props => {
                                 name="email"
                                 value={props.email}
                                 placeholder="example@domain.com"
+                                disabled={props.profileEdit}
                                 onChange={props.handleEmailChange}
                             />
                         </Col>
@@ -140,17 +141,23 @@ const SignupComponent = props => {
                             />
                         </Col>
 
-                        <Col  style={styles.row}>
-                            <Label for="PhoneNumber">Phone Number</Label>
+                        <div style={{ ...styles.row, display: 'flex', justifyContent: 'space-between'}}>
+                            <div  style={styles.row}>
+                                <Label for="PhoneNumber">Phone Number</Label>
+                                <ReactPhoneInput
+                                    name="phoneNumber"
+                                    value={props.phoneNumber}
+                                    onChange={props.handlePhoneNumberChange}
+                                    defaultCountry="ca"
 
-                            <ReactPhoneInput
-                                name="phoneNumber"
-                                value={props.phoneNumber}
-                                onChange={props.handlePhoneNumberChange}
-                                defaultCountry="ca"
+                                />
+                            </div>
+                            <div style={{ marginLeft: 15 }}>
+                                <Label for="profilePicture">Profile Picture</Label>
+                                <Input onChange={props.handleProfilePic} type="file" name="profilePicture"/>
+                            </div>
+                        </div>
 
-                            />
-                        </Col>
                         <Row style={styles.row}>
                             <Col sm={{size:6, offset :1}}>
                                 <Label for="Address">Address</Label>
@@ -185,6 +192,7 @@ const SignupComponent = props => {
                                 name="password"
                                 value={props.password}
                                 placeholder="********"
+                                disabled={props.profileEdit}
                                 onChange={props.handlePasswordChange}
                             />
                         </Col>
@@ -195,6 +203,7 @@ const SignupComponent = props => {
                                 type="password"
                                 name="confirmPassword"
                                 value={props.password2}
+                                disabled={props.profileEdit}
                                 placeholder="********"
                                 onChange={props.handlePassword2Change}
                             />
@@ -263,9 +272,13 @@ SignupComponent.propsTypes = {
     handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
     handleUserTypeChange: PropTypes.func,
+    handleProfilePic: PropTypes.func,
     validationState:PropTypes.func,
 
     errors: PropTypes.array
+};
+SignupComponent.defaultProps = {
+    profileEdit: false
 };
 
 export default SignupComponent;

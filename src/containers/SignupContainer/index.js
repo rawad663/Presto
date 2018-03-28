@@ -16,9 +16,10 @@ export default class SignupContainer extends Component{
             address:'',
             postalCode:'',
             phoneNumber:'',
-            userType: '',
+            userType: 'customer',
             restaurantName: '',
             description:'',
+            profilePic: '',
             errors: []
         };
     }
@@ -60,6 +61,21 @@ export default class SignupContainer extends Component{
         this.setState({description: e.target.value})
     };
 
+    handleProfilePic = e => {
+        const getBase64 = (file) => {
+            return new Promise((resolve,reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        };
+
+        getBase64(e.target.files[0]).then(base64 => {
+            this.setState({profilePic: base64})
+        });
+    };
+
 
     handleSubmit = () => {
         const {
@@ -72,8 +88,8 @@ export default class SignupContainer extends Component{
             restaurantName,
             userType,
             description,
-            address
-
+            address,
+            profilePic
         } = this.state;
 
         const postData = {
@@ -92,18 +108,21 @@ export default class SignupContainer extends Component{
             postData.postal_code = postalCode;
             postData.phone_number = phoneNumber;
             postData.address = address;
+            postData.photo = profilePic;
         }
 
         aPost(userType === 'customer' ? routes.registerCustomer : routes.registerRestaurant, postData).then(response => {
             const { status, data } = response;
 
             if (status === 201) {
-                // store user to localStorage for easy access
-                localStorage.loggedInUser = JSON.stringify(data);
+                localStorage.token = data.token;
 
-                if (userType === 'customer') {
+                if (data.customer !== undefined && data.customer !== null) {
+                    localStorage.loggedInUser = JSON.stringify(data.customer);
                     this.props.history.push('/customer');
-                } else if (userType === 'restaurant') {
+
+                } else if (data.resto !== undefined && data.resto !== null) {
+                    localStorage.loggedInUser = JSON.stringify(data.resto);
                     this.props.history.push('/restaurant');
                 }
             }
@@ -142,7 +161,7 @@ export default class SignupContainer extends Component{
         } = this.state;
 
         return(
-          <div>
+          <div className="fade-in">
               <SignupComponent
                 first_name = {firstName}
                 last_name = {lastName}
@@ -164,6 +183,7 @@ export default class SignupContainer extends Component{
                 handleAddressChange= {this.handleAddressChange}
                 handlePostalCodeChange= {this.handlePostalCodeChange}
                 handlePhoneNumberChange= {this.handlePhoneNumberChange}
+                handleProfilePic={this.handleProfilePic}
                 handleSubmit = {this.handleSubmit}
                 handleCancel = {this.handleCancel}
                 handleUserTypeChange = {this.handleUserTypeChange}

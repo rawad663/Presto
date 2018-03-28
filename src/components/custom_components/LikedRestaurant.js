@@ -39,8 +39,8 @@ const LikedRestaurant = props => {
     return (
         <div style={{ ...styles.resto, ...props.style}}>
             <div style={{ display: 'flex' }}>
-                <img style={styles.img} src={props.src} />
-                <h3 style={styles.title}>{props.title}</h3>
+                <img alt="profile-pic" style={styles.img} src={props.src} />
+                <h3 style={styles.title}>{props.resto.resto_name}</h3>
             </div>
             <Button style={styles.reserve} color={'#F3E5F5'}>Reserve</Button>
         </div>
@@ -48,9 +48,10 @@ const LikedRestaurant = props => {
 };
 
 LikedRestaurant.propTypes = {
-    title: PropTypes.string,
+    resto: PropTypes.object,
     style: PropTypes.object,
-    src: PropTypes.any
+    src: PropTypes.any,
+    handleReservation: PropTypes.func
 };
 
 LikedRestaurant.defaultProps = {
