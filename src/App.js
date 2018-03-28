@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 import CustomerHomeContainer from './containers/CustomerHomeContainer';
 import LoginContainer from './containers/LoginContainer';
@@ -18,7 +19,22 @@ import './css/Animations.css';
 class App extends Component {
 
   render() {
-      // return a Route component that loads up respective Components based on URL path
+      if(this.props.location.pathname !== '/' && this.props.location.pathname !== '/login' && this.props.location.pathname !== '/signup') {
+          if(localStorage.token === undefined && localStorage.loggedInUser !== undefined) {
+              this.props.history.push('/login');
+              alert('you must sign in to use content');
+          }
+
+          if (this.props.location.pathname.includes('customer') && JSON.parse(localStorage.loggedInUser).user.is_resto === true) {
+              console.log('lkjsdlfjf');
+              this.props.history.push('/restaurant');
+              alert('Cannot access customer routes');
+          } else if (this.props.location.pathname.includes('restaurant') && JSON.parse(localStorage.loggedInUser).user.is_resto === false) {
+              this.props.history.push('/customer');
+              alert('Cannot access restaurant routes');
+          }
+      }
+
       return (
          <div>
              <Route exact path="/" component={WelcomePageContainer} />
@@ -39,4 +55,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

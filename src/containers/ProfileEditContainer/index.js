@@ -135,7 +135,12 @@ export default class ProfileEditContainer extends Component{
     };
 
     handleCancel = () => {
-        this.props.history.push('/customer');
+        const user = localStorage.loggedInUser !== undefined && JSON.parse(localStorage.loggedInUser);
+        if(user.customer !== null && user.customer !== undefined) {
+            this.props.history.push('/customer');
+        } else {
+            this.props.history.push('/restaurant');
+        }
     };
 
 

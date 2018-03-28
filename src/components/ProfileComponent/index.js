@@ -8,7 +8,7 @@ import SideNav from '../custom_components/SideNav';
 import LineBreak from '../custom_components/LineBreak';
 
 const ProfileComponent = props => {
-    const { user, description, resto_name, address, postal_code, phone_number } = props.loggedInUser;
+    const { user, description, resto_name, address, postal_code, phone_number, photo } = props.loggedInUser;
 
     const items = !user.is_resto
         ? [
@@ -28,7 +28,7 @@ const ProfileComponent = props => {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: '50% 50%',
-            backgroundImage: `url("${props.imgUrl ? props.imgUrl : default_pic}")`
+            backgroundImage: `url("${photo !== '' || photo !== undefined ? 'https://presto-core.herokuapp.com' + photo : default_pic}")`
         },
         fullName: {
             fontWeight: 'lighter'

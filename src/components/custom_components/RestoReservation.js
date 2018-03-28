@@ -19,7 +19,9 @@ const RestoReservation  = props => {
             color:'white'
         },
         img: {
-            margin: '0 8px',
+            backgroundImage: `url("${props.img}")`,
+            backgroundSize: 'cover',
+            margin: '0 -30px',
             width: 60,
             height: 60,
             borderRadius: '50%'
@@ -39,6 +41,7 @@ const RestoReservation  = props => {
 
         },
         name:{
+            marginLeft: -28,
             fontSize: 17
         },
         date:{
@@ -54,7 +57,7 @@ const RestoReservation  = props => {
 
     return (
         <Well style={styles.well}>
-            <img alt="Restaurant" src={props.img} style={styles.img}/>
+            <div style={styles.img}/>
             <p style={styles.name}>{props.customerName}</p>
             <p style={styles.display}>{props.numOfPpl}</p>
             <div>
