@@ -71,7 +71,7 @@ const RestaurantCard = props => {
                     <div style={{margin:"5px"}}>
 
                         <Button
-                            onClick={props.handleReserve}
+                            onClick={() => props.handleReserve(props.id)}
                             style={{ width:"100%", backgroundColor:"#E1BEE7", color:"white", fontSize:"20px"}}
                         >
                             Reserve
@@ -85,7 +85,7 @@ const RestaurantCard = props => {
 };
 
 RestaurantCard.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.number,
     imgUrl: PropTypes.string,
     restaurantName: PropTypes.string,
     restaurantRating: PropTypes.number,

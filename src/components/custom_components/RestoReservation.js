@@ -1,7 +1,6 @@
 import {Well} from 'react-bootstrap';
 import { Button} from 'reactstrap';
 import React from 'react';
-import {purple_main} from "../../resources/colors";
 import PropTypes from "prop-types";
 import ReservationCard from "./ReservationCard";
 
@@ -55,7 +54,7 @@ const RestoReservation  = props => {
 
     return (
         <Well style={styles.well}>
-            <img src={props.img} style={styles.img}/>
+            <img alt="Restaurant" src={props.img} style={styles.img}/>
             <p style={styles.name}>{props.customerName}</p>
             <p style={styles.display}>{props.numOfPpl}</p>
             <p style={styles.date}>{`${date.getDay()}/${date.getMonth()}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`}</p>

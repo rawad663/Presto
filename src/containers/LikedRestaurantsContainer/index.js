@@ -9,7 +9,9 @@ export default class LikedRestaurantsContainer extends Component {
         super(props);
 
         this.state = {
-            restaurants: []
+            show: false,
+            restaurants: [],
+            resto: ''
         }
     }
 
@@ -24,13 +26,25 @@ export default class LikedRestaurantsContainer extends Component {
         }
     }
 
+    handleClose = () => {
+        this.setState({ show: false });
+    };
+
+    handleShow = id => {
+        this.setState({ show: true, resto: id });
+    };
+
     render() {
 
         return(
             <LikedRestaurantsComponent
+                resto={this.state.resto}
                 route={this.props.location.pathname}
                 restaurants={this.state.restaurants}
                 loggedInUser={localStorage.loggedInUser !== undefined ? JSON.parse(localStorage.loggedInUser) : null}
+                show={this.state.show}
+                handleShow={this.handleShow}
+                handleClose={this.handleClose}
             />
         );
     }
