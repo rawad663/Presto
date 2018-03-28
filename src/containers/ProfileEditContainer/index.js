@@ -113,19 +113,18 @@ export default class ProfileEditContainer extends Component{
             putData.phone_number = phoneNumber;
             putData.address = address;
         }
-        console.log('putdata', putData.user);
 
         aPatch(userType === 'customer' ? routes.customer(loggedInUser.user.id) : routes.restaurant(loggedInUser.user.id), putData).then(response => {
             const { status, data } = response;
-
+            console.log('data', data);
             if (status === 200) {
-                localStorage.token = data.token;
+                // localStorage.token = data.token;
                 localStorage.loggedInUser = JSON.stringify(data);
                 if (data.user.is_resto === false) {
-                    this.props.history.push('/customer');
+                    this.props.history.push('/customer/profile');
 
                 } else if (data.user.is_resto === true) {
-                    this.props.history.push('/restaurant');
+                    this.props.history.push('/restaurant/profile');
                 }
             }
         }).catch(err => {

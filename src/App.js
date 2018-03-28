@@ -29,8 +29,8 @@ class App extends Component {
              <Route path="/customer/reservations" component={CustomerReservationsContainer} />
              <Route path="/customer/liked" component={LikedRestaurantsContainer} />
              <Route path="/customer/profile" component={ProfileContainer} />
-             <Route path="/customer/profile/edit" component={ProfileEditContainer} />
-             <Route path="/restaurant/profile/edit" component={ProfileEditContainer} />
+             <Route path="/customer/profile-edit" component={ProfileEditContainer} />
+             <Route path="/restaurant/profile-edit" component={ProfileEditContainer} />
 
              <Route exact path = "/restaurant" component={RestaurantReservationsContainer}/>
              <Route path="/restaurant/profile" component={ProfileContainer} />

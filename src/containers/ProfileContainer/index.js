@@ -34,7 +34,7 @@ export default class ProfileContainer extends Component {
     }
 
     handleEditProfile = () => {
-        this.props.history.push(this.state.account.user.is_resto ? '/restaurant/profile/edit' : '/customer/profile/edit');
+        this.props.history.push(this.state.account.user.is_resto ? '/restaurant/profile-edit' : '/customer/profile-edit');
     };
 
     render() {
