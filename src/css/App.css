@@ -221,6 +221,9 @@ html, body, #root, #root>div {
     color: black;
 }
 
+.reservation{
+  margin: 50px 30px 0px 50px;
+ }
 #welcome-wrapper {
     background-image: url("../resources/images/welcomepage.jpg");
     width: 100%;

@@ -39,6 +39,7 @@ export default class ReservationsContainer extends Component{
                     handleShow={this.handleShow}
                     handleClose={this.handleClose}
                 />
+
             </div>
         );
     }

@@ -8,11 +8,17 @@ import SideNav from '../custom_components/SideNav';
 import LineBreak from '../custom_components/LineBreak';
 
 const ProfileComponent = props => {
-    const items = [
-        { name: 'Home', route: '/customer' },
-        { name: 'Liked Restaurants', route: '/customer/liked' },
-        { name: 'Reservations', route: '/customer/reservations' }
-    ];
+    const { user, description, resto_name, address, postal_code, phone_number } = props.loggedInUser;
+
+    const items = !user.is_resto
+        ? [
+            { name: 'Home', route: '/customer' },
+            { name: 'Liked Restaurants', route: '/customer/liked' },
+            { name: 'Reservations', route: '/customer/reservations' }
+        ]
+        : [
+            { name: 'Reservations', route: '/restaurant' }
+        ];
 
     const styles = {
         img: {
@@ -45,8 +51,6 @@ const ProfileComponent = props => {
         }
 
     };
-
-    const { user, description, resto_name, address, postal_code, phone_number } = props.loggedInUser;
 
     const tooltip = (
         <Tooltip id="tooltip">

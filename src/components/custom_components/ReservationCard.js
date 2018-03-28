@@ -49,6 +49,8 @@ const ReservationCard = props => {
                 <p style={styles.description}>{props.address}</p>
                 <p style={styles.description}>{props.postalCode}</p>
 
+
+
                 <p style={{...styles.description, color: purple_main}}>{props.date}</p>
                 <p style={{...styles.description, color: purple_main}}>{props.people} People</p>
                 <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
@@ -69,9 +71,13 @@ ReservationCard.propTypes = {
     address: PropTypes.string,
     postalCode: PropTypes.string,
     date: PropTypes.string,
+
+
+
     style: PropTypes.object,
     img: PropTypes.any,
     people: PropTypes.number
+
 };
 
 ReservationCard.defaultProps = {

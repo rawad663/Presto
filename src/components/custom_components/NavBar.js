@@ -43,8 +43,8 @@ const NavBar = props => {
             <div id="nav-bar" style={styles.navBar}>
                 <h4 style={styles.title}>Presto - {`${user.first_name} ${user.last_name}`}</h4>
                 <div>
-                    <Button onClick={() => props.history.push('/customer/profile')} style={styles.button}>Profile</Button>
-                    <Button onClick={() => props.history.push('/customer/settings')} style={styles.button}>Settings</Button>
+                    <Button onClick={() => props.history.push(!user.is_resto ? '/customer/profile' : '/restaurant/profile')} style={styles.button}>Profile</Button>
+                    <Button onClick={() => { props.history.push('/'); delete localStorage.loggedInUser; delete localStorage.token}} style={styles.button}>Sign Out</Button>
                 </div>
             </div>
             <p style={styles.space}>nothing here</p>

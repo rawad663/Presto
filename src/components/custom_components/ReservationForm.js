@@ -42,10 +42,10 @@ export default class ReservationForm extends Component {
 
         const loggedInUser = localStorage.loggedInUser !== undefined && JSON.parse(localStorage.loggedInUser);
 
-        console.log(loggedInUser)
         if (loggedInUser !== null && loggedInUser.user.is_resto === false) {
             aPost(routes.createReservation(loggedInUser.user.id, this.state.resto), postData).then(response => {
                 console.log(response.data);
+               this.props.handleClose();
             }).catch(err => {
                 console.log(err);
             })
